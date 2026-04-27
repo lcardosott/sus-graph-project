@@ -197,7 +197,8 @@
       crossorigin=""
     ></script>
     <script>
-      const META_URL = "../data_layer/reports/batches/ui/sih_br_2021_meta.json";
+      const basePath = location.pathname.replace(/\/viz_layer\/graph_map_ui\.html$/, "");
+      const META_URL = `${basePath}/data_layer/reports/batches/ui/sih_br_2021_meta.json`;
       let nodes = [];
       let edges = [];
       let nodeIndex = new Map();
@@ -411,7 +412,7 @@
           metaStatus.textContent = "meta ok";
           applyDefaults();
 
-          const nodesUrl = "/" + meta.nodes_jsonl.replace(/^.*\/data_layer\//, "data_layer/").replace(/^\/+/, "");
+          const nodesUrl = `${basePath}/` + meta.nodes_jsonl.replace(/^.*\/data_layer\//, "data_layer/").replace(/^\/+/, "");
           const nodesResp = await fetch(nodesUrl);
           if (!nodesResp.ok) {
             throw new Error(`Nodes fetch failed: ${nodesResp.status} ${nodesResp.statusText}`);
@@ -419,7 +420,7 @@
           const nodesText = await nodesResp.text();
           nodes = parseJsonl(nodesText);
 
-          const edgesUrl = "/" + meta.edges_jsonl.replace(/^.*\/data_layer\//, "data_layer/").replace(/^\/+/, "");
+          const edgesUrl = `${basePath}/` + meta.edges_jsonl.replace(/^.*\/data_layer\//, "data_layer/").replace(/^\/+/, "");
           const edgesResp = await fetch(edgesUrl);
           if (!edgesResp.ok) {
             throw new Error(`Edges fetch failed: ${edgesResp.status} ${edgesResp.statusText}`);
