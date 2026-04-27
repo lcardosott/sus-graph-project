@@ -1,0 +1,10 @@
+{
+  "graph_input": "/home/lulutoratora/Documents/comp/mc859/model_layer/reports/graph_sih_br_2021.gexf",
+  "nodes": 11823,
+  "edges": 203184,
+  "average_degree": 34.370972,
+  "component_type": "strongly_connected",
+  "component_count": 11488,
+  "degree_distribution_plot": "/home/lulutoratora/Documents/comp/mc859/viz_layer/reports/graph_sih_br_2021_degree_distribution.png",
+  "component_size_distribution_plot": "/home/lulutoratora/Documents/comp/mc859/viz_layer/reports/graph_sih_br_2021_component_size_distribution.png"
+}

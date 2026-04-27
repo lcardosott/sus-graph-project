@@ -1,0 +1,8 @@
+{
+  "nodes": 11823,
+  "edges": 203184,
+  "graph_output": "model_layer/reports/graph_sih_br_2021.gexf",
+  "nodes_input": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/batches/sih_br_2021_nodes.csv",
+  "edges_input": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/batches/sih_br_2021_edges.csv",
+  "contract_report": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/batches/sih_br_2021_contract_validation.json"
+}

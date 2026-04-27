@@ -1,5 +1,6 @@
 # Ignore per-phase context files
 **/.context_*.md
+data_layer/context.md
 __pycache__/
 *.pyc
 
@@ -14,6 +15,11 @@ model_layer/reports/
 !data_layer/reports/batches/ui/
 !data_layer/reports/batches/ui/**/*.json
 !data_layer/reports/batches/ui/**/*.jsonl
+
+# Keep yearly graph artifacts needed for local visualization
+!model_layer/reports/
+!model_layer/reports/graph_sih_br_2021.gexf
+!model_layer/reports/graph_sih_br_2021_summary.json
 
 # Temporary and lock files
 *.part
