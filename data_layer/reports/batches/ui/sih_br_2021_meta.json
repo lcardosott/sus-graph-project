@@ -1,0 +1,10 @@
+{
+  "nodes_input": "data_layer/reports/batches/sih_br_2021_nodes.csv",
+  "edges_input": "data_layer/reports/batches/sih_br_2021_edges.csv",
+  "nodes_jsonl": "data_layer/reports/batches/ui/sih_br_2021_nodes.jsonl",
+  "edges_jsonl": "data_layer/reports/batches/ui/sih_br_2021_edges.jsonl",
+  "defaults": {
+    "max_nodes_default": 0,
+    "max_edges_default": 0
+  }
+}

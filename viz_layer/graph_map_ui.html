@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SIH Graph Map</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <style>
+      :root {
+        --bg: #f6f5f1;
+        --panel: #ffffff;
+        --text: #1c1c1c;
+        --muted: #6d6d6d;
+        --accent: #2a7f62;
+        --facility: #1f77b4;
+        --municipality: #ff7f0e;
+        --edge-transfer: rgba(31, 119, 180, 0.45);
+        --edge-residence: rgba(255, 127, 14, 0.45);
+      }
+
+      body {
+        margin: 0;
+        font-family: "Fira Sans", "IBM Plex Sans", "Segoe UI", sans-serif;
+        color: var(--text);
+        background: var(--bg);
+      }
+
+      #app {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        height: 100vh;
+      }
+
+      #panel {
+        background: var(--panel);
+        padding: 18px 16px;
+        border-right: 1px solid #e2e0d9;
+        overflow: auto;
+      }
+
+      #map {
+        width: 100%;
+        height: 100vh;
+      }
+
+      h1 {
+        font-size: 18px;
+        margin: 0 0 10px 0;
+      }
+
+      .section {
+        margin: 16px 0;
+      }
+
+      .label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+
+      .toggle-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+      }
+
+      .stats {
+        background: #f2f2ed;
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .inline {
+        display: inline-block;
+        padding: 2px 6px;
+        border-radius: 6px;
+        background: #e8e6df;
+      }
+
+      .badge {
+        font-size: 12px;
+        padding: 3px 6px;
+        border-radius: 6px;
+        background: #e8f3ef;
+        color: var(--accent);
+      }
+
+      .controls input[type="range"] {
+        width: 100%;
+      }
+
+      .muted {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      #loading {
+        margin-top: 8px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      @media (max-width: 960px) {
+        #app {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto 1fr;
+        }
+        #panel {
+          border-right: none;
+          border-bottom: 1px solid #e2e0d9;
+        }
+        #map {
+          height: calc(100vh - 300px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div id="panel">
+        <h1>SIH Graph Map</h1>
+        <div class="muted">Munic -> Hosp and Hosp -> Hosp</div>
+
+        <div class="section">
+          <div class="label">Data</div>
+          <div class="row">
+            <span class="inline" id="meta-status">waiting</span>
+          </div>
+          <div id="loading">Loading...</div>
+        </div>
+
+        <div class="section controls">
+          <div class="label">Edge Types</div>
+          <div class="toggle-group">
+            <label class="row"><input type="checkbox" id="edge-transfer" checked /> Transfer (Hosp -> Hosp)</label>
+            <label class="row"><input type="checkbox" id="edge-residence" checked /> Residence (Munic -> Hosp)</label>
+          </div>
+        </div>
+
+        <div class="section controls">
+          <div class="label">Node Types</div>
+          <div class="toggle-group">
+            <label class="row"><input type="checkbox" id="node-facility" checked /> Facility</label>
+            <label class="row"><input type="checkbox" id="node-municipality" checked /> Municipality</label>
+          </div>
+        </div>
+
+        <div class="section controls">
+          <div class="label">Transfer Count Min</div>
+          <input type="range" id="transfer-min" min="1" max="50" value="1" />
+          <div class="row"><span class="inline" id="transfer-min-value">1</span></div>
+        </div>
+
+        <div class="section controls">
+          <div class="label">Performance</div>
+          <div class="toggle-group">
+            <label class="row"><input type="checkbox" id="full-render" /> Full render (may be heavy)</label>
+          </div>
+          <div class="muted">During pan/zoom, edges are temporarily hidden.</div>
+        </div>
+
+        <div class="section">
+          <div class="label">Stats</div>
+          <div class="stats" id="stats">Waiting for data...</div>
+        </div>
+
+        <div class="section">
+          <div class="label">Notes</div>
+          <div class="muted">
+            Uses JSONL exports from data_layer/reports/batches/ui.<br />
+            Defaults are unlimited (0) if provided by meta.
+          </div>
+        </div>
+      </div>
+      <div id="map"></div>
+    </div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script>
+      const META_URL = "../data_layer/reports/batches/ui/sih_br_2021_meta.json";
+      let nodes = [];
+      let edges = [];
+      let nodeIndex = new Map();
+      let map;
+      let edgeLayer;
+      let nodeLayer;
+      let renderer;
+      let meta = null;
+
+      const statsEl = document.getElementById("stats");
+      const loadingEl = document.getElementById("loading");
+      const metaStatus = document.getElementById("meta-status");
+      const transferMin = document.getElementById("transfer-min");
+      const transferMinValue = document.getElementById("transfer-min-value");
+      const fullRenderToggle = document.getElementById("full-render");
+
+      const SAFE_MAX_NODES = 50000;
+      const SAFE_MAX_EDGES = 80000;
+
+      function initMap() {
+        map = L.map("map", { preferCanvas: true, zoomControl: true, maxZoom: 18 }).setView([-14.2, -52.9], 4);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 18,
+          attribution: "&copy; OpenStreetMap contributors",
+        }).addTo(map);
+
+        renderer = L.canvas({ padding: 0.5 });
+        edgeLayer = L.layerGroup().addTo(map);
+        nodeLayer = L.layerGroup().addTo(map);
+      }
+
+      function parseJsonl(text) {
+        return text
+          .trim()
+          .split("\n")
+          .filter(Boolean)
+          .map((line) => JSON.parse(line));
+      }
+
+      function applyDefaults() {
+        if (!meta || !meta.defaults) return;
+        const maxEdges = meta.defaults.max_edges_default || 0;
+        if (maxEdges > 0) {
+          transferMin.max = Math.max(50, Math.floor(maxEdges / 1000));
+        }
+      }
+
+      function buildNodeIndex() {
+        nodeIndex = new Map();
+        nodes.forEach((node) => {
+          const lat = Number(node.latitude);
+          const lon = Number(node.longitude);
+          if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
+          nodeIndex.set(node.node_id, node);
+        });
+      }
+
+      function filterEdges() {
+        const allowTransfer = document.getElementById("edge-transfer").checked;
+        const allowResidence = document.getElementById("edge-residence").checked;
+        const minCount = Number(transferMin.value);
+        const fullRender = fullRenderToggle.checked;
+
+        const filtered = edges.filter((edge) => {
+          if (edge.edge_type === "transfer" && !allowTransfer) return false;
+          if (edge.edge_type === "residence" && !allowResidence) return false;
+          const count = Number(edge.transfer_count || 1);
+          return count >= minCount;
+        });
+
+        if (fullRender) {
+          return filtered;
+        }
+
+        return filtered.slice(0, SAFE_MAX_EDGES);
+      }
+
+      function filterNodes() {
+        const allowFacility = document.getElementById("node-facility").checked;
+        const allowMunicipality = document.getElementById("node-municipality").checked;
+        const fullRender = fullRenderToggle.checked;
+
+        const filtered = nodes.filter((node) => {
+          if (node.node_type === "facility" && !allowFacility) return false;
+          if (node.node_type === "municipality" && !allowMunicipality) return false;
+          return true;
+        });
+
+        if (fullRender) {
+          return filtered;
+        }
+
+        return filtered.slice(0, SAFE_MAX_NODES);
+      }
+
+      function renderEdges(filteredEdges) {
+        edgeLayer.clearLayers();
+
+        filteredEdges.forEach((edge) => {
+          const source = nodeIndex.get(edge.source_node_id);
+          const target = nodeIndex.get(edge.target_node_id);
+          if (!source || !target) return;
+
+          const color = edge.edge_type === "transfer" ? "rgba(31, 119, 180, 0.45)" : "rgba(255, 127, 14, 0.45)";
+          const weight = Math.min(5, Math.max(0.6, Number(edge.transfer_count || 1) * 0.04));
+
+          const edgePopup = `
+            <b>${edge.edge_type || "edge"}</b><br>
+            source: ${edge.source_node_id}<br>
+            target: ${edge.target_node_id}<br>
+            transfer_count: ${edge.transfer_count || ""}<br>
+            confidence_score: ${edge.confidence_score || ""}<br>
+            match_method: ${edge.match_method || ""}
+          `;
+
+          L.polyline(
+            [
+              [source.latitude, source.longitude],
+              [target.latitude, target.longitude],
+            ],
+            {
+              color,
+              weight,
+              opacity: 0.8,
+              renderer,
+            }
+          )
+            .bindPopup(edgePopup, { autoPan: true })
+            .addTo(edgeLayer);
+        });
+      }
+
+      function renderNodes(filteredNodes) {
+        nodeLayer.clearLayers();
+
+        filteredNodes.forEach((node) => {
+          const lat = Number(node.latitude);
+          const lon = Number(node.longitude);
+          if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
+
+          const color = node.node_type === "facility" ? "#1f77b4" : "#ff7f0e";
+          const radius = node.node_type === "facility" ? 4 : 3;
+
+          const popup = `
+            <b>${node.name || node.node_id}</b><br>
+            node_id: ${node.node_id}<br>
+            node_type: ${node.node_type}<br>
+            municipality_code: ${node.municipality_code || ""}
+          `;
+
+          L.circleMarker([lat, lon], {
+            radius,
+            color,
+            fillColor: color,
+            fillOpacity: 0.8,
+            weight: 0,
+            renderer,
+          })
+            .bindPopup(popup, { autoPan: true })
+            .addTo(nodeLayer);
+        });
+      }
+
+      function updateStats(filteredNodes, filteredEdges) {
+        const fullRender = fullRenderToggle.checked;
+        statsEl.innerHTML = [
+          `Nodes loaded: <b>${nodes.length}</b>`,
+          `Edges loaded: <b>${edges.length}</b>`,
+          `Nodes visible: <b>${filteredNodes.length}</b>`,
+          `Edges visible: <b>${filteredEdges.length}</b>`,
+          `Render mode: <b>${fullRender ? "full" : "safe"}</b>`,
+          `Filters: ${document.getElementById("edge-transfer").checked ? "transfer" : ""} ${document.getElementById("edge-residence").checked ? "residence" : ""}`,
+        ].join("<br />");
+      }
+
+      function render() {
+        const filteredNodes = filterNodes();
+        const filteredEdges = filterEdges();
+        buildNodeIndex();
+        renderEdges(filteredEdges);
+        renderNodes(filteredNodes);
+        updateStats(filteredNodes, filteredEdges);
+      }
+
+      function attachControls() {
+        document.querySelectorAll("input[type='checkbox']").forEach((el) => {
+          el.addEventListener("change", render);
+        });
+        transferMin.addEventListener("input", () => {
+          transferMinValue.textContent = transferMin.value;
+          render();
+        });
+        map.on("movestart", () => edgeLayer.clearLayers());
+        map.on("zoomstart", () => edgeLayer.clearLayers());
+        map.on("moveend", render);
+        map.on("zoomend", render);
+        map.on("resize", render);
+      }
+
+      async function loadData() {
+        initMap();
+        attachControls();
+
+        try {
+          const metaResp = await fetch(META_URL);
+          if (!metaResp.ok) {
+            throw new Error(`Meta fetch failed: ${metaResp.status} ${metaResp.statusText}`);
+          }
+          const metaText = await metaResp.text();
+          meta = JSON.parse(metaText);
+          metaStatus.textContent = "meta ok";
+          applyDefaults();
+
+          const nodesUrl = "/" + meta.nodes_jsonl.replace(/^.*\/data_layer\//, "data_layer/").replace(/^\/+/, "");
+          const nodesResp = await fetch(nodesUrl);
+          if (!nodesResp.ok) {
+            throw new Error(`Nodes fetch failed: ${nodesResp.status} ${nodesResp.statusText}`);
+          }
+          const nodesText = await nodesResp.text();
+          nodes = parseJsonl(nodesText);
+
+          const edgesUrl = "/" + meta.edges_jsonl.replace(/^.*\/data_layer\//, "data_layer/").replace(/^\/+/, "");
+          const edgesResp = await fetch(edgesUrl);
+          if (!edgesResp.ok) {
+            throw new Error(`Edges fetch failed: ${edgesResp.status} ${edgesResp.statusText}`);
+          }
+          const edgesText = await edgesResp.text();
+          edges = parseJsonl(edgesText);
+
+          loadingEl.textContent = "Loaded";
+          render();
+        } catch (error) {
+          loadingEl.textContent = `Error: ${error}`;
+          metaStatus.textContent = "error";
+        }
+      }
+
+      loadData();
+    </script>
+  </body>
+</html>
