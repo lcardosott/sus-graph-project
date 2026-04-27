@@ -1,0 +1,54 @@
+{
+  "records_input": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/rdsp2101_nodes_input.csv",
+  "records_rows": 195978,
+  "nodes_output": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/nodes_RDSP2101_enriched_geo_cnes_allmun.csv",
+  "nodes_total": 6206,
+  "facility_nodes": 635,
+  "municipality_nodes": 5571,
+  "facility_lookup_rows": 635,
+  "municipality_lookup_rows": 1293,
+  "mapping_fields": {
+    "facility_id_field": "CNES",
+    "facility_municipality_field": "MUNIC_MOV",
+    "municipality_fields": [
+      "MUNIC_RES",
+      "MUNIC_MOV"
+    ]
+  },
+  "nodes_with_name": 6206,
+  "nodes_with_latitude": 1928,
+  "nodes_with_longitude": 1928,
+  "enrichment": {
+    "municipality_enrichment": {
+      "ibge_cache": "/home/lulutoratora/Documents/comp/mc859/data_layer/reference/cache/ibge_municipios.json",
+      "municipality_nodes_total": 5571,
+      "municipality_nodes_enriched": 5571,
+      "municipality_nodes_with_coordinates": 1293,
+      "facility_nodes_total": 635,
+      "facility_nodes_named": 635,
+      "facility_nodes_with_coordinates": 635,
+      "missing_municipality_metadata": 0,
+      "facility_centroid_fallback_enabled": true,
+      "all_ibge_municipalities_added": 4278,
+      "ibge_centroids_cache": "/home/lulutoratora/Documents/comp/mc859/data_layer/reference/cache/ibge_municipio_centroids.json",
+      "centroid_entries_loaded": 1293,
+      "centroid_scope": "observed_nodes_only"
+    },
+    "facility_cnes_api_enrichment": {
+      "cache": "/home/lulutoratora/Documents/comp/mc859/data_layer/reference/cache/cnes_estabelecimentos.json",
+      "requested_facilities": 635,
+      "resolved_facilities": 635,
+      "updated_rows": 2540,
+      "timeout_seconds": 60
+    }
+  },
+  "edges_input": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/transfer_edges_RDSP2101_prob_full.csv",
+  "edges_output": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/transfer_edges_RDSP2101_prob_full_mapped_enriched_geo_cnes_allmun.csv",
+  "edge_node_coverage": {
+    "edge_rows": 141,
+    "source_node_missing": 0,
+    "target_node_missing": 0,
+    "source_coverage_ratio": 1.0,
+    "target_coverage_ratio": 1.0
+  }
+}

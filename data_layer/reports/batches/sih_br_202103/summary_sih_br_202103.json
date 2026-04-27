@@ -1,0 +1,36 @@
+{
+  "batch_tag": "sih_br_202103",
+  "records_rows": 955326,
+  "nodes_total": 11698,
+  "facility_nodes": 6127,
+  "municipality_nodes": 5571,
+  "edges_total": 0,
+  "edge_coverage": {
+    "edge_rows": 0,
+    "source_node_missing": 0,
+    "target_node_missing": 0,
+    "source_coverage_ratio": 0.0,
+    "target_coverage_ratio": 0.0
+  },
+  "probabilistic_key": {
+    "birthdate_field": "NASC",
+    "residence_field": "CODMUNRES",
+    "valid_keys": 955326
+  },
+  "outputs": {
+    "nodes_csv": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/batches/sih_br_202103/nodes_sih_br_202103.csv",
+    "edges_csv": null,
+    "events_csv": null,
+    "rejections_json": null,
+    "contract_report": null,
+    "residence_edges_csv": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/batches/sih_br_202103/residence_edges_sih_br_202103.csv"
+  },
+  "mapping_fields": {
+    "facility_id_field": "CNES",
+    "facility_municipality_field": "CODMUNRES",
+    "municipality_fields": [
+      "CODMUNRES"
+    ],
+    "residence_field": "CODMUNRES"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "metrics": {
+    "nodes_total": 11723,
+    "edges_total": 735,
+    "empty_node_id_rows": 0,
+    "duplicate_node_id_rows": 0,
+    "invalid_node_type_rows": 0,
+    "node_name_coverage": 1.0,
+    "invalid_transfer_count_rows": 0,
+    "source_node_missing_rows": 0,
+    "target_node_missing_rows": 0,
+    "missing_node_reference_ratio": 0.0
+  }
+}

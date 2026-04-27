@@ -1,0 +1,3234 @@
+{
+  "dataset_path": "dissemin/publicos/SIHSUS/200801_/Dados",
+  "dataset": "SIH",
+  "years": [
+    2021
+  ],
+  "months": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "ufs": [
+    "AC",
+    "AL",
+    "AM",
+    "AP",
+    "BA",
+    "CE",
+    "DF",
+    "ES",
+    "GO",
+    "MA",
+    "MG",
+    "MS",
+    "MT",
+    "PA",
+    "PB",
+    "PE",
+    "PI",
+    "PR",
+    "RJ",
+    "RN",
+    "RO",
+    "RR",
+    "RS",
+    "SC",
+    "SE",
+    "SP",
+    "TO"
+  ],
+  "total_files": 324,
+  "total_size_bytes": 864913242,
+  "years_detail": [
+    {
+      "year": 2021,
+      "months": [
+        {
+          "month": 1,
+          "num_files": 27,
+          "ufs": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "files": [
+            "RDAC2101.dbc",
+            "RDAL2101.dbc",
+            "RDAM2101.dbc",
+            "RDAP2101.dbc",
+            "RDBA2101.dbc",
+            "RDCE2101.dbc",
+            "RDDF2101.dbc",
+            "RDES2101.dbc",
+            "RDGO2101.dbc",
+            "RDMA2101.dbc",
+            "RDMG2101.dbc",
+            "RDMS2101.dbc",
+            "RDMT2101.dbc",
+            "RDPA2101.dbc",
+            "RDPB2101.dbc",
+            "RDPE2101.dbc",
+            "RDPI2101.dbc",
+            "RDPR2101.dbc",
+            "RDRJ2101.dbc",
+            "RDRN2101.dbc",
+            "RDRO2101.dbc",
+            "RDRR2101.dbc",
+            "RDRS2101.dbc",
+            "RDSC2101.dbc",
+            "RDSE2101.dbc",
+            "RDSP2101.dbc",
+            "RDTO2101.dbc"
+          ],
+          "size_bytes": 68293208
+        },
+        {
+          "month": 2,
+          "num_files": 27,
+          "ufs": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "files": [
+            "RDAC2102.dbc",
+            "RDAL2102.dbc",
+            "RDAM2102.dbc",
+            "RDAP2102.dbc",
+            "RDBA2102.dbc",
+            "RDCE2102.dbc",
+            "RDDF2102.dbc",
+            "RDES2102.dbc",
+            "RDGO2102.dbc",
+            "RDMA2102.dbc",
+            "RDMG2102.dbc",
+            "RDMS2102.dbc",
+            "RDMT2102.dbc",
+            "RDPA2102.dbc",
+            "RDPB2102.dbc",
+            "RDPE2102.dbc",
+            "RDPI2102.dbc",
+            "RDPR2102.dbc",
+            "RDRJ2102.dbc",
+            "RDRN2102.dbc",
+            "RDRO2102.dbc",
+            "RDRR2102.dbc",
+            "RDRS2102.dbc",
+            "RDSC2102.dbc",
+            "RDSE2102.dbc",
+            "RDSP2102.dbc",
+            "RDTO2102.dbc"
+          ],
+          "size_bytes": 67595587
+        },
+        {
+          "month": 3,
+          "num_files": 27,
+          "ufs": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "files": [
+            "RDAC2103.dbc",
+            "RDAL2103.dbc",
+            "RDAM2103.dbc",
+            "RDAP2103.dbc",
+            "RDBA2103.dbc",
+            "RDCE2103.dbc",
+            "RDDF2103.dbc",
+            "RDES2103.dbc",
+            "RDGO2103.dbc",
+            "RDMA2103.dbc",
+            "RDMG2103.dbc",
+            "RDMS2103.dbc",
+            "RDMT2103.dbc",
+            "RDPA2103.dbc",
+            "RDPB2103.dbc",
+            "RDPE2103.dbc",
+            "RDPI2103.dbc",
+            "RDPR2103.dbc",
+            "RDRJ2103.dbc",
+            "RDRN2103.dbc",
+            "RDRO2103.dbc",
+            "RDRR2103.dbc",
+            "RDRS2103.dbc",
+            "RDSC2103.dbc",
+            "RDSE2103.dbc",
+            "RDSP2103.dbc",
+            "RDTO2103.dbc"
+          ],
+          "size_bytes": 70365681
+        },
+        {
+          "month": 4,
+          "num_files": 27,
+          "ufs": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "files": [
+            "RDAC2104.dbc",
+            "RDAL2104.dbc",
+            "RDAM2104.dbc",
+            "RDAP2104.dbc",
+            "RDBA2104.dbc",
+            "RDCE2104.dbc",
+            "RDDF2104.dbc",
+            "RDES2104.dbc",
+            "RDGO2104.dbc",
+            "RDMA2104.dbc",
+            "RDMG2104.dbc",
+            "RDMS2104.dbc",
+            "RDMT2104.dbc",
+            "RDPA2104.dbc",
+            "RDPB2104.dbc",
+            "RDPE2104.dbc",
+            "RDPI2104.dbc",
+            "RDPR2104.dbc",
+            "RDRJ2104.dbc",
+            "RDRN2104.dbc",
+            "RDRO2104.dbc",
+            "RDRR2104.dbc",
+            "RDRS2104.dbc",
+            "RDSC2104.dbc",
+            "RDSE2104.dbc",
+            "RDSP2104.dbc",
+            "RDTO2104.dbc"
+          ],
+          "size_bytes": 69462262
+        },
+        {
+          "month": 5,
+          "num_files": 27,
+          "ufs": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "files": [
+            "RDAC2105.dbc",
+            "RDAL2105.dbc",
+            "RDAM2105.dbc",
+            "RDAP2105.dbc",
+            "RDBA2105.dbc",
+            "RDCE2105.dbc",
+            "RDDF2105.dbc",
+            "RDES2105.dbc",
+            "RDGO2105.dbc",
+            "RDMA2105.dbc",
+            "RDMG2105.dbc",
+            "RDMS2105.dbc",
+            "RDMT2105.dbc",
+            "RDPA2105.dbc",
+            "RDPB2105.dbc",
+            "RDPE2105.dbc",
+            "RDPI2105.dbc",
+            "RDPR2105.dbc",
+            "RDRJ2105.dbc",
+            "RDRN2105.dbc",
+            "RDRO2105.dbc",
+            "RDRR2105.dbc",
+            "RDRS2105.dbc",
+            "RDSC2105.dbc",
+            "RDSE2105.dbc",
+            "RDSP2105.dbc",
+            "RDTO2105.dbc"
+          ],
+          "size_bytes": 72456775
+        },
+        {
+          "month": 6,
+          "num_files": 27,
+          "ufs": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "files": [
+            "RDAC2106.dbc",
+            "RDAL2106.dbc",
+            "RDAM2106.dbc",
+            "RDAP2106.dbc",
+            "RDBA2106.dbc",
+            "RDCE2106.dbc",
+            "RDDF2106.dbc",
+            "RDES2106.dbc",
+            "RDGO2106.dbc",
+            "RDMA2106.dbc",
+            "RDMG2106.dbc",
+            "RDMS2106.dbc",
+            "RDMT2106.dbc",
+            "RDPA2106.dbc",
+            "RDPB2106.dbc",
+            "RDPE2106.dbc",
+            "RDPI2106.dbc",
+            "RDPR2106.dbc",
+            "RDRJ2106.dbc",
+            "RDRN2106.dbc",
+            "RDRO2106.dbc",
+            "RDRR2106.dbc",
+            "RDRS2106.dbc",
+            "RDSC2106.dbc",
+            "RDSE2106.dbc",
+            "RDSP2106.dbc",
+            "RDTO2106.dbc"
+          ],
+          "size_bytes": 73551249
+        },
+        {
+          "month": 7,
+          "num_files": 27,
+          "ufs": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "files": [
+            "RDAC2107.dbc",
+            "RDAL2107.dbc",
+            "RDAM2107.dbc",
+            "RDAP2107.dbc",
+            "RDBA2107.dbc",
+            "RDCE2107.dbc",
+            "RDDF2107.dbc",
+            "RDES2107.dbc",
+            "RDGO2107.dbc",
+            "RDMA2107.dbc",
+            "RDMG2107.dbc",
+            "RDMS2107.dbc",
+            "RDMT2107.dbc",
+            "RDPA2107.dbc",
+            "RDPB2107.dbc",
+            "RDPE2107.dbc",
+            "RDPI2107.dbc",
+            "RDPR2107.dbc",
+            "RDRJ2107.dbc",
+            "RDRN2107.dbc",
+            "RDRO2107.dbc",
+            "RDRR2107.dbc",
+            "RDRS2107.dbc",
+            "RDSC2107.dbc",
+            "RDSE2107.dbc",
+            "RDSP2107.dbc",
+            "RDTO2107.dbc"
+          ],
+          "size_bytes": 74215065
+        },
+        {
+          "month": 8,
+          "num_files": 27,
+          "ufs": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "files": [
+            "RDAC2108.dbc",
+            "RDAL2108.dbc",
+            "RDAM2108.dbc",
+            "RDAP2108.dbc",
+            "RDBA2108.dbc",
+            "RDCE2108.dbc",
+            "RDDF2108.dbc",
+            "RDES2108.dbc",
+            "RDGO2108.dbc",
+            "RDMA2108.dbc",
+            "RDMG2108.dbc",
+            "RDMS2108.dbc",
+            "RDMT2108.dbc",
+            "RDPA2108.dbc",
+            "RDPB2108.dbc",
+            "RDPE2108.dbc",
+            "RDPI2108.dbc",
+            "RDPR2108.dbc",
+            "RDRJ2108.dbc",
+            "RDRN2108.dbc",
+            "RDRO2108.dbc",
+            "RDRR2108.dbc",
+            "RDRS2108.dbc",
+            "RDSC2108.dbc",
+            "RDSE2108.dbc",
+            "RDSP2108.dbc",
+            "RDTO2108.dbc"
+          ],
+          "size_bytes": 74669137
+        },
+        {
+          "month": 9,
+          "num_files": 27,
+          "ufs": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "files": [
+            "RDAC2109.dbc",
+            "RDAL2109.dbc",
+            "RDAM2109.dbc",
+            "RDAP2109.dbc",
+            "RDBA2109.dbc",
+            "RDCE2109.dbc",
+            "RDDF2109.dbc",
+            "RDES2109.dbc",
+            "RDGO2109.dbc",
+            "RDMA2109.dbc",
+            "RDMG2109.dbc",
+            "RDMS2109.dbc",
+            "RDMT2109.dbc",
+            "RDPA2109.dbc",
+            "RDPB2109.dbc",
+            "RDPE2109.dbc",
+            "RDPI2109.dbc",
+            "RDPR2109.dbc",
+            "RDRJ2109.dbc",
+            "RDRN2109.dbc",
+            "RDRO2109.dbc",
+            "RDRR2109.dbc",
+            "RDRS2109.dbc",
+            "RDSC2109.dbc",
+            "RDSE2109.dbc",
+            "RDSP2109.dbc",
+            "RDTO2109.dbc"
+          ],
+          "size_bytes": 73755828
+        },
+        {
+          "month": 10,
+          "num_files": 27,
+          "ufs": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "files": [
+            "RDAC2110.dbc",
+            "RDAL2110.dbc",
+            "RDAM2110.dbc",
+            "RDAP2110.dbc",
+            "RDBA2110.dbc",
+            "RDCE2110.dbc",
+            "RDDF2110.dbc",
+            "RDES2110.dbc",
+            "RDGO2110.dbc",
+            "RDMA2110.dbc",
+            "RDMG2110.dbc",
+            "RDMS2110.dbc",
+            "RDMT2110.dbc",
+            "RDPA2110.dbc",
+            "RDPB2110.dbc",
+            "RDPE2110.dbc",
+            "RDPI2110.dbc",
+            "RDPR2110.dbc",
+            "RDRJ2110.dbc",
+            "RDRN2110.dbc",
+            "RDRO2110.dbc",
+            "RDRR2110.dbc",
+            "RDRS2110.dbc",
+            "RDSC2110.dbc",
+            "RDSE2110.dbc",
+            "RDSP2110.dbc",
+            "RDTO2110.dbc"
+          ],
+          "size_bytes": 73248525
+        },
+        {
+          "month": 11,
+          "num_files": 27,
+          "ufs": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "files": [
+            "RDAC2111.dbc",
+            "RDAL2111.dbc",
+            "RDAM2111.dbc",
+            "RDAP2111.dbc",
+            "RDBA2111.dbc",
+            "RDCE2111.dbc",
+            "RDDF2111.dbc",
+            "RDES2111.dbc",
+            "RDGO2111.dbc",
+            "RDMA2111.dbc",
+            "RDMG2111.dbc",
+            "RDMS2111.dbc",
+            "RDMT2111.dbc",
+            "RDPA2111.dbc",
+            "RDPB2111.dbc",
+            "RDPE2111.dbc",
+            "RDPI2111.dbc",
+            "RDPR2111.dbc",
+            "RDRJ2111.dbc",
+            "RDRN2111.dbc",
+            "RDRO2111.dbc",
+            "RDRR2111.dbc",
+            "RDRS2111.dbc",
+            "RDSC2111.dbc",
+            "RDSE2111.dbc",
+            "RDSP2111.dbc",
+            "RDTO2111.dbc"
+          ],
+          "size_bytes": 73244146
+        },
+        {
+          "month": 12,
+          "num_files": 27,
+          "ufs": [
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"
+          ],
+          "files": [
+            "RDAC2112.dbc",
+            "RDAL2112.dbc",
+            "RDAM2112.dbc",
+            "RDAP2112.dbc",
+            "RDBA2112.dbc",
+            "RDCE2112.dbc",
+            "RDDF2112.dbc",
+            "RDES2112.dbc",
+            "RDGO2112.dbc",
+            "RDMA2112.dbc",
+            "RDMG2112.dbc",
+            "RDMS2112.dbc",
+            "RDMT2112.dbc",
+            "RDPA2112.dbc",
+            "RDPB2112.dbc",
+            "RDPE2112.dbc",
+            "RDPI2112.dbc",
+            "RDPR2112.dbc",
+            "RDRJ2112.dbc",
+            "RDRN2112.dbc",
+            "RDRO2112.dbc",
+            "RDRR2112.dbc",
+            "RDRS2112.dbc",
+            "RDSC2112.dbc",
+            "RDSE2112.dbc",
+            "RDSP2112.dbc",
+            "RDTO2112.dbc"
+          ],
+          "size_bytes": 74055779
+        }
+      ],
+      "total_files": 324,
+      "total_size_bytes": 864913242
+    }
+  ],
+  "ufs_detail": [
+    {
+      "uf": "AC",
+      "total_files": 12,
+      "total_size_bytes": 3484240
+    },
+    {
+      "uf": "AL",
+      "total_files": 12,
+      "total_size_bytes": 11730922
+    },
+    {
+      "uf": "AM",
+      "total_files": 12,
+      "total_size_bytes": 14146913
+    },
+    {
+      "uf": "AP",
+      "total_files": 12,
+      "total_size_bytes": 2648858
+    },
+    {
+      "uf": "BA",
+      "total_files": 12,
+      "total_size_bytes": 54741301
+    },
+    {
+      "uf": "CE",
+      "total_files": 12,
+      "total_size_bytes": 36450977
+    },
+    {
+      "uf": "DF",
+      "total_files": 12,
+      "total_size_bytes": 17734694
+    },
+    {
+      "uf": "ES",
+      "total_files": 12,
+      "total_size_bytes": 20262814
+    },
+    {
+      "uf": "GO",
+      "total_files": 12,
+      "total_size_bytes": 24902424
+    },
+    {
+      "uf": "MA",
+      "total_files": 12,
+      "total_size_bytes": 29184494
+    },
+    {
+      "uf": "MG",
+      "total_files": 12,
+      "total_size_bytes": 94525275
+    },
+    {
+      "uf": "MS",
+      "total_files": 12,
+      "total_size_bytes": 12503500
+    },
+    {
+      "uf": "MT",
+      "total_files": 12,
+      "total_size_bytes": 13733463
+    },
+    {
+      "uf": "PA",
+      "total_files": 12,
+      "total_size_bytes": 31603613
+    },
+    {
+      "uf": "PB",
+      "total_files": 12,
+      "total_size_bytes": 13349414
+    },
+    {
+      "uf": "PE",
+      "total_files": 12,
+      "total_size_bytes": 40889151
+    },
+    {
+      "uf": "PI",
+      "total_files": 12,
+      "total_size_bytes": 14887997
+    },
+    {
+      "uf": "PR",
+      "total_files": 12,
+      "total_size_bytes": 59561389
+    },
+    {
+      "uf": "RJ",
+      "total_files": 12,
+      "total_size_bytes": 56864229
+    },
+    {
+      "uf": "RN",
+      "total_files": 12,
+      "total_size_bytes": 13015821
+    },
+    {
+      "uf": "RO",
+      "total_files": 12,
+      "total_size_bytes": 7974737
+    },
+    {
+      "uf": "RR",
+      "total_files": 12,
+      "total_size_bytes": 3181963
+    },
+    {
+      "uf": "RS",
+      "total_files": 12,
+      "total_size_bytes": 54550959
+    },
+    {
+      "uf": "SC",
+      "total_files": 12,
+      "total_size_bytes": 36048553
+    },
+    {
+      "uf": "SE",
+      "total_files": 12,
+      "total_size_bytes": 6753898
+    },
+    {
+      "uf": "SP",
+      "total_files": 12,
+      "total_size_bytes": 184107774
+    },
+    {
+      "uf": "TO",
+      "total_files": 12,
+      "total_size_bytes": 6073869
+    }
+  ],
+  "selected_entries": [
+    {
+      "file_name": "RDAC2101.dbc",
+      "uf": "AC",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 273055
+    },
+    {
+      "file_name": "RDAL2101.dbc",
+      "uf": "AL",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 901124
+    },
+    {
+      "file_name": "RDAM2101.dbc",
+      "uf": "AM",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 977230
+    },
+    {
+      "file_name": "RDAP2101.dbc",
+      "uf": "AP",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 195952
+    },
+    {
+      "file_name": "RDBA2101.dbc",
+      "uf": "BA",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 4075097
+    },
+    {
+      "file_name": "RDCE2101.dbc",
+      "uf": "CE",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 2704227
+    },
+    {
+      "file_name": "RDDF2101.dbc",
+      "uf": "DF",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 1478707
+    },
+    {
+      "file_name": "RDES2101.dbc",
+      "uf": "ES",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 1607750
+    },
+    {
+      "file_name": "RDGO2101.dbc",
+      "uf": "GO",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 1982942
+    },
+    {
+      "file_name": "RDMA2101.dbc",
+      "uf": "MA",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 2263061
+    },
+    {
+      "file_name": "RDMG2101.dbc",
+      "uf": "MG",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 7446124
+    },
+    {
+      "file_name": "RDMS2101.dbc",
+      "uf": "MS",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 985863
+    },
+    {
+      "file_name": "RDMT2101.dbc",
+      "uf": "MT",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 1081927
+    },
+    {
+      "file_name": "RDPA2101.dbc",
+      "uf": "PA",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 2501578
+    },
+    {
+      "file_name": "RDPB2101.dbc",
+      "uf": "PB",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 958396
+    },
+    {
+      "file_name": "RDPE2101.dbc",
+      "uf": "PE",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 3082044
+    },
+    {
+      "file_name": "RDPI2101.dbc",
+      "uf": "PI",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 1273165
+    },
+    {
+      "file_name": "RDPR2101.dbc",
+      "uf": "PR",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 4597643
+    },
+    {
+      "file_name": "RDRJ2101.dbc",
+      "uf": "RJ",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 4401413
+    },
+    {
+      "file_name": "RDRN2101.dbc",
+      "uf": "RN",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 1089806
+    },
+    {
+      "file_name": "RDRO2101.dbc",
+      "uf": "RO",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 627438
+    },
+    {
+      "file_name": "RDRR2101.dbc",
+      "uf": "RR",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 234734
+    },
+    {
+      "file_name": "RDRS2101.dbc",
+      "uf": "RS",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 4404168
+    },
+    {
+      "file_name": "RDSC2101.dbc",
+      "uf": "SC",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 2850159
+    },
+    {
+      "file_name": "RDSE2101.dbc",
+      "uf": "SE",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 541542
+    },
+    {
+      "file_name": "RDSP2101.dbc",
+      "uf": "SP",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 15281896
+    },
+    {
+      "file_name": "RDTO2101.dbc",
+      "uf": "TO",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 476167
+    },
+    {
+      "file_name": "RDAC2102.dbc",
+      "uf": "AC",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 249519
+    },
+    {
+      "file_name": "RDAL2102.dbc",
+      "uf": "AL",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 991756
+    },
+    {
+      "file_name": "RDAM2102.dbc",
+      "uf": "AM",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 1161924
+    },
+    {
+      "file_name": "RDAP2102.dbc",
+      "uf": "AP",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 221208
+    },
+    {
+      "file_name": "RDBA2102.dbc",
+      "uf": "BA",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 4077426
+    },
+    {
+      "file_name": "RDCE2102.dbc",
+      "uf": "CE",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 2807011
+    },
+    {
+      "file_name": "RDDF2102.dbc",
+      "uf": "DF",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 1395738
+    },
+    {
+      "file_name": "RDES2102.dbc",
+      "uf": "ES",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 1602428
+    },
+    {
+      "file_name": "RDGO2102.dbc",
+      "uf": "GO",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 1903227
+    },
+    {
+      "file_name": "RDMA2102.dbc",
+      "uf": "MA",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 2232392
+    },
+    {
+      "file_name": "RDMG2102.dbc",
+      "uf": "MG",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 7432114
+    },
+    {
+      "file_name": "RDMS2102.dbc",
+      "uf": "MS",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 1060939
+    },
+    {
+      "file_name": "RDMT2102.dbc",
+      "uf": "MT",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 1056958
+    },
+    {
+      "file_name": "RDPA2102.dbc",
+      "uf": "PA",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 2468742
+    },
+    {
+      "file_name": "RDPB2102.dbc",
+      "uf": "PB",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 1062751
+    },
+    {
+      "file_name": "RDPE2102.dbc",
+      "uf": "PE",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 2952923
+    },
+    {
+      "file_name": "RDPI2102.dbc",
+      "uf": "PI",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 1189963
+    },
+    {
+      "file_name": "RDPR2102.dbc",
+      "uf": "PR",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 4910815
+    },
+    {
+      "file_name": "RDRJ2102.dbc",
+      "uf": "RJ",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 4158243
+    },
+    {
+      "file_name": "RDRN2102.dbc",
+      "uf": "RN",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 979521
+    },
+    {
+      "file_name": "RDRO2102.dbc",
+      "uf": "RO",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 581075
+    },
+    {
+      "file_name": "RDRR2102.dbc",
+      "uf": "RR",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 240893
+    },
+    {
+      "file_name": "RDRS2102.dbc",
+      "uf": "RS",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 4225400
+    },
+    {
+      "file_name": "RDSC2102.dbc",
+      "uf": "SC",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 2830228
+    },
+    {
+      "file_name": "RDSE2102.dbc",
+      "uf": "SE",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 583809
+    },
+    {
+      "file_name": "RDSP2102.dbc",
+      "uf": "SP",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 14730967
+    },
+    {
+      "file_name": "RDTO2102.dbc",
+      "uf": "TO",
+      "year": 2021,
+      "month": 2,
+      "size_bytes": 487617
+    },
+    {
+      "file_name": "RDAC2103.dbc",
+      "uf": "AC",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 288234
+    },
+    {
+      "file_name": "RDAL2103.dbc",
+      "uf": "AL",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 947869
+    },
+    {
+      "file_name": "RDAM2103.dbc",
+      "uf": "AM",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 1172983
+    },
+    {
+      "file_name": "RDAP2103.dbc",
+      "uf": "AP",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 222323
+    },
+    {
+      "file_name": "RDBA2103.dbc",
+      "uf": "BA",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 4494315
+    },
+    {
+      "file_name": "RDCE2103.dbc",
+      "uf": "CE",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 2924448
+    },
+    {
+      "file_name": "RDDF2103.dbc",
+      "uf": "DF",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 1566539
+    },
+    {
+      "file_name": "RDES2103.dbc",
+      "uf": "ES",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 1708709
+    },
+    {
+      "file_name": "RDGO2103.dbc",
+      "uf": "GO",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 2104314
+    },
+    {
+      "file_name": "RDMA2103.dbc",
+      "uf": "MA",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 2470780
+    },
+    {
+      "file_name": "RDMG2103.dbc",
+      "uf": "MG",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 7680562
+    },
+    {
+      "file_name": "RDMS2103.dbc",
+      "uf": "MS",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 1028556
+    },
+    {
+      "file_name": "RDMT2103.dbc",
+      "uf": "MT",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 1087288
+    },
+    {
+      "file_name": "RDPA2103.dbc",
+      "uf": "PA",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 2526477
+    },
+    {
+      "file_name": "RDPB2103.dbc",
+      "uf": "PB",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 1034999
+    },
+    {
+      "file_name": "RDPE2103.dbc",
+      "uf": "PE",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 3111010
+    },
+    {
+      "file_name": "RDPI2103.dbc",
+      "uf": "PI",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 1140718
+    },
+    {
+      "file_name": "RDPR2103.dbc",
+      "uf": "PR",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 4696459
+    },
+    {
+      "file_name": "RDRJ2103.dbc",
+      "uf": "RJ",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 4838914
+    },
+    {
+      "file_name": "RDRN2103.dbc",
+      "uf": "RN",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 996364
+    },
+    {
+      "file_name": "RDRO2103.dbc",
+      "uf": "RO",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 648885
+    },
+    {
+      "file_name": "RDRR2103.dbc",
+      "uf": "RR",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 274489
+    },
+    {
+      "file_name": "RDRS2103.dbc",
+      "uf": "RS",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 4241004
+    },
+    {
+      "file_name": "RDSC2103.dbc",
+      "uf": "SC",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 2847135
+    },
+    {
+      "file_name": "RDSE2103.dbc",
+      "uf": "SE",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 540745
+    },
+    {
+      "file_name": "RDSP2103.dbc",
+      "uf": "SP",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 15251695
+    },
+    {
+      "file_name": "RDTO2103.dbc",
+      "uf": "TO",
+      "year": 2021,
+      "month": 3,
+      "size_bytes": 519867
+    },
+    {
+      "file_name": "RDAC2104.dbc",
+      "uf": "AC",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 310631
+    },
+    {
+      "file_name": "RDAL2104.dbc",
+      "uf": "AL",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 1003200
+    },
+    {
+      "file_name": "RDAM2104.dbc",
+      "uf": "AM",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 1157264
+    },
+    {
+      "file_name": "RDAP2104.dbc",
+      "uf": "AP",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 217732
+    },
+    {
+      "file_name": "RDBA2104.dbc",
+      "uf": "BA",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 4520499
+    },
+    {
+      "file_name": "RDCE2104.dbc",
+      "uf": "CE",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 2983808
+    },
+    {
+      "file_name": "RDDF2104.dbc",
+      "uf": "DF",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 1585396
+    },
+    {
+      "file_name": "RDES2104.dbc",
+      "uf": "ES",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 1703009
+    },
+    {
+      "file_name": "RDGO2104.dbc",
+      "uf": "GO",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 1975727
+    },
+    {
+      "file_name": "RDMA2104.dbc",
+      "uf": "MA",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 2313558
+    },
+    {
+      "file_name": "RDMG2104.dbc",
+      "uf": "MG",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 7507204
+    },
+    {
+      "file_name": "RDMS2104.dbc",
+      "uf": "MS",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 1002923
+    },
+    {
+      "file_name": "RDMT2104.dbc",
+      "uf": "MT",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 1075946
+    },
+    {
+      "file_name": "RDPA2104.dbc",
+      "uf": "PA",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 2486252
+    },
+    {
+      "file_name": "RDPB2104.dbc",
+      "uf": "PB",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 1104286
+    },
+    {
+      "file_name": "RDPE2104.dbc",
+      "uf": "PE",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 3285540
+    },
+    {
+      "file_name": "RDPI2104.dbc",
+      "uf": "PI",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 1115984
+    },
+    {
+      "file_name": "RDPR2104.dbc",
+      "uf": "PR",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 4861697
+    },
+    {
+      "file_name": "RDRJ2104.dbc",
+      "uf": "RJ",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 4557360
+    },
+    {
+      "file_name": "RDRN2104.dbc",
+      "uf": "RN",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 1113133
+    },
+    {
+      "file_name": "RDRO2104.dbc",
+      "uf": "RO",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 675481
+    },
+    {
+      "file_name": "RDRR2104.dbc",
+      "uf": "RR",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 251811
+    },
+    {
+      "file_name": "RDRS2104.dbc",
+      "uf": "RS",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 4217461
+    },
+    {
+      "file_name": "RDSC2104.dbc",
+      "uf": "SC",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 2774247
+    },
+    {
+      "file_name": "RDSE2104.dbc",
+      "uf": "SE",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 520096
+    },
+    {
+      "file_name": "RDSP2104.dbc",
+      "uf": "SP",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 14650762
+    },
+    {
+      "file_name": "RDTO2104.dbc",
+      "uf": "TO",
+      "year": 2021,
+      "month": 4,
+      "size_bytes": 491255
+    },
+    {
+      "file_name": "RDAC2105.dbc",
+      "uf": "AC",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 332595
+    },
+    {
+      "file_name": "RDAL2105.dbc",
+      "uf": "AL",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 1011275
+    },
+    {
+      "file_name": "RDAM2105.dbc",
+      "uf": "AM",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 1192610
+    },
+    {
+      "file_name": "RDAP2105.dbc",
+      "uf": "AP",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 224660
+    },
+    {
+      "file_name": "RDBA2105.dbc",
+      "uf": "BA",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 4567868
+    },
+    {
+      "file_name": "RDCE2105.dbc",
+      "uf": "CE",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 3078225
+    },
+    {
+      "file_name": "RDDF2105.dbc",
+      "uf": "DF",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 1502334
+    },
+    {
+      "file_name": "RDES2105.dbc",
+      "uf": "ES",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 1733798
+    },
+    {
+      "file_name": "RDGO2105.dbc",
+      "uf": "GO",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 2099140
+    },
+    {
+      "file_name": "RDMA2105.dbc",
+      "uf": "MA",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 2511252
+    },
+    {
+      "file_name": "RDMG2105.dbc",
+      "uf": "MG",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 7802034
+    },
+    {
+      "file_name": "RDMS2105.dbc",
+      "uf": "MS",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 1031833
+    },
+    {
+      "file_name": "RDMT2105.dbc",
+      "uf": "MT",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 1112549
+    },
+    {
+      "file_name": "RDPA2105.dbc",
+      "uf": "PA",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 2765278
+    },
+    {
+      "file_name": "RDPB2105.dbc",
+      "uf": "PB",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 1205312
+    },
+    {
+      "file_name": "RDPE2105.dbc",
+      "uf": "PE",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 3557274
+    },
+    {
+      "file_name": "RDPI2105.dbc",
+      "uf": "PI",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 1203262
+    },
+    {
+      "file_name": "RDPR2105.dbc",
+      "uf": "PR",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 4813623
+    },
+    {
+      "file_name": "RDRJ2105.dbc",
+      "uf": "RJ",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 4903997
+    },
+    {
+      "file_name": "RDRN2105.dbc",
+      "uf": "RN",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 1150606
+    },
+    {
+      "file_name": "RDRO2105.dbc",
+      "uf": "RO",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 691074
+    },
+    {
+      "file_name": "RDRR2105.dbc",
+      "uf": "RR",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 240880
+    },
+    {
+      "file_name": "RDRS2105.dbc",
+      "uf": "RS",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 4442759
+    },
+    {
+      "file_name": "RDSC2105.dbc",
+      "uf": "SC",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 2844879
+    },
+    {
+      "file_name": "RDSE2105.dbc",
+      "uf": "SE",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 571726
+    },
+    {
+      "file_name": "RDSP2105.dbc",
+      "uf": "SP",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 15374265
+    },
+    {
+      "file_name": "RDTO2105.dbc",
+      "uf": "TO",
+      "year": 2021,
+      "month": 5,
+      "size_bytes": 491667
+    },
+    {
+      "file_name": "RDAC2106.dbc",
+      "uf": "AC",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 219498
+    },
+    {
+      "file_name": "RDAL2106.dbc",
+      "uf": "AL",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 959361
+    },
+    {
+      "file_name": "RDAM2106.dbc",
+      "uf": "AM",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 1259705
+    },
+    {
+      "file_name": "RDAP2106.dbc",
+      "uf": "AP",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 235447
+    },
+    {
+      "file_name": "RDBA2106.dbc",
+      "uf": "BA",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 4714268
+    },
+    {
+      "file_name": "RDCE2106.dbc",
+      "uf": "CE",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 3609963
+    },
+    {
+      "file_name": "RDDF2106.dbc",
+      "uf": "DF",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 1524199
+    },
+    {
+      "file_name": "RDES2106.dbc",
+      "uf": "ES",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 1705606
+    },
+    {
+      "file_name": "RDGO2106.dbc",
+      "uf": "GO",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 2116004
+    },
+    {
+      "file_name": "RDMA2106.dbc",
+      "uf": "MA",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 2481745
+    },
+    {
+      "file_name": "RDMG2106.dbc",
+      "uf": "MG",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 7881269
+    },
+    {
+      "file_name": "RDMS2106.dbc",
+      "uf": "MS",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 1095120
+    },
+    {
+      "file_name": "RDMT2106.dbc",
+      "uf": "MT",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 1104542
+    },
+    {
+      "file_name": "RDPA2106.dbc",
+      "uf": "PA",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 2589048
+    },
+    {
+      "file_name": "RDPB2106.dbc",
+      "uf": "PB",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 1179907
+    },
+    {
+      "file_name": "RDPE2106.dbc",
+      "uf": "PE",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 3604085
+    },
+    {
+      "file_name": "RDPI2106.dbc",
+      "uf": "PI",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 1277426
+    },
+    {
+      "file_name": "RDPR2106.dbc",
+      "uf": "PR",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 4855449
+    },
+    {
+      "file_name": "RDRJ2106.dbc",
+      "uf": "RJ",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 4853171
+    },
+    {
+      "file_name": "RDRN2106.dbc",
+      "uf": "RN",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 1128039
+    },
+    {
+      "file_name": "RDRO2106.dbc",
+      "uf": "RO",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 677200
+    },
+    {
+      "file_name": "RDRR2106.dbc",
+      "uf": "RR",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 251318
+    },
+    {
+      "file_name": "RDRS2106.dbc",
+      "uf": "RS",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 4692839
+    },
+    {
+      "file_name": "RDSC2106.dbc",
+      "uf": "SC",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 3046208
+    },
+    {
+      "file_name": "RDSE2106.dbc",
+      "uf": "SE",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 563499
+    },
+    {
+      "file_name": "RDSP2106.dbc",
+      "uf": "SP",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 15398229
+    },
+    {
+      "file_name": "RDTO2106.dbc",
+      "uf": "TO",
+      "year": 2021,
+      "month": 6,
+      "size_bytes": 528104
+    },
+    {
+      "file_name": "RDAC2107.dbc",
+      "uf": "AC",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 332528
+    },
+    {
+      "file_name": "RDAL2107.dbc",
+      "uf": "AL",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 1031222
+    },
+    {
+      "file_name": "RDAM2107.dbc",
+      "uf": "AM",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 1237963
+    },
+    {
+      "file_name": "RDAP2107.dbc",
+      "uf": "AP",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 229035
+    },
+    {
+      "file_name": "RDBA2107.dbc",
+      "uf": "BA",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 4817711
+    },
+    {
+      "file_name": "RDCE2107.dbc",
+      "uf": "CE",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 3120243
+    },
+    {
+      "file_name": "RDDF2107.dbc",
+      "uf": "DF",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 1509616
+    },
+    {
+      "file_name": "RDES2107.dbc",
+      "uf": "ES",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 1815152
+    },
+    {
+      "file_name": "RDGO2107.dbc",
+      "uf": "GO",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 2180525
+    },
+    {
+      "file_name": "RDMA2107.dbc",
+      "uf": "MA",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 2537539
+    },
+    {
+      "file_name": "RDMG2107.dbc",
+      "uf": "MG",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 8083405
+    },
+    {
+      "file_name": "RDMS2107.dbc",
+      "uf": "MS",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 1076372
+    },
+    {
+      "file_name": "RDMT2107.dbc",
+      "uf": "MT",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 1240240
+    },
+    {
+      "file_name": "RDPA2107.dbc",
+      "uf": "PA",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 2641600
+    },
+    {
+      "file_name": "RDPB2107.dbc",
+      "uf": "PB",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 1123117
+    },
+    {
+      "file_name": "RDPE2107.dbc",
+      "uf": "PE",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 3628329
+    },
+    {
+      "file_name": "RDPI2107.dbc",
+      "uf": "PI",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 1244007
+    },
+    {
+      "file_name": "RDPR2107.dbc",
+      "uf": "PR",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 4981344
+    },
+    {
+      "file_name": "RDRJ2107.dbc",
+      "uf": "RJ",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 4859813
+    },
+    {
+      "file_name": "RDRN2107.dbc",
+      "uf": "RN",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 1118271
+    },
+    {
+      "file_name": "RDRO2107.dbc",
+      "uf": "RO",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 655541
+    },
+    {
+      "file_name": "RDRR2107.dbc",
+      "uf": "RR",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 303290
+    },
+    {
+      "file_name": "RDRS2107.dbc",
+      "uf": "RS",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 4703249
+    },
+    {
+      "file_name": "RDSC2107.dbc",
+      "uf": "SC",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 3016530
+    },
+    {
+      "file_name": "RDSE2107.dbc",
+      "uf": "SE",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 570618
+    },
+    {
+      "file_name": "RDSP2107.dbc",
+      "uf": "SP",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 15651610
+    },
+    {
+      "file_name": "RDTO2107.dbc",
+      "uf": "TO",
+      "year": 2021,
+      "month": 7,
+      "size_bytes": 506195
+    },
+    {
+      "file_name": "RDAC2108.dbc",
+      "uf": "AC",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 310529
+    },
+    {
+      "file_name": "RDAL2108.dbc",
+      "uf": "AL",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 949000
+    },
+    {
+      "file_name": "RDAM2108.dbc",
+      "uf": "AM",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 1292020
+    },
+    {
+      "file_name": "RDAP2108.dbc",
+      "uf": "AP",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 218657
+    },
+    {
+      "file_name": "RDBA2108.dbc",
+      "uf": "BA",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 4709711
+    },
+    {
+      "file_name": "RDCE2108.dbc",
+      "uf": "CE",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 3041657
+    },
+    {
+      "file_name": "RDDF2108.dbc",
+      "uf": "DF",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 1520713
+    },
+    {
+      "file_name": "RDES2108.dbc",
+      "uf": "ES",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 1736175
+    },
+    {
+      "file_name": "RDGO2108.dbc",
+      "uf": "GO",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 2236282
+    },
+    {
+      "file_name": "RDMA2108.dbc",
+      "uf": "MA",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 2525516
+    },
+    {
+      "file_name": "RDMG2108.dbc",
+      "uf": "MG",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 8134142
+    },
+    {
+      "file_name": "RDMS2108.dbc",
+      "uf": "MS",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 1082121
+    },
+    {
+      "file_name": "RDMT2108.dbc",
+      "uf": "MT",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 1213748
+    },
+    {
+      "file_name": "RDPA2108.dbc",
+      "uf": "PA",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 2673871
+    },
+    {
+      "file_name": "RDPB2108.dbc",
+      "uf": "PB",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 1105565
+    },
+    {
+      "file_name": "RDPE2108.dbc",
+      "uf": "PE",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 3564620
+    },
+    {
+      "file_name": "RDPI2108.dbc",
+      "uf": "PI",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 1357972
+    },
+    {
+      "file_name": "RDPR2108.dbc",
+      "uf": "PR",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 5163285
+    },
+    {
+      "file_name": "RDRJ2108.dbc",
+      "uf": "RJ",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 4992077
+    },
+    {
+      "file_name": "RDRN2108.dbc",
+      "uf": "RN",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 1083541
+    },
+    {
+      "file_name": "RDRO2108.dbc",
+      "uf": "RO",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 690974
+    },
+    {
+      "file_name": "RDRR2108.dbc",
+      "uf": "RR",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 295944
+    },
+    {
+      "file_name": "RDRS2108.dbc",
+      "uf": "RS",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 4772143
+    },
+    {
+      "file_name": "RDSC2108.dbc",
+      "uf": "SC",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 3196763
+    },
+    {
+      "file_name": "RDSE2108.dbc",
+      "uf": "SE",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 539139
+    },
+    {
+      "file_name": "RDSP2108.dbc",
+      "uf": "SP",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 15748366
+    },
+    {
+      "file_name": "RDTO2108.dbc",
+      "uf": "TO",
+      "year": 2021,
+      "month": 8,
+      "size_bytes": 514606
+    },
+    {
+      "file_name": "RDAC2109.dbc",
+      "uf": "AC",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 312772
+    },
+    {
+      "file_name": "RDAL2109.dbc",
+      "uf": "AL",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 978034
+    },
+    {
+      "file_name": "RDAM2109.dbc",
+      "uf": "AM",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 1262157
+    },
+    {
+      "file_name": "RDAP2109.dbc",
+      "uf": "AP",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 235868
+    },
+    {
+      "file_name": "RDBA2109.dbc",
+      "uf": "BA",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 4702699
+    },
+    {
+      "file_name": "RDCE2109.dbc",
+      "uf": "CE",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 3192835
+    },
+    {
+      "file_name": "RDDF2109.dbc",
+      "uf": "DF",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 1475005
+    },
+    {
+      "file_name": "RDES2109.dbc",
+      "uf": "ES",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 1717494
+    },
+    {
+      "file_name": "RDGO2109.dbc",
+      "uf": "GO",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 2235282
+    },
+    {
+      "file_name": "RDMA2109.dbc",
+      "uf": "MA",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 2471509
+    },
+    {
+      "file_name": "RDMG2109.dbc",
+      "uf": "MG",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 8038721
+    },
+    {
+      "file_name": "RDMS2109.dbc",
+      "uf": "MS",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 1050936
+    },
+    {
+      "file_name": "RDMT2109.dbc",
+      "uf": "MT",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 1192328
+    },
+    {
+      "file_name": "RDPA2109.dbc",
+      "uf": "PA",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 2730471
+    },
+    {
+      "file_name": "RDPB2109.dbc",
+      "uf": "PB",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 1123086
+    },
+    {
+      "file_name": "RDPE2109.dbc",
+      "uf": "PE",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 3411429
+    },
+    {
+      "file_name": "RDPI2109.dbc",
+      "uf": "PI",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 1249313
+    },
+    {
+      "file_name": "RDPR2109.dbc",
+      "uf": "PR",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 5133441
+    },
+    {
+      "file_name": "RDRJ2109.dbc",
+      "uf": "RJ",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 4987210
+    },
+    {
+      "file_name": "RDRN2109.dbc",
+      "uf": "RN",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 1100724
+    },
+    {
+      "file_name": "RDRO2109.dbc",
+      "uf": "RO",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 681603
+    },
+    {
+      "file_name": "RDRR2109.dbc",
+      "uf": "RR",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 268024
+    },
+    {
+      "file_name": "RDRS2109.dbc",
+      "uf": "RS",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 4665421
+    },
+    {
+      "file_name": "RDSC2109.dbc",
+      "uf": "SC",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 3117544
+    },
+    {
+      "file_name": "RDSE2109.dbc",
+      "uf": "SE",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 515455
+    },
+    {
+      "file_name": "RDSP2109.dbc",
+      "uf": "SP",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 15398983
+    },
+    {
+      "file_name": "RDTO2109.dbc",
+      "uf": "TO",
+      "year": 2021,
+      "month": 9,
+      "size_bytes": 507484
+    },
+    {
+      "file_name": "RDAC2110.dbc",
+      "uf": "AC",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 291938
+    },
+    {
+      "file_name": "RDAL2110.dbc",
+      "uf": "AL",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 1044762
+    },
+    {
+      "file_name": "RDAM2110.dbc",
+      "uf": "AM",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 1112242
+    },
+    {
+      "file_name": "RDAP2110.dbc",
+      "uf": "AP",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 230927
+    },
+    {
+      "file_name": "RDBA2110.dbc",
+      "uf": "BA",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 4660692
+    },
+    {
+      "file_name": "RDCE2110.dbc",
+      "uf": "CE",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 2938505
+    },
+    {
+      "file_name": "RDDF2110.dbc",
+      "uf": "DF",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 1414959
+    },
+    {
+      "file_name": "RDES2110.dbc",
+      "uf": "ES",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 1672367
+    },
+    {
+      "file_name": "RDGO2110.dbc",
+      "uf": "GO",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 2240221
+    },
+    {
+      "file_name": "RDMA2110.dbc",
+      "uf": "MA",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 2481623
+    },
+    {
+      "file_name": "RDMG2110.dbc",
+      "uf": "MG",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 8002503
+    },
+    {
+      "file_name": "RDMS2110.dbc",
+      "uf": "MS",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 1007288
+    },
+    {
+      "file_name": "RDMT2110.dbc",
+      "uf": "MT",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 1202346
+    },
+    {
+      "file_name": "RDPA2110.dbc",
+      "uf": "PA",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 2747601
+    },
+    {
+      "file_name": "RDPB2110.dbc",
+      "uf": "PB",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 1173989
+    },
+    {
+      "file_name": "RDPE2110.dbc",
+      "uf": "PE",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 3456839
+    },
+    {
+      "file_name": "RDPI2110.dbc",
+      "uf": "PI",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 1240796
+    },
+    {
+      "file_name": "RDPR2110.dbc",
+      "uf": "PR",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 5156722
+    },
+    {
+      "file_name": "RDRJ2110.dbc",
+      "uf": "RJ",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 4843294
+    },
+    {
+      "file_name": "RDRN2110.dbc",
+      "uf": "RN",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 1109392
+    },
+    {
+      "file_name": "RDRO2110.dbc",
+      "uf": "RO",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 670340
+    },
+    {
+      "file_name": "RDRR2110.dbc",
+      "uf": "RR",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 269414
+    },
+    {
+      "file_name": "RDRS2110.dbc",
+      "uf": "RS",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 4678707
+    },
+    {
+      "file_name": "RDSC2110.dbc",
+      "uf": "SC",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 3165485
+    },
+    {
+      "file_name": "RDSE2110.dbc",
+      "uf": "SE",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 577057
+    },
+    {
+      "file_name": "RDSP2110.dbc",
+      "uf": "SP",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 15324314
+    },
+    {
+      "file_name": "RDTO2110.dbc",
+      "uf": "TO",
+      "year": 2021,
+      "month": 10,
+      "size_bytes": 534202
+    },
+    {
+      "file_name": "RDAC2111.dbc",
+      "uf": "AC",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 276085
+    },
+    {
+      "file_name": "RDAL2111.dbc",
+      "uf": "AL",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 967483
+    },
+    {
+      "file_name": "RDAM2111.dbc",
+      "uf": "AM",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 1208413
+    },
+    {
+      "file_name": "RDAP2111.dbc",
+      "uf": "AP",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 207094
+    },
+    {
+      "file_name": "RDBA2111.dbc",
+      "uf": "BA",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 4712578
+    },
+    {
+      "file_name": "RDCE2111.dbc",
+      "uf": "CE",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 3080755
+    },
+    {
+      "file_name": "RDDF2111.dbc",
+      "uf": "DF",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 1378393
+    },
+    {
+      "file_name": "RDES2111.dbc",
+      "uf": "ES",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 1710340
+    },
+    {
+      "file_name": "RDGO2111.dbc",
+      "uf": "GO",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 1870886
+    },
+    {
+      "file_name": "RDMA2111.dbc",
+      "uf": "MA",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 2402712
+    },
+    {
+      "file_name": "RDMG2111.dbc",
+      "uf": "MG",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 8131219
+    },
+    {
+      "file_name": "RDMS2111.dbc",
+      "uf": "MS",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 1016229
+    },
+    {
+      "file_name": "RDMT2111.dbc",
+      "uf": "MT",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 1172421
+    },
+    {
+      "file_name": "RDPA2111.dbc",
+      "uf": "PA",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 2713503
+    },
+    {
+      "file_name": "RDPB2111.dbc",
+      "uf": "PB",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 1148626
+    },
+    {
+      "file_name": "RDPE2111.dbc",
+      "uf": "PE",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 3604095
+    },
+    {
+      "file_name": "RDPI2111.dbc",
+      "uf": "PI",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 1284765
+    },
+    {
+      "file_name": "RDPR2111.dbc",
+      "uf": "PR",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 5250523
+    },
+    {
+      "file_name": "RDRJ2111.dbc",
+      "uf": "RJ",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 4717847
+    },
+    {
+      "file_name": "RDRN2111.dbc",
+      "uf": "RN",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 1084996
+    },
+    {
+      "file_name": "RDRO2111.dbc",
+      "uf": "RO",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 687740
+    },
+    {
+      "file_name": "RDRR2111.dbc",
+      "uf": "RR",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 271870
+    },
+    {
+      "file_name": "RDRS2111.dbc",
+      "uf": "RS",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 4726579
+    },
+    {
+      "file_name": "RDSC2111.dbc",
+      "uf": "SC",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 3161641
+    },
+    {
+      "file_name": "RDSE2111.dbc",
+      "uf": "SE",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 624363
+    },
+    {
+      "file_name": "RDSP2111.dbc",
+      "uf": "SP",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 15326784
+    },
+    {
+      "file_name": "RDTO2111.dbc",
+      "uf": "TO",
+      "year": 2021,
+      "month": 11,
+      "size_bytes": 506206
+    },
+    {
+      "file_name": "RDAC2112.dbc",
+      "uf": "AC",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 286856
+    },
+    {
+      "file_name": "RDAL2112.dbc",
+      "uf": "AL",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 945836
+    },
+    {
+      "file_name": "RDAM2112.dbc",
+      "uf": "AM",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 1112402
+    },
+    {
+      "file_name": "RDAP2112.dbc",
+      "uf": "AP",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 209955
+    },
+    {
+      "file_name": "RDBA2112.dbc",
+      "uf": "BA",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 4688437
+    },
+    {
+      "file_name": "RDCE2112.dbc",
+      "uf": "CE",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 2969300
+    },
+    {
+      "file_name": "RDDF2112.dbc",
+      "uf": "DF",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 1383095
+    },
+    {
+      "file_name": "RDES2112.dbc",
+      "uf": "ES",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 1549986
+    },
+    {
+      "file_name": "RDGO2112.dbc",
+      "uf": "GO",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 1957874
+    },
+    {
+      "file_name": "RDMA2112.dbc",
+      "uf": "MA",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 2492807
+    },
+    {
+      "file_name": "RDMG2112.dbc",
+      "uf": "MG",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 8385978
+    },
+    {
+      "file_name": "RDMS2112.dbc",
+      "uf": "MS",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 1065320
+    },
+    {
+      "file_name": "RDMT2112.dbc",
+      "uf": "MT",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 1193170
+    },
+    {
+      "file_name": "RDPA2112.dbc",
+      "uf": "PA",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 2759192
+    },
+    {
+      "file_name": "RDPB2112.dbc",
+      "uf": "PB",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 1129380
+    },
+    {
+      "file_name": "RDPE2112.dbc",
+      "uf": "PE",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 3630963
+    },
+    {
+      "file_name": "RDPI2112.dbc",
+      "uf": "PI",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 1310626
+    },
+    {
+      "file_name": "RDPR2112.dbc",
+      "uf": "PR",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 5140388
+    },
+    {
+      "file_name": "RDRJ2112.dbc",
+      "uf": "RJ",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 4750890
+    },
+    {
+      "file_name": "RDRN2112.dbc",
+      "uf": "RN",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 1061428
+    },
+    {
+      "file_name": "RDRO2112.dbc",
+      "uf": "RO",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 687386
+    },
+    {
+      "file_name": "RDRR2112.dbc",
+      "uf": "RR",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 279296
+    },
+    {
+      "file_name": "RDRS2112.dbc",
+      "uf": "RS",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 4781229
+    },
+    {
+      "file_name": "RDSC2112.dbc",
+      "uf": "SC",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 3197734
+    },
+    {
+      "file_name": "RDSE2112.dbc",
+      "uf": "SE",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 605849
+    },
+    {
+      "file_name": "RDSP2112.dbc",
+      "uf": "SP",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 15969903
+    },
+    {
+      "file_name": "RDTO2112.dbc",
+      "uf": "TO",
+      "year": 2021,
+      "month": 12,
+      "size_bytes": 510499
+    }
+  ],
+  "download": {
+    "enabled": true,
+    "downloaded": 324,
+    "skipped": 0,
+    "failed": 0,
+    "verify_size": true,
+    "max_retries": 4,
+    "retry_wait_seconds": 1.0,
+    "failures": []
+  }
+}

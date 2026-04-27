@@ -1,0 +1,17 @@
+{
+  "source_file": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/preview_PASP2602d.csv",
+  "total_columns": 61,
+  "source_hint": "SIASUS-like (PA_* namespace)",
+  "missing_required_fields": [],
+  "patient_key_field": "PA_CNSMED",
+  "destination_field": "PA_MUNPCN",
+  "datetime_pair": null,
+  "blockers": [
+    "No day-level admission/discharge datetime pair found. 24-48h transfer matching is blocked.",
+    "Transfer codebook has zero validated transfer-related PA_MOTSAI codes"
+  ],
+  "warnings": [
+    "Found month-level fields (PA_CMP, PA_MVM). Month-only granularity is not accepted for transfer matching."
+  ],
+  "passed": false
+}

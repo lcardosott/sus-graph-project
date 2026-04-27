@@ -1,0 +1,10 @@
+{
+  "graph_input": "/home/lulutoratora/Documents/comp/mc859/model_layer/reports/graph_RDSP2101_enriched.gexf",
+  "html_output": "/home/lulutoratora/Documents/comp/mc859/viz_layer/reports/graph_RDSP2101_enriched.html",
+  "original_nodes": 1928,
+  "original_edges": 141,
+  "rendered_nodes": 900,
+  "rendered_edges": 141,
+  "max_nodes": 900,
+  "max_edges": 1200
+}

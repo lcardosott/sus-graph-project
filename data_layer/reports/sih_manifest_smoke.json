@@ -1,0 +1,61 @@
+{
+  "dataset_path": "dissemin/publicos/SIHSUS/200801_/Dados",
+  "dataset": "SIH",
+  "years": [
+    2021
+  ],
+  "months": [
+    1
+  ],
+  "ufs": [
+    "SP"
+  ],
+  "total_files": 1,
+  "total_size_bytes": 15281896,
+  "years_detail": [
+    {
+      "year": 2021,
+      "months": [
+        {
+          "month": 1,
+          "num_files": 1,
+          "ufs": [
+            "SP"
+          ],
+          "files": [
+            "RDSP2101.dbc"
+          ],
+          "size_bytes": 15281896
+        }
+      ],
+      "total_files": 1,
+      "total_size_bytes": 15281896
+    }
+  ],
+  "ufs_detail": [
+    {
+      "uf": "SP",
+      "total_files": 1,
+      "total_size_bytes": 15281896
+    }
+  ],
+  "selected_entries": [
+    {
+      "file_name": "RDSP2101.dbc",
+      "uf": "SP",
+      "year": 2021,
+      "month": 1,
+      "size_bytes": 15281896
+    }
+  ],
+  "download": {
+    "enabled": false,
+    "downloaded": 0,
+    "skipped": 0,
+    "failed": 0,
+    "verify_size": true,
+    "max_retries": 4,
+    "retry_wait_seconds": 1.0,
+    "failures": []
+  }
+}

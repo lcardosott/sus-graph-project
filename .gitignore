@@ -1,0 +1,21 @@
+# Ignore per-phase context files
+**/.context_*.md
+__pycache__/
+*.pyc
+
+# Generated data artifacts
+data_layer/raw/
+data_layer/reports/
+model_layer/reports/
+
+# Keep deployable UI JSON artifacts
+!data_layer/reports/
+!data_layer/reports/batches/
+!data_layer/reports/batches/ui/
+!data_layer/reports/batches/ui/**/*.json
+!data_layer/reports/batches/ui/**/*.jsonl
+
+# Temporary and lock files
+*.part
+*.tmp
+*.swp

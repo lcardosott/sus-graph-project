@@ -1,0 +1,24 @@
+{
+  "source_file": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/preview_PASP2101a.csv",
+  "total_columns": 60,
+  "source_hint": "SIASUS-like (PA_* namespace)",
+  "profile": "siasus",
+  "missing_required_fields": [],
+  "patient_key_field": "PA_CNSMED",
+  "destination_field": "PA_MUNPCN",
+  "origin_field": "PA_CODUNI",
+  "transfer_flag_field": "PA_TRANSF",
+  "transfer_reason_field": "PA_MOTSAI",
+  "sex_field": "PA_SEXO",
+  "age_field": "PA_IDADE",
+  "diagnosis_field": "PA_CIDPRI",
+  "datetime_pair": null,
+  "blockers": [
+    "No day-level admission/discharge datetime pair found. 24-48h transfer matching is blocked."
+  ],
+  "warnings": [
+    "Found month-level fields (PA_CMP, PA_MVM). Month-only granularity is not accepted for transfer matching.",
+    "Validated transfer-related PA_MOTSAI codes: 2"
+  ],
+  "passed": false
+}

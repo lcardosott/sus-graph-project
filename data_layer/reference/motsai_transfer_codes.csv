@@ -1,0 +1,13 @@
+code,description,is_transfer,validated,validated_on,source
+11,Alta curado,false,true,2026-04-08,Manual SIH/SUS
+12,Alta melhorado,false,true,2026-04-08,Manual SIH/SUS
+14,Alta a pedido,false,true,2026-04-08,Manual SIH/SUS
+15,Alta com previsao de retorno,false,true,2026-04-08,Manual SIH/SUS
+16,Alta por evasao,false,true,2026-04-08,Manual SIH/SUS
+18,Alta por outros motivos,false,true,2026-04-08,Manual SIH/SUS
+21,Permanencia por caracteristicas da doenca,false,true,2026-04-08,Manual SIH/SUS
+31,Transferencia para outro estabelecimento,true,true,2026-04-08,Manual SIH/SUS
+32,Transferencia para internacao domiciliar,true,true,2026-04-08,Manual SIH/SUS
+41,Obito,false,true,2026-04-08,Manual SIH/SUS
+42,Obito,false,true,2026-04-08,Manual SIH/SUS
+43,Obito,false,true,2026-04-08,Manual SIH/SUS

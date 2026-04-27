@@ -1,0 +1,1 @@
+﻿event_id;source_facility_id;target_location_id;target_location_type;source_discharge_datetime;target_admission_datetime;delta_hours;match_method;confidence_score;rule_version;assumption_revision

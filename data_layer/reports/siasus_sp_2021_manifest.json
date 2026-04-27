@@ -1,0 +1,189 @@
+{
+  "dataset_path": "dissemin/publicos/SIASUS/200801_/Dados",
+  "state_prefix": "PASP",
+  "year": 2021,
+  "months": [
+    {
+      "month": 1,
+      "num_files": 3,
+      "parts": [
+        "a",
+        "b",
+        "c"
+      ],
+      "files": [
+        "PASP2101a.dbc",
+        "PASP2101b.dbc",
+        "PASP2101c.dbc"
+      ],
+      "size_bytes": 207073792
+    },
+    {
+      "month": 2,
+      "num_files": 3,
+      "parts": [
+        "a",
+        "b",
+        "c"
+      ],
+      "files": [
+        "PASP2102a.dbc",
+        "PASP2102b.dbc",
+        "PASP2102c.dbc"
+      ],
+      "size_bytes": 253823875
+    },
+    {
+      "month": 3,
+      "num_files": 3,
+      "parts": [
+        "a",
+        "b",
+        "c"
+      ],
+      "files": [
+        "PASP2103a.dbc",
+        "PASP2103b.dbc",
+        "PASP2103c.dbc"
+      ],
+      "size_bytes": 205346944
+    },
+    {
+      "month": 4,
+      "num_files": 3,
+      "parts": [
+        "a",
+        "b",
+        "c"
+      ],
+      "files": [
+        "PASP2104a.dbc",
+        "PASP2104b.dbc",
+        "PASP2104c.dbc"
+      ],
+      "size_bytes": 217749775
+    },
+    {
+      "month": 5,
+      "num_files": 3,
+      "parts": [
+        "a",
+        "b",
+        "c"
+      ],
+      "files": [
+        "PASP2105a.dbc",
+        "PASP2105b.dbc",
+        "PASP2105c.dbc"
+      ],
+      "size_bytes": 229651711
+    },
+    {
+      "month": 6,
+      "num_files": 3,
+      "parts": [
+        "a",
+        "b",
+        "c"
+      ],
+      "files": [
+        "PASP2106a.dbc",
+        "PASP2106b.dbc",
+        "PASP2106c.dbc"
+      ],
+      "size_bytes": 228120702
+    },
+    {
+      "month": 7,
+      "num_files": 3,
+      "parts": [
+        "a",
+        "b",
+        "c"
+      ],
+      "files": [
+        "PASP2107a.dbc",
+        "PASP2107b.dbc",
+        "PASP2107c.dbc"
+      ],
+      "size_bytes": 241450977
+    },
+    {
+      "month": 8,
+      "num_files": 3,
+      "parts": [
+        "a",
+        "b",
+        "c"
+      ],
+      "files": [
+        "PASP2108a.dbc",
+        "PASP2108b.dbc",
+        "PASP2108c.dbc"
+      ],
+      "size_bytes": 259832052
+    },
+    {
+      "month": 9,
+      "num_files": 3,
+      "parts": [
+        "a",
+        "b",
+        "c"
+      ],
+      "files": [
+        "PASP2109a.dbc",
+        "PASP2109b.dbc",
+        "PASP2109c.dbc"
+      ],
+      "size_bytes": 244218525
+    },
+    {
+      "month": 10,
+      "num_files": 3,
+      "parts": [
+        "a",
+        "b",
+        "c"
+      ],
+      "files": [
+        "PASP2110a.dbc",
+        "PASP2110b.dbc",
+        "PASP2110c.dbc"
+      ],
+      "size_bytes": 262494006
+    },
+    {
+      "month": 11,
+      "num_files": 3,
+      "parts": [
+        "a",
+        "b",
+        "c"
+      ],
+      "files": [
+        "PASP2111a.dbc",
+        "PASP2111b.dbc",
+        "PASP2111c.dbc"
+      ],
+      "size_bytes": 271260380
+    },
+    {
+      "month": 12,
+      "num_files": 3,
+      "parts": [
+        "a",
+        "b",
+        "c"
+      ],
+      "files": [
+        "PASP2112a.dbc",
+        "PASP2112b.dbc",
+        "PASP2112c.dbc"
+      ],
+      "size_bytes": 268702543
+    }
+  ],
+  "total_files": 36,
+  "total_size_bytes": 2889725282
+}

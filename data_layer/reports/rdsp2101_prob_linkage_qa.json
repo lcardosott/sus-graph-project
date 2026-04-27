@@ -1,0 +1,16 @@
+{
+  "dataset": "RDSP2101",
+  "rows_total": 195978,
+  "rows_valid_probabilistic_key": 195978,
+  "probabilistic_key_completeness_ratio": 1.0,
+  "unique_valid_keys": 139828,
+  "colliding_key_groups": 23478,
+  "rows_in_collision": 56150,
+  "collision_row_ratio_among_valid_keys": 0.286512,
+  "events_generated": 179,
+  "edges_generated": 141,
+  "rejections": {
+    "no_candidate_in_time_window": 9233,
+    "clinical_discontinuity": 140
+  }
+}

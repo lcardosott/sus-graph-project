@@ -1,0 +1,24 @@
+{
+  "source_file": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/preview_RDSP2101.csv",
+  "total_columns": 113,
+  "source_hint": "SIH-like",
+  "profile": "sih",
+  "missing_required_fields": [],
+  "patient_key_field": "N_AIH",
+  "destination_field": "MUNIC_RES",
+  "origin_field": "CNES",
+  "transfer_flag_field": null,
+  "transfer_reason_field": "COBRANCA",
+  "sex_field": "SEXO",
+  "age_field": "IDADE",
+  "diagnosis_field": "DIAG_PRINC",
+  "datetime_pair": [
+    "DT_INTER",
+    "DT_SAIDA"
+  ],
+  "blockers": [],
+  "warnings": [
+    "Validated transfer-related PA_MOTSAI codes: 2"
+  ],
+  "passed": true
+}

@@ -1,0 +1,15 @@
+{
+  "nodes_input": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/nodes_RDSP2101_enriched_geo_cnes_allmun.csv",
+  "edges_input": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/transfer_edges_RDSP2101_prob_full_mapped_enriched_geo_cnes_allmun.csv",
+  "html_output": "/home/lulutoratora/Documents/comp/mc859/viz_layer/reports/geo_map_RDSP2101_enriched_geo_cnes_allmun.html",
+  "map_center": {
+    "latitude": -20.266116592979184,
+    "longitude": -47.769122331015026
+  },
+  "nodes_with_coordinates": 1928,
+  "municipality_markers": 1293,
+  "facility_markers": 635,
+  "edges_considered": 141,
+  "edges_drawn": 141,
+  "edges_missing_coordinates": 0
+}

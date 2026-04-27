@@ -1,13 +1,10 @@
-# 1. Ferramentas de build e dependências de C
-# Fixamos o cffi na versão 1.15.x para evitar o erro de versão 2.0.0 reportado no seu log
-cffi==1.15.1
-
-# 2. Leitor de arquivos .dbc do DATASUS
-pyreaddbc
-
-# 3. Biblioteca principal
-pysus
-
-
-dbfread 
 pandas
+numpy
+pyarrow
+requests
+networkx
+pyvis
+folium
+pysus
+pyreaddbc
+dbfread

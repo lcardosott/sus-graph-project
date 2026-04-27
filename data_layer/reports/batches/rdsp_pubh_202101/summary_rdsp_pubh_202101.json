@@ -1,0 +1,59 @@
+{
+  "batch_tag": "rdsp_pubh_202101",
+  "records_input": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/rdsp2101_nodes_input.csv",
+  "edges_input": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/transfer_edges_RDSP2101_prob_full.csv",
+  "records_rows": 195978,
+  "records_rows_after_filters": 195978,
+  "nodes_total": 11512,
+  "facility_nodes": 5941,
+  "municipality_nodes": 5571,
+  "edges_total_after_filters": 141,
+  "edge_coverage": {
+    "edge_rows": 141,
+    "source_node_missing": 0,
+    "target_node_missing": 0,
+    "source_coverage_ratio": 1.0,
+    "target_coverage_ratio": 1.0
+  },
+  "filters": {
+    "include_ufs": [],
+    "icd_prefixes": [],
+    "min_transfer_count": 1.0
+  },
+  "enrichment": {
+    "municipalities": true,
+    "include_all_ibge_municipalities": true,
+    "all_ibge_municipalities_added": 4278,
+    "national_cnes_append_scope": "public_hospitals",
+    "national_cnes_rows_before_scope": 5875,
+    "national_cnes_rows_after_scope": 5875,
+    "appended_national_cnes_nodes": 5306,
+    "centroids": true,
+    "centroid_scope": "observed_records_only",
+    "cnes_api": true
+  },
+  "contract_validation": {
+    "enabled": true,
+    "report": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/batches/rdsp_pubh_202101/contract_validation_rdsp_pubh_202101.json",
+    "passed": true,
+    "max_missing_node_ratio": 0.0,
+    "min_node_name_coverage": 0.9
+  },
+  "outputs": {
+    "batch_dir": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/batches/rdsp_pubh_202101",
+    "nodes_csv": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/batches/rdsp_pubh_202101/nodes_rdsp_pubh_202101.csv",
+    "edges_csv": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/batches/rdsp_pubh_202101/transfer_edges_rdsp_pubh_202101.csv",
+    "facility_lookup_csv": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/batches/rdsp_pubh_202101/facility_lookup_rdsp_pubh_202101.csv",
+    "municipality_lookup_csv": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/batches/rdsp_pubh_202101/municipality_lookup_rdsp_pubh_202101.csv",
+    "map_html": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/batches/rdsp_pubh_202101/geo_map_rdsp_pubh_202101.html",
+    "map_summary_json": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/batches/rdsp_pubh_202101/geo_map_rdsp_pubh_202101_summary.json"
+  },
+  "mapping_fields": {
+    "facility_id_field": "CNES",
+    "facility_municipality_field": "MUNIC_MOV",
+    "municipality_fields": [
+      "MUNIC_RES",
+      "MUNIC_MOV"
+    ]
+  }
+}

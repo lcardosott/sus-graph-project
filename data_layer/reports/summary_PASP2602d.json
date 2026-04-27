@@ -1,0 +1,7 @@
+{
+  "source_dbc": "/home/lulutoratora/Documents/comp/mc859/data_layer/raw/PASP2602d.dbc",
+  "source_dbf": "/home/lulutoratora/Documents/comp/mc859/data_layer/raw/PASP2602d.dbf",
+  "num_columns": 61,
+  "candidate_date_fields": [],
+  "sample_rows_exported": 10
+}

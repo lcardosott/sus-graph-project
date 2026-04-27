@@ -1,0 +1,27 @@
+{
+  "records_input": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/rdsp2101_nodes_input.csv",
+  "records_rows": 195978,
+  "nodes_output": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/nodes_RDSP2101_prob.csv",
+  "nodes_total": 1928,
+  "facility_nodes": 635,
+  "municipality_nodes": 1293,
+  "facility_lookup_rows": 635,
+  "municipality_lookup_rows": 1293,
+  "mapping_fields": {
+    "facility_id_field": "CNES",
+    "facility_municipality_field": "MUNIC_MOV",
+    "municipality_fields": [
+      "MUNIC_RES",
+      "MUNIC_MOV"
+    ]
+  },
+  "edges_input": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/transfer_edges_RDSP2101_prob_full.csv",
+  "edges_output": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/transfer_edges_RDSP2101_prob_full_mapped.csv",
+  "edge_node_coverage": {
+    "edge_rows": 141,
+    "source_node_missing": 0,
+    "target_node_missing": 0,
+    "source_coverage_ratio": 1.0,
+    "target_coverage_ratio": 1.0
+  }
+}

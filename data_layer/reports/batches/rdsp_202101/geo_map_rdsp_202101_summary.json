@@ -1,0 +1,16 @@
+{
+  "nodes_input": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/batches/rdsp_202101/nodes_rdsp_202101.csv",
+  "edges_input": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/batches/rdsp_202101/transfer_edges_rdsp_202101.csv",
+  "html_output": "/home/lulutoratora/Documents/comp/mc859/data_layer/reports/batches/rdsp_202101/geo_map_rdsp_202101.html",
+  "map_center": {
+    "latitude": -18.917809011056526,
+    "longitude": -46.55470682024901
+  },
+  "nodes_with_coordinates": 340272,
+  "municipality_markers": 5570,
+  "facility_markers": 334702,
+  "edges_considered": 141,
+  "edges_drawn": 141,
+  "edges_missing_coordinates": 0,
+  "cluster_markers": true
+}
