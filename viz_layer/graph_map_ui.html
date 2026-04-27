@@ -198,7 +198,17 @@
     ></script>
     <script>
       const basePath = location.pathname.replace(/\/viz_layer\/graph_map_ui\.html$/, "");
-      const META_URL = `${basePath}/data_layer/reports/batches/ui/sih_br_2021_meta.json`;
+      const params = new URLSearchParams(location.search);
+      const metaParam = params.get("meta");
+      const META_URL = resolvePath(metaParam || "data_layer/reports/batches/ui/sih_br_2021_meta.json");
+            function resolvePath(pathValue) {
+              if (!pathValue) return "";
+              if (pathValue.startsWith("http://") || pathValue.startsWith("https://")) {
+                return pathValue;
+              }
+              const clean = pathValue.replace(/^\/+/, "");
+              return `${basePath}/${clean}`;
+            }
       let nodes = [];
       let edges = [];
       let nodeIndex = new Map();
@@ -412,7 +422,7 @@
           metaStatus.textContent = "meta ok";
           applyDefaults();
 
-          const nodesUrl = `${basePath}/` + meta.nodes_jsonl.replace(/^.*\/data_layer\//, "data_layer/").replace(/^\/+/, "");
+          const nodesUrl = resolvePath(meta.nodes_jsonl.replace(/^.*\/data_layer\//, "data_layer/"));
           const nodesResp = await fetch(nodesUrl);
           if (!nodesResp.ok) {
             throw new Error(`Nodes fetch failed: ${nodesResp.status} ${nodesResp.statusText}`);
@@ -420,7 +430,7 @@
           const nodesText = await nodesResp.text();
           nodes = parseJsonl(nodesText);
 
-          const edgesUrl = `${basePath}/` + meta.edges_jsonl.replace(/^.*\/data_layer\//, "data_layer/").replace(/^\/+/, "");
+          const edgesUrl = resolvePath(meta.edges_jsonl.replace(/^.*\/data_layer\//, "data_layer/"));
           const edgesResp = await fetch(edgesUrl);
           if (!edgesResp.ok) {
             throw new Error(`Edges fetch failed: ${edgesResp.status} ${edgesResp.statusText}`);
