@@ -49,6 +49,17 @@ This layer builds nodes and edges from SIH raw data, plus yearly aggregation and
 - UI JSONL: [reports/batches/ui](reports/batches/ui)
 - Yearly nodes/edges CSV are not tracked by git (regenerate with graph-only)
 
+## Public-hospital analytical enrichment
+
+```bash
+/home/lulutoratora/Documents/comp/mc859/.venv/bin/python data_layer/build_public_hospital_analysis.py \
+  --year 2021 \
+  --out-dir data_layer/reports/analysis \
+  --prefix 2021_public_hospitals
+```
+
+This reuses existing curated SIH parquet and the public-hospital CNES catalog. It does not recollect raw data.
+
 ## Residence edges
 Residence edges are municipio -> hospital and are built for all admissions.
 Field priority: MUNIC_RES, then CODMUNRES, then PA_MUNPCN.

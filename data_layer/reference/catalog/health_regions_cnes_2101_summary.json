@@ -1,0 +1,14 @@
+{
+  "st_dir": "data_layer/raw/cnes_st/2101",
+  "st_files": 27,
+  "rows_read": 334702,
+  "facility_rows": 334702,
+  "municipality_rows": 5570,
+  "municipalities_with_region_conflict": 1250,
+  "municipalities_without_region": 239,
+  "outputs": {
+    "municipality_regions": "data_layer/reference/catalog/municipality_health_regions_cnes_2101.csv",
+    "facility_regions": "data_layer/reference/catalog/facility_health_regions_cnes_2101.csv",
+    "summary": "data_layer/reference/catalog/health_regions_cnes_2101_summary.json"
+  }
+}

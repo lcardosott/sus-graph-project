@@ -1,0 +1,2 @@
+top_municipalities,demand_total,max_flow,min_cut_value,unserved_proxy,reachable_nodes,non_reachable_nodes,saturated_facility_count
+200,740844.0,740844.0,740844.0,0.0,211,1235,10

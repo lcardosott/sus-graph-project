@@ -1,0 +1,28 @@
+{
+  "node_analysis": "data_layer/reports/analysis/node_analysis_2021_public_hospitals.csv",
+  "edge_analysis": "data_layer/reports/analysis/edge_analysis_2021_public_hospitals.csv",
+  "facility_panel": "data_layer/reports/analysis/facility_panel_2021_public_hospitals.csv",
+  "primary_min_residence_count": 5.0,
+  "primary_min_transfer_count": 2.0,
+  "distance_bands_km": [
+    25.0
+  ],
+  "primary_nodes": 8622,
+  "primary_edges": 61706,
+  "largest_projection_nodes": 8622,
+  "largest_projection_edges": 61700,
+  "communities": 49,
+  "dynamic_stress_steps": 5,
+  "k_path_pairs": 30,
+  "outputs": {
+    "sensitivity": "algorithm_layer/reports/final_2021_public_hospitals_25km_sensitivity_matrix.csv",
+    "communities": "algorithm_layer/reports/final_2021_public_hospitals_25km_communities.csv",
+    "community_overlap": "algorithm_layer/reports/final_2021_public_hospitals_25km_community_region_overlap.csv",
+    "centrality": "algorithm_layer/reports/final_2021_public_hospitals_25km_centrality.csv",
+    "dynamic_stress": "algorithm_layer/reports/final_2021_public_hospitals_25km_stress_dynamic.csv",
+    "k_path_redundancy": "algorithm_layer/reports/final_2021_public_hospitals_25km_k_path_redundancy.csv",
+    "min_cut_capacity": "algorithm_layer/reports/final_2021_public_hospitals_25km_min_cut_capacity.csv",
+    "min_cut_facilities": "algorithm_layer/reports/final_2021_public_hospitals_25km_min_cut_facilities.csv",
+    "summary": "algorithm_layer/reports/final_2021_public_hospitals_25km_summary.json"
+  }
+}

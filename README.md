@@ -1,78 +1,131 @@
 # SUS Graph Project
 
-This repository builds a national patient flow graph from SIH data, plus a local visualization UI.
+Entrega final da disciplina MC859: análise de fluxos e resiliência da rede hospitalar pública do SUS em 2021 usando Teoria dos Grafos.
 
-## What is included
-- Data processing scripts (projection, transfer matching, node/edge building)
-- Graph build utilities
-- Local visualization (map + simple graph)
-- UI JSONL artifacts used by the local map
+## Links rápidos
 
-## Data sources
-- SIH (DATASUS SIH) raw DBC files
-- CNES (DATASUS CNES ST files and optional CNES API)
-- IBGE municipalities catalog + centroid coordinates
-- Transfer reason codebook (MOTSAI)
+- **Site / visualização interativa:** https://lcardosott.github.io/sus-graph-project/
+- **Mapa interativo direto:** https://lcardosott.github.io/sus-graph-project/viz_layer/graph_map_ui.html
+- **Relatório final em PDF:** [report/final_report.pdf](report/final_report.pdf)
+- **Fonte LaTeX do relatório:** [report/final_report.tex](report/final_report.tex)
+- **Resumo interpretativo dos resultados:** [algorithm_layer/reports/final_analysis_interpretation.md](algorithm_layer/reports/final_analysis_interpretation.md)
+- **Documentos de apoio:** [Proposta_MC859.pdf](Proposta_MC859.pdf) e [entrega_parcial.pdf](entrega_parcial.pdf)
 
-## Output artifacts kept in repo
-- UI JSONL and meta for the map UI in [data_layer/reports/batches/ui](data_layer/reports/batches/ui)
-- Yearly graph GEXF in [model_layer/reports/graph_sih_br_2021.gexf](model_layer/reports/graph_sih_br_2021.gexf)
-- Graph summary JSON in [model_layer/reports/graph_sih_br_2021_summary.json](model_layer/reports/graph_sih_br_2021_summary.json)
-- Metrics summary and plots in [viz_layer/reports](viz_layer/reports)
-
-Raw data and large intermediate files are ignored by git.
-
-## Metrics (2021)
-From [viz_layer/reports/graph_sih_br_2021_metrics_summary.json](viz_layer/reports/graph_sih_br_2021_metrics_summary.json):
-- Nodes: 11823
-- Edges: 203184
-- Average degree: 34.370972
-- Strongly connected components: 11488
-
-## Transfer detection rule (summary)
-Transfers are inferred with a 4-pillar heuristic:
-- Use transfer flags and validated discharge reason codes as anchors
-- Match candidate admissions within a time window (24 to 48 hours)
-- Require demographic continuity (sex and age)
-- Require clinical continuity (ICD chapter)
-
-Residence edges are built as municipio de residencia -> hospital for all admissions.
-
-## Local visualization
-
-### 1) Map UI (geographic)
-Serve locally:
+Se o GitHub Pages ainda não estiver ativo, abra localmente:
 
 ```bash
-python -m http.server 8000
+python3 -m http.server 8000
 ```
 
-Open:
+Depois acesse:
 
-```
+```text
 http://localhost:8000/viz_layer/graph_map_ui.html
 ```
 
-### 2) Simple graph HTML (non-geographic)
+## O que foi entregue
+
+O projeto constrói e analisa um grafo nacional de internações do SUS em 2021. Os nós representam municípios de residência e hospitais públicos; as arestas representam fluxos município -> hospital e transferências hospital -> hospital inferidas por heurística conservadora.
+
+Artefatos principais:
+
+- [data_layer](data_layer): seleção, preparação e enriquecimento dos dados.
+- [model_layer](model_layer): construção do grafo anual.
+- [filter_engine](filter_engine): filtros reutilizáveis de recorrência, tipo e distância.
+- [algorithm_layer](algorithm_layer): centralidade, Louvain, stress test, k-caminhos e análises regionais.
+- [viz_layer](viz_layer): mapa interativo, camadas leves e figuras.
+- [report](report): relatório final, figuras e referências.
+
+## Visualização final
+
+A visualização principal é [viz_layer/graph_map_ui.html](viz_layer/graph_map_ui.html). Ela usa o arquivo leve [viz_layer/reports/final_map_layers.json](viz_layer/reports/final_map_layers.json), gerado a partir das análises finais de hospitais públicos.
+
+Presets disponíveis no mapa:
+
+- `25 km`: fluxos recorrentes com distância mínima de 25 km.
+- `50 km`: fluxos recorrentes mais longos e seletivos.
+- `Hospitais centrais`: hospitais públicos com maior centralidade de intermediação.
+- `Dependências`: exemplos municipais com forte dependência de um destino externo.
+
+O HTML é estático e deve funcionar no GitHub Pages quando servido a partir da raiz do repositório.
+
+## Resultados principais
+
+Resumo do recorte final:
+
+- 11.629.005 linhas SIH reconciliadas.
+- 5.875 hospitais públicos presentes no grafo.
+- 188.035 arestas no recorte público.
+- 61.706 arestas recorrentes no corte de 25 km.
+- 47.739 arestas recorrentes no corte de 50 km.
+- 43 comunidades Louvain na instância de 50 km.
+
+O achado central é que a rede pública hospitalar é conectada no agregado nacional, mas possui dependências locais: fluxos recorrentes atravessam regiões oficiais de saúde, hospitais especializados aparecem como polos estruturais e alguns municípios dependem de poucos destinos externos.
+
+## Reproduzir a análise final
+
+Instale dependências:
 
 ```bash
-/home/lulutoratora/Documents/comp/mc859/.venv/bin/python viz_layer/render_graph_html.py \
-  --graph-input model_layer/reports/graph_sih_br_2021.gexf \
-  --html-output viz_layer/reports/graph_sih_br_2021_simple.html \
-  --max-nodes 1500 \
-  --max-edges 4000
+pip install -r requirements.txt
 ```
 
-Open:
+Recrie as tabelas analíticas de hospitais públicos a partir dos dados curados locais:
 
+```bash
+python data_layer/build_public_hospital_analysis.py \
+  --year 2021 \
+  --out-dir data_layer/reports/analysis \
+  --prefix 2021_public_hospitals
 ```
-http://localhost:8000/viz_layer/reports/graph_sih_br_2021_simple.html
+
+Execute os algoritmos finais:
+
+```bash
+python algorithm_layer/public_hospital_analysis.py \
+  --out-dir algorithm_layer/reports \
+  --prefix final_2021_public_hospitals_25km \
+  --distance-bands-km 25
+
+python algorithm_layer/public_hospital_analysis.py \
+  --out-dir algorithm_layer/reports \
+  --prefix final_2021_public_hospitals_50km \
+  --distance-bands-km 50
+
+python algorithm_layer/regional_flow_analysis.py
 ```
 
-## Reproducibility (2021)
-Raw SIH files are not stored in git. To regenerate full outputs:
+Gere as camadas leves e figuras:
 
-1) Download SIH DBC files with [data_layer/sih_selector.py](data_layer/sih_selector.py)
-2) Run the yearly pipeline with [data_layer/run_sih_year_pipeline.py](data_layer/run_sih_year_pipeline.py)
+```bash
+python viz_layer/build_final_map_layers.py
+python scripts/report_figures_conceptual.py
+python scripts/report_figures_results.py
+python scripts/report_figures_maps.py
+```
 
-See the detailed run steps in [data_layer/README.md](data_layer/README.md).
+Compile o relatório:
+
+```bash
+cd report
+pdflatex final_report.tex
+bibtex final_report
+pdflatex final_report.tex
+pdflatex final_report.tex
+```
+
+## GitHub Pages
+
+Configuração recomendada no GitHub:
+
+1. Acesse `Settings -> Pages`.
+2. Em `Build and deployment`, selecione `Deploy from a branch`.
+3. Branch: `gh-pages`.
+4. Pasta: `/ (root)`.
+5. Salve e aguarde a publicação.
+
+Com essa configuração, a página inicial será [index.html](index.html), com links para o relatório e para o mapa final.
+
+## Observações sobre dados
+
+Dados brutos e intermediários grandes não precisam ser enviados ao GitHub. A entrega versiona o código, os artefatos finais leves, as figuras, o relatório e os arquivos necessários para a visualização. Arquivos Parquet curados, DBFs, caches, tabelas analíticas grandes e grafos completos pesados devem ficar fora do versionamento; eles podem ser recriados localmente pelos scripts.

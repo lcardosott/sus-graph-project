@@ -1,0 +1,5 @@
+distance_min_km,edge_type,edges,total_flow,same_health_region_flow,cross_health_region_flow,cross_health_region_share,unknown_health_region_flow,cross_uf_flow,cross_uf_share,weighted_mean_distance_km,median_edge_distance_km
+25.0,residence,60646,3488440.0,2166425.0,1117796.0,0.320429,204219.0,92688.0,0.02657,86.956926,94.728678
+25.0,transfer,1060,3585.0,1557.0,1868.0,0.52106,160.0,39.0,0.010879,148.143228,93.46797
+50.0,residence,46938,1942302.0,954354.0,850778.0,0.438026,137170.0,64574.0,0.033246,128.196949,124.968519
+50.0,transfer,801,2748.0,968.0,1676.0,0.609898,104.0,39.0,0.014192,182.083248,131.273659

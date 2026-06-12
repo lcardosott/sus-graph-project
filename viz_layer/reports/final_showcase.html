@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SUS Public-Hospital Graph Results</title>
+  <style>
+    body { margin: 0; font-family: Inter, Segoe UI, sans-serif; color: #1f2428; background: #f7f7f4; }
+    header { padding: 28px 36px; background: #ffffff; border-bottom: 1px solid #ddd; }
+    main { padding: 24px 36px 48px; }
+    h1 { margin: 0 0 8px; font-size: 28px; }
+    h2 { margin-top: 30px; font-size: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+    .metric { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 14px; }
+    .metric b { display: block; font-size: 22px; margin-bottom: 4px; }
+    .panel { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-top: 14px; overflow-x: auto; }
+    img { max-width: 100%; border: 1px solid #ddd; border-radius: 8px; background: #fff; }
+    .charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+    .data-table { border-collapse: collapse; width: 100%; font-size: 13px; }
+    .data-table th, .data-table td { padding: 7px 8px; border-bottom: 1px solid #eee; text-align: left; }
+    a { color: #2867a6; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SUS Public-Hospital Graph Results, Brazil 2021</h1>
+    <p>Validated national SIH graph filtered to public SUS hospitals, with recurrent long-distance flows and graph-resilience algorithms.</p>
+  </header>
+  <main>
+    <section class="grid">
+      <div class="metric"><b>11629005</b>SIH rows reconciled</div>
+      <div class="metric"><b>5875</b>public hospital nodes</div>
+      <div class="metric"><b>7750</b>primary analysis nodes</div>
+      <div class="metric"><b>47739</b>primary recurrent edges</div>
+      <div class="metric"><b>43</b>Louvain communities</div>
+      <div class="metric"><b>0.012597</b>final stress path ratio</div>
+    </section>
+
+    <h2>Map Demo</h2>
+    <div class="panel">
+      <p>Open the lightweight public-hospital map and dashboard: <a href="../graph_map_ui.html">graph_map_ui.html</a>. Use guided presets to inspect central hospitals, stress-test removals, regional corridors, and municipal dependencies.</p>
+    </div>
+
+    <h2>Resilience Charts</h2>
+    <div class="charts">
+      <img src="resilience_largest_component_public_hospitals.png" alt="Largest component by distance band" />
+      <img src="resilience_stress_path_increase_public_hospitals.png" alt="Stress path increase" />
+      <img src="top_central_facilities_public_hospitals.png" alt="Top central facilities" />
+    </div>
+
+    <h2>Distance Band Sensitivity</h2>
+    <div class="panel"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: left;">
+      <th>distance_min_km</th>
+      <th>nodes</th>
+      <th>edges</th>
+      <th>components</th>
+      <th>largest_component_share</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>50.0</td>
+      <td>7750</td>
+      <td>47738</td>
+      <td>4</td>
+      <td>0.999226</td>
+    </tr>
+    <tr>
+      <td>100.0</td>
+      <td>6092</td>
+      <td>29410</td>
+      <td>10</td>
+      <td>0.996717</td>
+    </tr>
+    <tr>
+      <td>200.0</td>
+      <td>3915</td>
+      <td>13832</td>
+      <td>27</td>
+      <td>0.985951</td>
+    </tr>
+  </tbody>
+</table></div>
+
+    <h2>Top Central Public Hospitals</h2>
+    <div class="panel"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: left;">
+      <th>rank</th>
+      <th>node_id</th>
+      <th>name</th>
+      <th>municipality_code</th>
+      <th>betweenness</th>
+      <th>weighted_degree</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>facility:2090236</td>
+      <td>FUNDACAO PIO XII BARRETOS</td>
+      <td>350550</td>
+      <td>0.104856</td>
+      <td>9833.0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>facility:2083086</td>
+      <td>HOSPITAL AMARAL CARVALHO JAU</td>
+      <td>352530</td>
+      <td>0.083048</td>
+      <td>7436.0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>facility:2246988</td>
+      <td>HOSPITAL SAO VICENTE DE PAULO</td>
+      <td>431410</td>
+      <td>0.070516</td>
+      <td>6800.0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>facility:2402564</td>
+      <td>HOSPITAL MUNICIPAL ESAU MATOS</td>
+      <td>293330</td>
+      <td>0.056756</td>
+      <td>3103.0</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>facility:2082187</td>
+      <td>HOSPITAL DAS CLINICAS FAEPA RIBEIRAO PRETO</td>
+      <td>354340</td>
+      <td>0.052932</td>
+      <td>8296.0</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>facility:2365146</td>
+      <td>HOSPITAL REGIONAL TIBERIO NUNES</td>
+      <td>220390</td>
+      <td>0.052379</td>
+      <td>6926.0</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>facility:2077396</td>
+      <td>HOSPITAL DE BASE DE SAO JOSE DO RIO PRETO</td>
+      <td>354980</td>
+      <td>0.048371</td>
+      <td>11798.0</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>facility:0027014</td>
+      <td>SANTA CASA DE BELO HORIZONTE</td>
+      <td>310620</td>
+      <td>0.046357</td>
+      <td>7913.0</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>facility:2737434</td>
+      <td>CEONC</td>
+      <td>410480</td>
+      <td>0.042645</td>
+      <td>9370.0</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>facility:2786117</td>
+      <td>HOSPITAL GERAL DE PALMAS DR FRANCISCO AYRES</td>
+      <td>172100</td>
+      <td>0.038977</td>
+      <td>6983.0</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>facility:7061021</td>
+      <td>HOSPITAL REGIONAL DO SERTAO CENTRAL</td>
+      <td>231140</td>
+      <td>0.038502</td>
+      <td>4721.0</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>facility:6602533</td>
+      <td>HOSPITAL ESTADUAL DA CRIANCA</td>
+      <td>291080</td>
+      <td>0.036696</td>
+      <td>4957.0</td>
+    </tr>
+  </tbody>
+</table></div>
+
+    <h2>Dynamic Suppression</h2>
+    <div class="panel"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: left;">
+      <th>step</th>
+      <th>removed_node_id</th>
+      <th>removed_node_name</th>
+      <th>largest_component_share</th>
+      <th>sampled_average_shortest_path_km</th>
+      <th>path_increase_ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.000000</td>
+      <td>1658.202290</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>facility:2090236</td>
+      <td>FUNDACAO PIO XII BARRETOS</td>
+      <td>0.999225</td>
+      <td>1663.914843</td>
+      <td>0.003445</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>facility:2077396</td>
+      <td>HOSPITAL DE BASE DE SAO JOSE DO RIO PRETO</td>
+      <td>0.998192</td>
+      <td>1666.989944</td>
+      <td>0.005300</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>facility:2082187</td>
+      <td>HOSPITAL DAS CLINICAS FAEPA RIBEIRAO PRETO</td>
+      <td>0.995220</td>
+      <td>1672.279543</td>
+      <td>0.008489</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>facility:2083086</td>
+      <td>HOSPITAL AMARAL CARVALHO JAU</td>
+      <td>0.994832</td>
+      <td>1678.287552</td>
+      <td>0.012113</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>facility:6602533</td>
+      <td>HOSPITAL ESTADUAL DA CRIANCA</td>
+      <td>0.994702</td>
+      <td>1679.091234</td>
+      <td>0.012597</td>
+    </tr>
+  </tbody>
+</table></div>
+
+    <h2>Community Detection</h2>
+    <div class="panel"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: left;">
+      <th>community_id</th>
+      <th>nodes</th>
+      <th>edges</th>
+      <th>facility_nodes</th>
+      <th>municipality_nodes</th>
+      <th>dominant_uf_prefix</th>
+      <th>dominant_uf_share</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>39</td>
+      <td>690</td>
+      <td>2713</td>
+      <td>246</td>
+      <td>444</td>
+      <td>35</td>
+      <td>0.959420</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>644</td>
+      <td>3377</td>
+      <td>166</td>
+      <td>478</td>
+      <td>31</td>
+      <td>0.993789</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>606</td>
+      <td>5466</td>
+      <td>209</td>
+      <td>397</td>
+      <td>29</td>
+      <td>0.950495</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>604</td>
+      <td>3376</td>
+      <td>184</td>
+      <td>420</td>
+      <td>41</td>
+      <td>0.900662</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>579</td>
+      <td>2172</td>
+      <td>141</td>
+      <td>438</td>
+      <td>43</td>
+      <td>0.996546</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>514</td>
+      <td>3324</td>
+      <td>179</td>
+      <td>335</td>
+      <td>52</td>
+      <td>0.673152</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>344</td>
+      <td>1284</td>
+      <td>90</td>
+      <td>254</td>
+      <td>42</td>
+      <td>0.997093</td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>342</td>
+      <td>2141</td>
+      <td>134</td>
+      <td>208</td>
+      <td>21</td>
+      <td>0.988304</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>290</td>
+      <td>3156</td>
+      <td>102</td>
+      <td>188</td>
+      <td>26</td>
+      <td>0.924138</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>287</td>
+      <td>1755</td>
+      <td>62</td>
+      <td>225</td>
+      <td>22</td>
+      <td>0.972125</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>269</td>
+      <td>2173</td>
+      <td>85</td>
+      <td>184</td>
+      <td>23</td>
+      <td>0.992565</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>223</td>
+      <td>1246</td>
+      <td>48</td>
+      <td>175</td>
+      <td>25</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table></div>
+
+    <h2>Official Health-Region Mismatch</h2>
+    <div class="panel"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: left;">
+      <th>distance_min_km</th>
+      <th>edge_type</th>
+      <th>edges</th>
+      <th>total_flow</th>
+      <th>cross_health_region_flow</th>
+      <th>cross_health_region_share</th>
+      <th>unknown_health_region_flow</th>
+      <th>weighted_mean_distance_km</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>25.0</td>
+      <td>residence</td>
+      <td>60646</td>
+      <td>3488440.0</td>
+      <td>1117796.0</td>
+      <td>0.320429</td>
+      <td>204219.0</td>
+      <td>86.956926</td>
+    </tr>
+    <tr>
+      <td>25.0</td>
+      <td>transfer</td>
+      <td>1060</td>
+      <td>3585.0</td>
+      <td>1868.0</td>
+      <td>0.521060</td>
+      <td>160.0</td>
+      <td>148.143228</td>
+    </tr>
+    <tr>
+      <td>50.0</td>
+      <td>residence</td>
+      <td>46938</td>
+      <td>1942302.0</td>
+      <td>850778.0</td>
+      <td>0.438026</td>
+      <td>137170.0</td>
+      <td>128.196949</td>
+    </tr>
+    <tr>
+      <td>50.0</td>
+      <td>transfer</td>
+      <td>801</td>
+      <td>2748.0</td>
+      <td>1676.0</td>
+      <td>0.609898</td>
+      <td>104.0</td>
+      <td>182.083248</td>
+    </tr>
+  </tbody>
+</table></div>
+
+    <h2>Municipal Dependency Examples</h2>
+    <div class="panel"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: left;">
+      <th>distance_min_km</th>
+      <th>source_node_id</th>
+      <th>source_name</th>
+      <th>source_health_region_id</th>
+      <th>total_flow</th>
+      <th>target_facilities</th>
+      <th>top_target_name</th>
+      <th>top_target_share</th>
+      <th>cross_health_region_share</th>
+      <th>weighted_mean_distance_km</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>50.0</td>
+      <td>municipality:510788</td>
+      <td>Serra Nova Dourada - MT</td>
+      <td>MT-0016</td>
+      <td>96.0</td>
+      <td>1</td>
+      <td>HOSPITAL REGIONAL DE AGUA BOA</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>241.208202</td>
+    </tr>
+    <tr>
+      <td>50.0</td>
+      <td>municipality:311010</td>
+      <td>Caiana - MG</td>
+      <td>MG-0024</td>
+      <td>70.0</td>
+      <td>1</td>
+      <td>HOSPITAL DO CANCER DE MURIAE</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>65.406906</td>
+    </tr>
+    <tr>
+      <td>50.0</td>
+      <td>municipality:312250</td>
+      <td>Dom Cavati - MG</td>
+      <td>MG-0016</td>
+      <td>58.0</td>
+      <td>1</td>
+      <td>HOSPITAL MUNICIPAL ELIANE MARTINS</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>50.086216</td>
+    </tr>
+    <tr>
+      <td>50.0</td>
+      <td>municipality:150190</td>
+      <td>Bujaru - PA</td>
+      <td>PA-0002</td>
+      <td>47.0</td>
+      <td>1</td>
+      <td>HOSPITAL REGIONAL PUBLICO DR ABELARDO SANTOS</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>56.098494</td>
+    </tr>
+    <tr>
+      <td>50.0</td>
+      <td>municipality:231210</td>
+      <td>Santana do Cariri - CE</td>
+      <td>CE-0020</td>
+      <td>41.0</td>
+      <td>1</td>
+      <td>HOSPITAL MATERNIDADE SAO VICENTE DE PAULO HMSVP</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>50.769498</td>
+    </tr>
+    <tr>
+      <td>50.0</td>
+      <td>municipality:230770</td>
+      <td>Maranguape - CE</td>
+      <td>CE-0003</td>
+      <td>39.0</td>
+      <td>1</td>
+      <td>HOSPITAL REGIONAL DO SERTAO CENTRAL</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>139.966926</td>
+    </tr>
+    <tr>
+      <td>50.0</td>
+      <td>municipality:353360</td>
+      <td>Nuporanga - SP</td>
+      <td>SP-0208</td>
+      <td>39.0</td>
+      <td>1</td>
+      <td>HOSPITAL DAS CLINICAS FAEPA RIBEIRAO PRETO</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>52.545787</td>
+    </tr>
+    <tr>
+      <td>50.0</td>
+      <td>municipality:350670</td>
+      <td>Boa Esperança do Sul - SP</td>
+      <td>SP-0203</td>
+      <td>37.0</td>
+      <td>1</td>
+      <td>HOSPITAL DAS CLINICAS FAEPA RIBEIRAO PRETO</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>106.609105</td>
+    </tr>
+    <tr>
+      <td>50.0</td>
+      <td>municipality:420765</td>
+      <td>Iporã do Oeste - SC</td>
+      <td>SC-0005</td>
+      <td>37.0</td>
+      <td>1</td>
+      <td>HOSPITAL REGIONAL DO OESTE</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>89.042650</td>
+    </tr>
+    <tr>
+      <td>50.0</td>
+      <td>municipality:352800</td>
+      <td>Macatuba - SP</td>
+      <td>SP-0006</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>HOSPITAL DAS CLINICAS DA FACULDADE DE MEDICINA DE BOTUCATU</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>50.362998</td>
+    </tr>
+    <tr>
+      <td>50.0</td>
+      <td>municipality:410685</td>
+      <td>Cruzmaltina - PR</td>
+      <td>PR-0022</td>
+      <td>33.0</td>
+      <td>1</td>
+      <td>HONPAR HOSPITAL NORTE PARANAENSE</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>70.189824</td>
+    </tr>
+    <tr>
+      <td>50.0</td>
+      <td>municipality:310370</td>
+      <td>Araponga - MG</td>
+      <td>MG-0008</td>
+      <td>31.0</td>
+      <td>1</td>
+      <td>HOSPITAL DO CANCER DE MURIAE</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>51.285028</td>
+    </tr>
+  </tbody>
+</table></div>
+
+    <h2>K-Path Redundancy</h2>
+    <div class="panel"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: left;">
+      <th>source_node_id</th>
+      <th>target_node_id</th>
+      <th>transfer_count</th>
+      <th>paths_found</th>
+      <th>k1_distance_km</th>
+      <th>k2_distance_km</th>
+      <th>k2_k1_ratio</th>
+      <th>no_alternative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>municipality:500270</td>
+      <td>facility:0009717</td>
+      <td>21152.0</td>
+      <td>3</td>
+      <td>63.967799</td>
+      <td>138.456697</td>
+      <td>2.164475</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>municipality:130260</td>
+      <td>facility:2013649</td>
+      <td>13372.0</td>
+      <td>3</td>
+      <td>58.543267</td>
+      <td>156.431305</td>
+      <td>2.672063</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>municipality:130260</td>
+      <td>facility:3151794</td>
+      <td>12257.0</td>
+      <td>1</td>
+      <td>60.379865</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>municipality:150680</td>
+      <td>facility:2329905</td>
+      <td>10651.0</td>
+      <td>3</td>
+      <td>64.496306</td>
+      <td>150.280983</td>
+      <td>2.330071</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>municipality:160030</td>
+      <td>facility:2020068</td>
+      <td>10300.0</td>
+      <td>3</td>
+      <td>71.021879</td>
+      <td>171.194601</td>
+      <td>2.410449</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>municipality:130260</td>
+      <td>facility:5169976</td>
+      <td>10205.0</td>
+      <td>3</td>
+      <td>57.866523</td>
+      <td>167.624754</td>
+      <td>2.896748</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>municipality:500270</td>
+      <td>facility:0009725</td>
+      <td>9738.0</td>
+      <td>3</td>
+      <td>61.247384</td>
+      <td>177.832831</td>
+      <td>2.903517</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>municipality:110020</td>
+      <td>facility:4001303</td>
+      <td>9334.0</td>
+      <td>3</td>
+      <td>65.191895</td>
+      <td>188.462856</td>
+      <td>2.890894</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>municipality:150553</td>
+      <td>facility:2615746</td>
+      <td>8951.0</td>
+      <td>3</td>
+      <td>64.884357</td>
+      <td>327.560251</td>
+      <td>5.048370</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>municipality:110020</td>
+      <td>facility:2493888</td>
+      <td>8943.0</td>
+      <td>3</td>
+      <td>60.633885</td>
+      <td>188.521172</td>
+      <td>3.109172</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>municipality:130260</td>
+      <td>facility:6627595</td>
+      <td>8028.0</td>
+      <td>3</td>
+      <td>59.434453</td>
+      <td>159.209546</td>
+      <td>2.678742</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>municipality:110030</td>
+      <td>facility:2798484</td>
+      <td>7286.0</td>
+      <td>3</td>
+      <td>72.504815</td>
+      <td>349.754799</td>
+      <td>4.823884</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table></div>
+
+    <h2>Future Capacity Question</h2>
+    <div class="panel">
+      <p>Capacity is not treated as a final result here because annual SIH totals do not represent simultaneous occupancy. The next defensible version would need beds by competence, occupancy or daily movement, and service-line capacity.</p>
+    </div>
+  </main>
+</body>
+</html>

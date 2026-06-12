@@ -1,0 +1,19 @@
+{
+  "edge_analysis": "data_layer/reports/analysis/edge_analysis_2021_public_hospitals.csv",
+  "municipality_regions": "data_layer/reference/catalog/municipality_health_regions_cnes_2101.csv",
+  "distance_bands_km": [
+    25.0,
+    50.0
+  ],
+  "min_residence_count": 5.0,
+  "min_transfer_count": 2.0,
+  "overall_rows": 4,
+  "regional_mismatch_rows": 7791,
+  "municipality_dependency_rows": 10785,
+  "outputs": {
+    "overall": "algorithm_layer/reports/regional_2021_public_hospitals_overall.csv",
+    "regional_mismatch": "algorithm_layer/reports/regional_2021_public_hospitals_regional_mismatch.csv",
+    "municipality_dependency": "algorithm_layer/reports/regional_2021_public_hospitals_municipality_dependency.csv",
+    "summary": "algorithm_layer/reports/regional_2021_public_hospitals_summary.json"
+  }
+}

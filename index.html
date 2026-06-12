@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SUS Graph Project - MC859</title>
+    <style>
+      :root {
+        --bg: #f6f7f4;
+        --panel: #ffffff;
+        --text: #202428;
+        --muted: #636b72;
+        --line: #dfe4df;
+        --green: #2a7f62;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      main {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 56px 22px;
+      }
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(32px, 5vw, 52px);
+        line-height: 1;
+      }
+      p {
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.55;
+      }
+      .links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 14px;
+        margin: 28px 0;
+      }
+      a.card {
+        display: block;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        color: inherit;
+        text-decoration: none;
+      }
+      a.card:hover {
+        border-color: #9acbb8;
+        box-shadow: 0 8px 24px rgba(42, 127, 98, 0.10);
+      }
+      .card strong {
+        display: block;
+        color: var(--green);
+        font-size: 18px;
+        margin-bottom: 8px;
+      }
+      .card span {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      .meta {
+        border-top: 1px solid var(--line);
+        margin-top: 34px;
+        padding-top: 18px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      code {
+        background: #eef1ee;
+        border-radius: 5px;
+        padding: 2px 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>SUS Graph Project</h1>
+      <p>
+        Entrega final de MC859: análise de fluxos e resiliência da rede hospitalar
+        pública do SUS em 2021 usando Teoria dos Grafos.
+      </p>
+
+      <section class="links" aria-label="Links principais">
+        <a class="card" href="viz_layer/graph_map_ui.html">
+          <strong>Visualização interativa</strong>
+          <span>Mapa guiado com presets de 25 km, 50 km, hospitais centrais e dependências municipais.</span>
+        </a>
+        <a class="card" href="report/final_report.pdf">
+          <strong>Relatório final</strong>
+          <span>PDF da entrega final com metodologia, algoritmos, resultados e limitações.</span>
+        </a>
+        <a class="card" href="algorithm_layer/reports/final_analysis_interpretation.md">
+          <strong>Resumo dos resultados</strong>
+          <span>Interpretação técnica dos achados finais e limitações principais.</span>
+        </a>
+        <a class="card" href="https://github.com/lcardosott/sus-graph-project#readme">
+          <strong>README do projeto</strong>
+          <span>Guia de reprodução, estrutura do repositório e instruções de GitHub Pages.</span>
+        </a>
+        <a class="card" href="https://github.com/lcardosott/sus-graph-project">
+          <strong>Repositório</strong>
+          <span>Código da implementação, scripts de análise e artefatos finais versionados.</span>
+        </a>
+      </section>
+
+      <p class="meta">
+        Repositório: <code>github.com/lcardosott/sus-graph-project</code>
+      </p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "year": 2021,
+  "records_rows": 11629005,
+  "graph_nodes_input": 11823,
+  "graph_edges_input": 203184,
+  "public_hospital_reference_rows": 5875,
+  "public_hospital_nodes_in_graph": 5875,
+  "facility_panel_rows": 4608,
+  "edge_analysis_rows": 188035,
+  "residence_flow_rows": 181569,
+  "transfer_flow_rows": 6466,
+  "excluded_non_public_facility_nodes": 377,
+  "outputs": {
+    "facility_panel": "data_layer/reports/analysis/facility_panel_2021_public_hospitals.csv",
+    "residence_flow_features": "data_layer/reports/analysis/residence_flow_features_2021_public_hospitals.csv",
+    "transfer_flow_features": "data_layer/reports/analysis/transfer_flow_features_2021_public_hospitals.csv",
+    "node_analysis": "data_layer/reports/analysis/node_analysis_2021_public_hospitals.csv",
+    "edge_analysis": "data_layer/reports/analysis/edge_analysis_2021_public_hospitals.csv",
+    "summary": "data_layer/reports/analysis/summary_2021_public_hospitals.json"
+  }
+}

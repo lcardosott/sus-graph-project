@@ -6,19 +6,46 @@ __pycache__/
 
 # Generated data artifacts
 data_layer/raw/
-data_layer/reports/
-model_layer/reports/
+data_layer/curated/
+data_layer/reports/**
+algorithm_layer/reports/**
+model_layer/reports/**
+viz_layer/reports/**
+data_layer/reference/cache/
+data_layer/reference/cnes_cache/
+data_layer/reference/catalog/cnes_br_2101.csv
+data_layer/reference/catalog/.~lock*
+data_layer/reports/backups/
+algorithm_layer/reports/backups/
+model_layer/reports/backups/
+viz_layer/reports/backups/
+report/*.aux
+report/*.bbl
+report/*.blg
+report/*.log
+report/*.out
+report/*.toc
 
-# Keep deployable UI JSON artifacts
-!data_layer/reports/
-!data_layer/reports/batches/
-!data_layer/reports/batches/ui/
-!data_layer/reports/batches/ui/**/*.json
-!data_layer/reports/batches/ui/**/*.jsonl
+# Keep final analysis summaries and lightweight assets
+!data_layer/reports/analysis/
+!data_layer/reports/analysis/summary_2021_public_hospitals.json
+!data_layer/reports/analysis/facility_panel_2021_public_hospitals.csv
+!data_layer/reports/analysis/node_analysis_2021_public_hospitals.csv
+!data_layer/reports/analysis/transfer_flow_features_2021_public_hospitals.csv
+!algorithm_layer/reports/
+!algorithm_layer/reports/final_2021_public_hospitals*
+!algorithm_layer/reports/regional_2021_public_hospitals*
+!algorithm_layer/reports/final_analysis_interpretation.md
+!viz_layer/reports/
+!viz_layer/reports/final_*.html
+!viz_layer/reports/final_*.md
+!viz_layer/reports/final_map_layers.json
+!viz_layer/reports/graph_sih_br_2021_component_size_distribution.png
+!viz_layer/reports/graph_sih_br_2021_degree_distribution.png
+!viz_layer/reports/*public_hospitals*.png
 
-# Keep yearly graph artifacts needed for local visualization
+# Keep only the small yearly graph summary used for documentation
 !model_layer/reports/
-!model_layer/reports/graph_sih_br_2021.gexf
 !model_layer/reports/graph_sih_br_2021_summary.json
 
 # Temporary and lock files
