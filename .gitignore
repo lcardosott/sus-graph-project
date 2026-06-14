@@ -40,6 +40,7 @@ report/*.toc
 !viz_layer/reports/final_*.html
 !viz_layer/reports/final_*.md
 !viz_layer/reports/final_map_layers.json
+!viz_layer/reports/graph_sih_br_2021_all.html
 !viz_layer/reports/graph_sih_br_2021_component_size_distribution.png
 !viz_layer/reports/graph_sih_br_2021_degree_distribution.png
 !viz_layer/reports/*public_hospitals*.png

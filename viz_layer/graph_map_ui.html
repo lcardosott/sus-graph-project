@@ -24,22 +24,30 @@
         font-family: Inter, "Segoe UI", sans-serif;
         color: var(--text);
         background: var(--bg);
+        overflow: hidden;
       }
 
       #app {
         display: grid;
         grid-template-columns: 360px 1fr;
-        min-height: 100vh;
+        height: 100vh;
+        min-height: 0;
       }
 
       #panel {
         background: var(--panel);
         border-right: 1px solid var(--line);
         padding: 16px;
-        overflow: auto;
+        height: 100vh;
+        overflow-y: auto;
       }
 
-      #mapWrap { position: relative; min-height: 100vh; }
+      #mapWrap {
+        position: relative;
+        height: 100vh;
+        min-height: 0;
+        overflow: hidden;
+      }
       #map { width: 100%; height: 100vh; }
 
       h1 { font-size: 19px; margin: 0 0 4px; }
@@ -78,6 +86,47 @@
       }
       .table { width: 100%; border-collapse: collapse; font-size: 12px; }
       .table th, .table td { text-align: left; border-bottom: 1px solid #eee; padding: 6px 4px; vertical-align: top; }
+      .main-view {
+        display: none;
+        height: 100vh;
+        overflow-y: auto;
+        padding: 24px;
+        background: #f7f8f5;
+      }
+      .main-view.active { display: block; }
+      .dashboard-header {
+        max-width: 1180px;
+        margin: 0 auto 18px;
+      }
+      .dashboard-header h2 {
+        margin: 0 0 6px;
+        font-size: 22px;
+      }
+      .dashboard-layout {
+        max-width: 1180px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(300px, 0.9fr) minmax(420px, 1.4fr);
+        gap: 16px;
+        align-items: start;
+      }
+      .dashboard-block {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 14px;
+      }
+      .dashboard-block h3 {
+        margin: 0 0 10px;
+        font-size: 15px;
+      }
+      body.dashboard-mode #map,
+      body.dashboard-mode .legend {
+        display: none;
+      }
+      body.dashboard-mode #dashboardView {
+        display: block;
+      }
       .legend {
         position: absolute;
         right: 16px;
@@ -95,10 +144,17 @@
       input[type="checkbox"] { transform: translateY(1px); }
 
       @media (max-width: 980px) {
-        #app { grid-template-columns: 1fr; }
-        #panel { border-right: none; border-bottom: 1px solid var(--line); max-height: 52vh; }
+        #app { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+        #panel {
+          border-right: none;
+          border-bottom: 1px solid var(--line);
+          height: auto;
+          max-height: 42vh;
+        }
         #map { height: 58vh; }
-        #mapWrap { min-height: 58vh; }
+        #mapWrap { height: 58vh; min-height: 0; }
+        .main-view { height: 58vh; padding: 16px; }
+        .dashboard-layout { grid-template-columns: 1fr; }
       }
     </style>
   </head>
@@ -135,12 +191,9 @@
         </section>
 
         <section id="dashTab" class="tab">
-          <h2>Resumo</h2>
-          <div id="metrics" class="metric-grid"></div>
-          <h2>Top hospitais</h2>
-          <div id="centralTable"></div>
-          <h2>Regiões</h2>
-          <div id="regionalTable"></div>
+          <h2>Dashboard</h2>
+          <p>Resumo executivo dos algoritmos, hospitais centrais e fluxos entre regiões oficiais.</p>
+          <div class="note">Os detalhes aparecem na área principal para preservar largura de tabela e scroll independente.</div>
         </section>
 
         <section id="findingsTab" class="tab">
@@ -162,6 +215,26 @@
 
       <main id="mapWrap">
         <div id="map"></div>
+        <section id="dashboardView" class="main-view" aria-label="Dashboard dos algoritmos">
+          <div class="dashboard-header">
+            <h2>Dashboard dos algoritmos</h2>
+            <p class="muted">Indicadores sintéticos da instância pública nacional e das saídas usadas no relatório final.</p>
+          </div>
+          <div class="dashboard-layout">
+            <section class="dashboard-block">
+              <h3>Resumo da instância</h3>
+              <div id="metrics" class="metric-grid"></div>
+            </section>
+            <section class="dashboard-block">
+              <h3>Top hospitais por centralidade</h3>
+              <div id="centralTable"></div>
+            </section>
+            <section class="dashboard-block">
+              <h3>Fluxos fora da região oficial</h3>
+              <div id="regionalTable"></div>
+            </section>
+          </div>
+        </section>
         <div class="legend">
           <div><span class="swatch" style="background: var(--orange)"></span>residência → hospital</div>
           <div><span class="swatch" style="background: var(--blue)"></span>hospital → hospital</div>
@@ -349,7 +422,9 @@
             document.querySelectorAll(".tab-btn,.tab").forEach((el) => el.classList.remove("active"));
             button.classList.add("active");
             document.getElementById(button.dataset.tab).classList.add("active");
-            setTimeout(() => map.invalidateSize(), 60);
+            const dashboardMode = button.dataset.tab === "dashTab";
+            document.body.classList.toggle("dashboard-mode", dashboardMode);
+            if (!dashboardMode) setTimeout(() => map.invalidateSize(), 60);
           });
         });
         document.querySelectorAll(".preset").forEach((button) => {

@@ -6,6 +6,7 @@ Entrega final da disciplina MC859: análise de fluxos e resiliência da rede hos
 
 - **Site / visualização interativa:** https://lcardosott.github.io/sus-graph-project/
 - **Mapa interativo direto:** https://lcardosott.github.io/sus-graph-project/viz_layer/graph_map_ui.html
+- **Grafo completo antigo:** https://lcardosott.github.io/sus-graph-project/viz_layer/reports/graph_sih_br_2021_all.html
 - **Relatório final em PDF:** [report/final_report.pdf](report/final_report.pdf)
 - **Fonte LaTeX do relatório:** [report/final_report.tex](report/final_report.tex)
 - **Resumo interpretativo dos resultados:** [algorithm_layer/reports/final_analysis_interpretation.md](algorithm_layer/reports/final_analysis_interpretation.md)
@@ -39,6 +40,8 @@ Artefatos principais:
 ## Visualização final
 
 A visualização principal é [viz_layer/graph_map_ui.html](viz_layer/graph_map_ui.html). Ela usa o arquivo leve [viz_layer/reports/final_map_layers.json](viz_layer/reports/final_map_layers.json), gerado a partir das análises finais de hospitais públicos.
+
+Também foi mantida a versão exploratória antiga com todos os nós em [viz_layer/reports/graph_sih_br_2021_all.html](viz_layer/reports/graph_sih_br_2021_all.html). Ela é útil como referência visual do grafo bruto, mas pode ser pesada em navegadores comuns.
 
 Presets disponíveis no mapa:
 

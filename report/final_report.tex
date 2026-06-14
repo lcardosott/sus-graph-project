@@ -140,6 +140,43 @@ A implementação foi dividida em camadas para manter rastreabilidade e facilita
 
 Os algoritmos finais estão em \ghfile{algorithm_layer/public_hospital_analysis.py}{public\_hospital\_analysis.py} e \ghfile{algorithm_layer/regional_flow_analysis.py}{regional\_flow\_analysis.py}. Para centralidade, comunidades, k-caminhos e supressão foi usada uma projeção não direcionada ponderada da maior componente. A direção original é essencial para construir os fluxos, mas a projeção torna a análise de conectividade assistencial mais adequada: em um grafo estritamente dirigido, muitos caminhos município $\rightarrow$ hospital não retornam e as medidas ficariam dominadas pela orientação administrativa das arestas.
 
+\begin{table}[H]
+\centering
+\caption{Arquivos de implementação e saídas principais dos algoritmos.}
+\label{tab:arquivos-algoritmos}
+\scriptsize
+\begin{tabular}{p{0.18\linewidth}p{0.29\linewidth}p{0.45\linewidth}}
+\toprule
+Método & Implementação & Saídas principais \\
+\midrule
+Centralidade de intermediação &
+\ghfile{algorithm_layer/public_hospital_analysis.py}{public\_hospital\_analysis.py} &
+\ghfile{algorithm_layer/reports/final_2021_public_hospitals_50km_centrality.csv}{centrality.csv} e
+\ghfile{algorithm_layer/reports/final_2021_public_hospitals_50km_summary.json}{summary.json}. \\
+Comunidades Louvain &
+\ghfile{algorithm_layer/public_hospital_analysis.py}{public\_hospital\_analysis.py} &
+\ghfile{algorithm_layer/reports/final_2021_public_hospitals_50km_communities.csv}{communities.csv} e
+\ghfile{algorithm_layer/reports/final_2021_public_hospitals_50km_community_region_overlap.csv}{community\_region\_overlap.csv}. \\
+Supressão dinâmica &
+\ghfile{algorithm_layer/public_hospital_analysis.py}{public\_hospital\_analysis.py} &
+\ghfile{algorithm_layer/reports/final_2021_public_hospitals_50km_stress_dynamic.csv}{stress\_dynamic.csv} e
+\ghfile{algorithm_layer/reports/final_2021_public_hospitals_50km_sensitivity_matrix.csv}{sensitivity\_matrix.csv}. \\
+K-caminhos mais curtos &
+\ghfile{algorithm_layer/public_hospital_analysis.py}{public\_hospital\_analysis.py} &
+\ghfile{algorithm_layer/reports/final_2021_public_hospitals_50km_k_path_redundancy.csv}{k\_path\_redundancy.csv}. \\
+Fluxo máximo/corte mínimo &
+\ghfile{algorithm_layer/public_hospital_analysis.py}{public\_hospital\_analysis.py} &
+\ghfile{algorithm_layer/reports/final_2021_public_hospitals_50km_min_cut_capacity.csv}{min\_cut\_capacity.csv} e
+\ghfile{algorithm_layer/reports/final_2021_public_hospitals_50km_min_cut_facilities.csv}{min\_cut\_facilities.csv}. \\
+Regiões de saúde &
+\ghfile{algorithm_layer/regional_flow_analysis.py}{regional\_flow\_analysis.py} &
+\ghfile{algorithm_layer/reports/regional_2021_public_hospitals_overall.csv}{regional\_overall.csv},
+\ghfile{algorithm_layer/reports/regional_2021_public_hospitals_regional_mismatch.csv}{regional\_mismatch.csv} e
+\ghfile{algorithm_layer/reports/regional_2021_public_hospitals_municipality_dependency.csv}{municipality\_dependency.csv}. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.68\linewidth]{figures/directed_projection.png}
