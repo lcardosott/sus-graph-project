@@ -7,8 +7,10 @@ Entrega final da disciplina MC859: análise de fluxos e resiliência da rede hos
 - **Site / visualização interativa:** https://lcardosott.github.io/sus-graph-project/
 - **Mapa interativo direto:** https://lcardosott.github.io/sus-graph-project/viz_layer/graph_map_ui.html
 - **Grafo completo antigo:** https://lcardosott.github.io/sus-graph-project/viz_layer/reports/graph_sih_br_2021_all.html
+- **Apresentação HTML:** https://lcardosott.github.io/sus-graph-project/presentation.html
 - **Relatório final em PDF:** [report/final_report.pdf](report/final_report.pdf)
 - **Fonte LaTeX do relatório:** [report/final_report.tex](report/final_report.tex)
+- **Roteiro da apresentação:** [presentation_notes.md](presentation_notes.md)
 - **Resumo interpretativo dos resultados:** [algorithm_layer/reports/final_analysis_interpretation.md](algorithm_layer/reports/final_analysis_interpretation.md)
 - **Documentos de apoio:** [Proposta_MC859.pdf](Proposta_MC859.pdf) e [entrega_parcial.pdf](entrega_parcial.pdf)
 
@@ -36,12 +38,16 @@ Artefatos principais:
 - [algorithm_layer](algorithm_layer): centralidade, Louvain, stress test, k-caminhos e análises regionais.
 - [viz_layer](viz_layer): mapa interativo, camadas leves e figuras.
 - [report](report): relatório final, figuras e referências.
+- [presentation.html](presentation.html): apresentação HTML estática para GitHub Pages.
+- [presentation_notes.md](presentation_notes.md): estratégia, mapa de slides, roteiro e Q&A.
 
 ## Visualização final
 
 A visualização principal é [viz_layer/graph_map_ui.html](viz_layer/graph_map_ui.html). Ela usa o arquivo leve [viz_layer/reports/final_map_layers.json](viz_layer/reports/final_map_layers.json), gerado a partir das análises finais de hospitais públicos.
 
 Também foi mantida a versão exploratória antiga com todos os nós em [viz_layer/reports/graph_sih_br_2021_all.html](viz_layer/reports/graph_sih_br_2021_all.html). Ela é útil como referência visual do grafo bruto, mas pode ser pesada em navegadores comuns.
+
+A apresentação final está disponível em [presentation.html](presentation.html). O deck é estático, funciona no GitHub Pages e usa navegação por teclado: setas direita/esquerda mudam os tópicos principais, e setas baixo/cima acessam aprofundamentos.
 
 Presets disponíveis no mapa:
 

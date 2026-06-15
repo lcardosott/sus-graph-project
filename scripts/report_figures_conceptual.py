@@ -93,8 +93,8 @@ def arrow(ax, start, end, color=None, lw=2.0, style="-|>", rad=0.0, label=None, 
         )
 
 
-def title(ax, text, fontsize=16):
-    ax.text(0.03, 0.95, text, fontsize=fontsize, fontweight="bold", color=COLORS["text"], va="top")
+def title(ax, text, fontsize=14):
+    ax.text(0.04, 0.93, text, fontsize=fontsize, fontweight="bold", color=COLORS["text"], va="top")
 
 
 def save(fig, name):
@@ -106,62 +106,66 @@ def save(fig, name):
 
 
 def graph_modeling():
-    fig, ax = setup()
+    fig, ax = setup(width=11, height=5.8)
     title(ax, "Modelagem do grafo assistencial")
 
-    box(ax, (0.07, 0.60), 0.22, 0.14, "Município de\nresidência", COLORS["blue_light"], COLORS["municipio"], weight="bold")
-    box(ax, (0.40, 0.62), 0.24, 0.14, "Hospital público\n(SUS)", COLORS["green_light"], COLORS["hospital"], weight="bold")
-    box(ax, (0.72, 0.56), 0.22, 0.14, "Hospital público\n(SUS)", COLORS["green_light"], COLORS["hospital"], weight="bold")
+    main_y, main_h = 0.58, 0.15
+    box(ax, (0.07, main_y), 0.23, main_h, "Município de\nresidência", COLORS["blue_light"], COLORS["municipio"], weight="bold")
+    box(ax, (0.385, main_y), 0.23, main_h, "Hospital público\n(SUS)", COLORS["green_light"], COLORS["hospital"], weight="bold")
+    box(ax, (0.70, main_y), 0.23, main_h, "Hospital público\n(SUS)", COLORS["green_light"], COLORS["hospital"], weight="bold")
 
-    arrow(ax, (0.29, 0.67), (0.40, 0.69), COLORS["municipio"], label="internações de residentes", label_xy=(0.35, 0.77))
-    arrow(ax, (0.64, 0.69), (0.72, 0.64), COLORS["transfer"], label="transferências inferidas", label_xy=(0.68, 0.78))
+    y_mid = main_y + main_h / 2
+    arrow(ax, (0.30, y_mid), (0.385, y_mid), COLORS["municipio"], label="internações de residentes", label_xy=(0.342, 0.79))
+    arrow(ax, (0.615, y_mid), (0.70, y_mid), COLORS["transfer"], label="transferências inferidas", label_xy=(0.657, 0.79))
 
-    box(ax, (0.16, 0.25), 0.25, 0.13, "Peso da aresta\nvolume de casos", "#FFF2CC", "#D6A500", fontsize=11)
-    box(ax, (0.58, 0.25), 0.25, 0.13, "Atributo espacial\ndistância em km", "#E6F2F0", "#4E9A8E", fontsize=11)
-    arrow(ax, (0.37, 0.36), (0.46, 0.52), "#D6A500", lw=1.7, style="->")
-    arrow(ax, (0.67, 0.38), (0.67, 0.53), "#4E9A8E", lw=1.7, style="->")
+    box(ax, (0.18, 0.30), 0.25, 0.12, "Peso da aresta\nvolume agregado", "#FFF2CC", "#D6A500", fontsize=10.5)
+    box(ax, (0.57, 0.30), 0.25, 0.12, "Custo espacial\ndistância em km", "#E6F2F0", "#4E9A8E", fontsize=10.5)
+    arrow(ax, (0.305, 0.43), (0.305, 0.56), "#D6A500", lw=1.6, style="->")
+    arrow(ax, (0.695, 0.43), (0.695, 0.56), "#4E9A8E", lw=1.6, style="->")
 
-    ax.scatter([0.09, 0.09], [0.13, 0.08], s=[190, 190], c=[COLORS["municipio"], COLORS["hospital"]])
-    ax.text(0.13, 0.13, "nó municipal", va="center", fontsize=10)
-    ax.text(0.13, 0.08, "nó hospitalar", va="center", fontsize=10)
-    ax.plot([0.45, 0.55], [0.13, 0.13], color=COLORS["municipio"], lw=2.2)
-    ax.plot([0.45, 0.55], [0.08, 0.08], color=COLORS["transfer"], lw=2.2)
-    ax.text(0.58, 0.13, "fluxo residência-hospital", va="center", fontsize=10)
-    ax.text(0.58, 0.08, "fluxo hospital-hospital", va="center", fontsize=10)
+    legend_y = 0.14
+    ax.scatter([0.11, 0.11], [legend_y, legend_y - 0.055], s=[180, 180], c=[COLORS["municipio"], COLORS["hospital"]])
+    ax.text(0.15, legend_y, "nó municipal", va="center", fontsize=9.8)
+    ax.text(0.15, legend_y - 0.055, "nó hospitalar", va="center", fontsize=9.8)
+    ax.plot([0.46, 0.56], [legend_y, legend_y], color=COLORS["municipio"], lw=2.2)
+    ax.plot([0.46, 0.56], [legend_y - 0.055, legend_y - 0.055], color=COLORS["transfer"], lw=2.2)
+    ax.text(0.59, legend_y, "fluxo residência-hospital", va="center", fontsize=9.8)
+    ax.text(0.59, legend_y - 0.055, "fluxo hospital-hospital", va="center", fontsize=9.8)
 
     return save(fig, "graph_modeling.png")
 
 
 def transfer_matching_heuristic():
-    fig, ax = setup()
+    fig, ax = setup(width=11, height=5.8)
     title(ax, "Heurística de pareamento de transferências")
 
-    y = 0.58
-    ax.plot([0.10, 0.90], [y, y], color="#9AA0A6", lw=2.2)
+    timeline_y = 0.55
+    ax.plot([0.10, 0.90], [timeline_y, timeline_y], color="#9AA0A6", lw=2.2)
     for x in [0.18, 0.50, 0.82]:
-        ax.plot([x, x], [y - 0.04, y + 0.04], color="#5F6368", lw=2)
+        ax.plot([x, x], [timeline_y - 0.035, timeline_y + 0.035], color="#5F6368", lw=2)
 
-    box(ax, (0.06, 0.67), 0.24, 0.13, "Alta/saída em\nhospital h_i", COLORS["red_light"], COLORS["transfer"], fontsize=11, weight="bold")
-    box(ax, (0.38, 0.67), 0.24, 0.13, "Janela temporal\n24-48 horas", "#FFF2CC", "#D6A500", fontsize=11, weight="bold")
-    box(ax, (0.70, 0.67), 0.24, 0.13, "Nova internação em\nhospital h_j", COLORS["green_light"], COLORS["hospital"], fontsize=11, weight="bold")
+    top_y, top_h = 0.68, 0.12
+    box(ax, (0.06, top_y), 0.24, top_h, "Saída com sinal\nde transferência", COLORS["red_light"], COLORS["transfer"], fontsize=10.8, weight="bold")
+    box(ax, (0.38, top_y), 0.24, top_h, "Janela temporal\n24-48 horas", "#FFF2CC", "#D6A500", fontsize=10.8, weight="bold")
+    box(ax, (0.70, top_y), 0.24, top_h, "Nova internação\nem outro hospital", COLORS["green_light"], COLORS["hospital"], fontsize=10.8, weight="bold")
 
-    arrow(ax, (0.30, 0.73), (0.38, 0.73), "#D6A500")
-    arrow(ax, (0.62, 0.73), (0.70, 0.73), "#D6A500")
+    arrow(ax, (0.30, top_y + top_h / 2), (0.38, top_y + top_h / 2), "#D6A500")
+    arrow(ax, (0.62, top_y + top_h / 2), (0.70, top_y + top_h / 2), "#D6A500")
 
     filters = [
-        ("sinal de transferência", 0.17),
-        ("sexo e faixa etária", 0.39),
-        ("capítulo CID-10", 0.61),
-        ("mesmo episódio clínico provável", 0.83),
+        ("hospital de\norigem distinto", 0.17),
+        ("sexo e idade\ncompatíveis", 0.39),
+        ("capítulo CID-10\nconsistente", 0.61),
+        ("desempate por\ntempo e CID exato", 0.83),
     ]
     for text, x in filters:
-        box(ax, (x - 0.10, 0.22), 0.20, 0.11, text, COLORS["gray_light"], "#C7CBD1", fontsize=9.5)
-        arrow(ax, (x, 0.34), (x, 0.54), "#80868B", lw=1.4, style="->")
+        box(ax, (x - 0.092, 0.23), 0.184, 0.115, text, COLORS["gray_light"], "#C7CBD1", fontsize=9.2)
+        arrow(ax, (x, 0.36), (x, timeline_y - 0.02), "#80868B", lw=1.4, style="->")
 
     ax.text(
         0.5,
         0.08,
-        "Resultado: aresta dirigida h_i -> h_j ponderada pelo número de transferências recorrentes.",
+        r"Resultado: aresta dirigida $h_i \rightarrow h_j$ ponderada pelo número de transferências recorrentes.",
         ha="center",
         va="center",
         fontsize=11,
@@ -171,7 +175,7 @@ def transfer_matching_heuristic():
 
 
 def directed_projection():
-    fig, ax = setup()
+    fig, ax = setup(width=11, height=5.8)
     title(ax, "Do grafo dirigido à projeção não dirigida ponderada")
 
     # Left: directed graph
@@ -184,7 +188,9 @@ def directed_projection():
         arrow(ax, left_nodes[a], left_nodes[b], c, lw=1.8)
     ax.text(0.23, 0.13, "grafo dirigido original", ha="center", fontsize=11, fontweight="bold")
 
-    arrow(ax, (0.45, 0.50), (0.56, 0.50), COLORS["edge"], lw=2.4, label="agregação\nponderada", label_xy=(0.505, 0.62))
+    arrow(ax, (0.45, 0.50), (0.56, 0.50), COLORS["edge"], lw=2.4)
+    ax.text(0.505, 0.64, "agregação\nponderada", ha="center", va="center", fontsize=10, color=COLORS["text"])
+    ax.text(0.505, 0.36, "soma volume\nmenor distância", ha="center", va="center", fontsize=9.3, color="#5F6368")
 
     # Right: undirected weighted projection
     G = nx.Graph()
