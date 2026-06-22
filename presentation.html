@@ -438,20 +438,20 @@
       </article>
       <article class="slide">
         <p class="kicker">Inferência de transferências</p>
-        <h2>Transferências foram inferidas de forma conservadora, não tratadas como rastreamento individual perfeito.</h2>
+        <h2>Transferências foram inferidas por continuidade provável, não por identificação perfeita do paciente.</h2>
         <div class="grid two">
           <div class="card">
-            <h3>Critérios</h3>
+            <h3>Como a busca é reduzida</h3>
             <ul>
-              <li>sinal administrativo de transferência;</li>
-              <li>nova internação em outro hospital em 24-48h;</li>
-              <li>sexo e idade compatíveis;</li>
-              <li>continuidade por capítulo CID-10.</li>
+              <li>cria uma chave provável: nascimento + sexo + idade + município;</li>
+              <li>agrupa internações por essa chave em pandas;</li>
+              <li>não compara cada transferência contra o Brasil inteiro;</li>
+              <li>procura só novas internações do mesmo paciente provável.</li>
             </ul>
           </div>
           <div class="card orange">
-            <h3>Leitura correta</h3>
-            <p>As arestas hospital → hospital indicam continuidade provável agregada, útil para padrões estruturais recorrentes.</p>
+            <h3>Quando vira transferência</h3>
+            <p>Depois de um sinal de transferência, o algoritmo procura nova internação entre 24 e 48 horas após a saída, exige continuidade clínica por capítulo CID-10 e usa o CNES dessa nova internação como hospital destino.</p>
           </div>
         </div>
       </article>

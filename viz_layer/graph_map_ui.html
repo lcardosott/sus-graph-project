@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SUS Graph Map</title>
+    <title>Rede SUS 2021 - Mapa e Dashboard</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
     <style>
       :root {
@@ -16,6 +16,8 @@
         --blue: #2f6f9f;
         --orange: #d56b2d;
         --red: #b94747;
+        --purple: #7357a4;
+        --cream: #fffaf0;
       }
 
       * { box-sizing: border-box; }
@@ -52,6 +54,7 @@
 
       h1 { font-size: 19px; margin: 0 0 4px; }
       h2 { font-size: 15px; margin: 18px 0 8px; }
+      h3 { font-size: 13px; margin: 12px 0 6px; }
       p { margin: 8px 0; line-height: 1.35; }
       button, select {
         font: inherit;
@@ -69,6 +72,7 @@
       .tab.active { display: block; }
       .preset-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
       .metric-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .wide-grid { display: grid; grid-template-columns: repeat(3, minmax(180px, 1fr)); gap: 12px; }
       .metric {
         border: 1px solid var(--line);
         border-radius: 8px;
@@ -76,7 +80,33 @@
         background: #fafbf9;
       }
       .metric b { display: block; font-size: 20px; }
+      .metric span { color: var(--muted); font-size: 12px; }
       .note, .muted { color: var(--muted); font-size: 12px; }
+      .callout {
+        border: 1px solid #d8e5dc;
+        border-left: 4px solid var(--green);
+        border-radius: 8px;
+        background: #f4faf7;
+        padding: 10px;
+        font-size: 13px;
+        line-height: 1.42;
+      }
+      .explain {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfcfa;
+        padding: 10px;
+        font-size: 12.5px;
+        line-height: 1.42;
+      }
+      .explain strong { color: #234f3f; }
+      .mini-list {
+        margin: 8px 0 0;
+        padding-left: 17px;
+        color: var(--muted);
+        font-size: 12.5px;
+        line-height: 1.45;
+      }
       .status {
         background: #f0f2ef;
         border-radius: 8px;
@@ -106,7 +136,7 @@
         max-width: 1180px;
         margin: 0 auto;
         display: grid;
-        grid-template-columns: minmax(300px, 0.9fr) minmax(420px, 1.4fr);
+        grid-template-columns: repeat(12, 1fr);
         gap: 16px;
         align-items: start;
       }
@@ -119,6 +149,52 @@
       .dashboard-block h3 {
         margin: 0 0 10px;
         font-size: 15px;
+      }
+      .span-4 { grid-column: span 4; }
+      .span-5 { grid-column: span 5; }
+      .span-6 { grid-column: span 6; }
+      .span-7 { grid-column: span 7; }
+      .span-8 { grid-column: span 8; }
+      .span-12 { grid-column: span 12; }
+      .hero-dashboard {
+        background:
+          linear-gradient(135deg, rgba(42, 127, 98, 0.12), rgba(47, 111, 159, 0.10)),
+          #fff;
+      }
+      .insight-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      .insight {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: #fbfcfa;
+      }
+      .insight b { display: block; margin-bottom: 5px; color: #234f3f; }
+      .chart-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 12px;
+      }
+      .chart-grid img {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+      }
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 4px 8px;
+        margin: 3px 4px 3px 0;
+        background: #fff;
+        color: var(--muted);
+        font-size: 12px;
       }
       body.dashboard-mode #map,
       body.dashboard-mode .legend {
@@ -137,8 +213,10 @@
         border-radius: 8px;
         padding: 10px;
         font-size: 12px;
+        max-width: 300px;
         box-shadow: 0 4px 18px rgba(0,0,0,0.1);
       }
+      .legend b { display: block; margin-bottom: 6px; }
       .swatch { display: inline-block; width: 12px; height: 3px; margin-right: 6px; vertical-align: middle; }
       .row { display: flex; align-items: center; gap: 8px; margin: 8px 0; }
       input[type="checkbox"] { transform: translateY(1px); }
@@ -155,6 +233,8 @@
         #mapWrap { height: 58vh; min-height: 0; }
         .main-view { height: 58vh; padding: 16px; }
         .dashboard-layout { grid-template-columns: 1fr; }
+        .span-4, .span-5, .span-6, .span-7, .span-8, .span-12 { grid-column: auto; }
+        .insight-grid, .wide-grid { grid-template-columns: 1fr; }
       }
     </style>
   </head>
@@ -162,7 +242,7 @@
     <div id="app">
       <aside id="panel">
         <h1>Rede SUS 2021</h1>
-        <div class="muted">Mapa leve guiado + dashboard dos algoritmos</div>
+        <div class="muted">Mapa guiado, dashboard e leitura dos algoritmos</div>
 
         <nav class="tabs">
           <button class="tab-btn active" data-tab="mapTab">Mapa</button>
@@ -172,6 +252,9 @@
         </nav>
 
         <section id="mapTab" class="tab active">
+          <div class="callout">
+            <strong>Mensagem principal:</strong> a rede nacional é conectada no agregado, mas fluxos recorrentes revelam dependências locais, hospitais-polo e deslocamentos fora da região oficial de saúde.
+          </div>
           <h2>Preset</h2>
           <div class="preset-grid">
             <button class="preset active" data-preset="25km">25 km</button>
@@ -179,6 +262,7 @@
             <button class="preset" data-preset="central">Hospitais centrais</button>
             <button class="preset" data-preset="dependency">Dependências</button>
           </div>
+          <div id="presetExplain" class="explain" style="margin-top:10px"></div>
           <h2>Camadas</h2>
           <label class="row"><input id="showEdges" type="checkbox" checked /> Corredores principais</label>
           <label class="row"><input id="showCentral" type="checkbox" checked /> Hospitais centrais</label>
@@ -186,30 +270,51 @@
           <label class="row"><input id="showDependency" type="checkbox" /> Dependências municipais</label>
           <label class="row"><input id="detailMode" type="checkbox" /> Modo detalhado</label>
           <div class="note">O modo padrão limita o desenho para computadores fracos. O detalhado aumenta o limite, mas pode ficar pesado.</div>
+          <h2>Como ler</h2>
+          <div class="explain">
+            <strong>Linhas laranja</strong> são fluxos município → hospital. <strong>Linhas azuis</strong> são transferências hospital → hospital inferidas. Marcadores verdes são hospitais centrais; vermelhos aparecem no stress test ou em exemplos de dependência.
+          </div>
           <h2>Status</h2>
           <div id="status" class="status">Carregando...</div>
         </section>
 
         <section id="dashTab" class="tab">
           <h2>Dashboard</h2>
-          <p>Resumo executivo dos algoritmos, hospitais centrais e fluxos entre regiões oficiais.</p>
-          <div class="note">Os detalhes aparecem na área principal para preservar largura de tabela e scroll independente.</div>
+          <p>Resumo executivo dos algoritmos, hospitais centrais, stress test, comunidades e fluxos fora das regiões oficiais.</p>
+          <div class="callout">Use esta aba quando quiser defender os resultados sem depender do mapa. Ela replica a lógica do relatório final com tabelas e gráficos estáticos.</div>
         </section>
 
         <section id="findingsTab" class="tab">
           <h2>Achados principais</h2>
-          <p>A rede nacional é altamente conectada no agregado, mas isso esconde vulnerabilidades locais.</p>
-          <p>Ao filtrar fluxos recorrentes e distantes, aparecem polos públicos que conectam municípios e regiões diferentes.</p>
-          <p>O corte de 50 km mostra maior desalinhamento regional: 43,80% do fluxo residência → hospital cruza região oficial de saúde.</p>
-          <p>Alguns municípios têm 100% do fluxo filtrado indo para um único hospital fora de sua região oficial.</p>
+          <div class="explain">
+            <strong>1. Robustez global.</strong> Mesmo removendo hospitais centrais, a maior componente nacional quase não se rompe.
+          </div>
+          <div class="explain">
+            <strong>2. Dependência local.</strong> Alguns municípios concentram 100% do fluxo filtrado em um único destino externo.
+          </div>
+          <div class="explain">
+            <strong>3. Desalinhamento regional.</strong> No corte de 50 km, 43,80% do fluxo residência → hospital cruza região oficial; em transferências, 60,99%.
+          </div>
+          <div class="explain">
+            <strong>4. Polos estruturais.</strong> Hospitais especializados, universitários e regionais aparecem como pontes da rede.
+          </div>
         </section>
 
         <section id="methodTab" class="tab">
           <h2>Metodologia</h2>
-          <p>Nós representam municípios e hospitais públicos. Arestas representam internações por residência e transferências entre hospitais.</p>
-          <p>Filtros usados na apresentação: pelo menos 5 ocorrências município → hospital e 2 ocorrências hospital → hospital.</p>
-          <p>Algoritmos: centralidade de intermediação, Louvain, supressão dinâmica de nós, k-caminhos e proxy de fluxo máximo/corte mínimo.</p>
-          <p>Distância é Haversine entre coordenadas disponíveis; parte das coordenadas de CNES usa centróide municipal.</p>
+          <div class="explain">
+            <strong>Nós:</strong> municípios de residência e hospitais públicos/SUS.
+          </div>
+          <div class="explain">
+            <strong>Arestas:</strong> internações por residência e transferências hospitalares inferidas por sinal administrativo, janela de 24-48h, chave provável de paciente e continuidade clínica.
+          </div>
+          <div class="explain">
+            <strong>Filtros:</strong> pelo menos 5 ocorrências para município → hospital e 2 para hospital → hospital; depois aplicamos distância mínima de 25 km ou 50 km.
+          </div>
+          <div class="explain">
+            <strong>Algoritmos:</strong> betweenness para polos, Louvain para comunidades funcionais, supressão para robustez, k-caminhos para redundância e comparação regional por REGSAUDE.
+          </div>
+          <div class="note">A distância é Haversine; quando faltava coordenada CNES, foi usado centróide municipal.</div>
         </section>
       </aside>
 
@@ -218,28 +323,71 @@
         <section id="dashboardView" class="main-view" aria-label="Dashboard dos algoritmos">
           <div class="dashboard-header">
             <h2>Dashboard dos algoritmos</h2>
-            <p class="muted">Indicadores sintéticos da instância pública nacional e das saídas usadas no relatório final.</p>
+            <p class="muted">Leitura guiada da rede pública hospitalar de 2021. Os números vêm de <code>final_map_layers.json</code> e dos relatórios finais CSV/JSON.</p>
           </div>
           <div class="dashboard-layout">
-            <section class="dashboard-block">
-              <h3>Resumo da instância</h3>
+            <section class="dashboard-block hero-dashboard span-12">
+              <h3>Como interpretar este dashboard</h3>
+              <div class="insight-grid">
+                <div class="insight"><b>Conectada no agregado</b>A maior componente permanece alta mesmo após remoções no stress test.</div>
+                <div class="insight"><b>Dependente localmente</b>Municípios específicos podem depender de poucos hospitais externos.</div>
+                <div class="insight"><b>Fora da região oficial</b>Fluxos recorrentes cruzam REGSAUDE com frequência, principalmente em transferências.</div>
+              </div>
+            </section>
+            <section class="dashboard-block span-4">
+              <h3>Escopo público/SUS</h3>
               <div id="metrics" class="metric-grid"></div>
             </section>
-            <section class="dashboard-block">
+            <section class="dashboard-block span-8">
+              <h3>Gráficos principais</h3>
+              <div class="chart-grid">
+                <img src="reports/resilience_largest_component_public_hospitals.png" alt="Maior componente por distância" />
+                <img src="reports/resilience_stress_path_increase_public_hospitals.png" alt="Aumento de caminho no stress test" />
+                <img src="reports/top_central_facilities_public_hospitals.png" alt="Hospitais mais centrais" />
+              </div>
+            </section>
+            <section class="dashboard-block span-7">
               <h3>Top hospitais por centralidade</h3>
+              <p class="note">Betweenness mede hospitais que funcionam como pontes em caminhos mínimos; não é apenas ranking de volume.</p>
               <div id="centralTable"></div>
             </section>
-            <section class="dashboard-block">
+            <section class="dashboard-block span-5">
+              <h3>Stress test</h3>
+              <p class="note">Remove hospitais centrais e mede se a rede nacional fica mais fragmentada ou com caminhos maiores.</p>
+              <div id="stressTable"></div>
+            </section>
+            <section class="dashboard-block span-6">
               <h3>Fluxos fora da região oficial</h3>
+              <p class="note">REGSAUDE é região oficial de saúde, não necessariamente UF. Cruzar região pode acontecer dentro do mesmo estado.</p>
               <div id="regionalTable"></div>
+            </section>
+            <section class="dashboard-block span-6">
+              <h3>Principais corredores regionais</h3>
+              <div id="mismatchTable"></div>
+            </section>
+            <section class="dashboard-block span-6">
+              <h3>Comunidades Louvain</h3>
+              <p class="note">Comunidades são blocos funcionais sugeridos pelos fluxos; não são regiões administrativas oficiais.</p>
+              <div id="communityTable"></div>
+            </section>
+            <section class="dashboard-block span-6">
+              <h3>Exemplos de dependência municipal</h3>
+              <p class="note">Participação de 100% vale para o fluxo filtrado recorrente e distante, não para todas as internações do município.</p>
+              <div id="dependencyTable"></div>
+            </section>
+            <section class="dashboard-block span-12">
+              <h3>Arquivos completos</h3>
+              <div id="sourceLinks"></div>
             </section>
           </div>
         </section>
         <div class="legend">
+          <b>Legenda do mapa</b>
           <div><span class="swatch" style="background: var(--orange)"></span>residência → hospital</div>
           <div><span class="swatch" style="background: var(--blue)"></span>hospital → hospital</div>
           <div><span class="swatch" style="background: var(--green); height: 8px"></span>centralidade</div>
           <div><span class="swatch" style="background: var(--red); height: 8px"></span>stress/dependência</div>
+          <div class="note" style="margin-top:7px">Linhas são amostras guiadas dos fluxos mais relevantes, não todas as 188 mil arestas.</div>
         </div>
       </main>
     </div>
@@ -252,6 +400,24 @@
       const state = { data: null, preset: "25km", renderToken: 0 };
       const limits = { edges: 1400, edgesDetailed: 3200 };
       let map, edgeLayer, markerLayer, renderer;
+      const presetText = {
+        "25km": {
+          title: "25 km: fricção regional/local",
+          body: "Mostra fluxos recorrentes a partir de 25 km. É bom para enxergar deslocamentos que já pesam para municípios pequenos, áreas rurais ou regiões com transporte difícil.",
+        },
+        "50km": {
+          title: "50 km: dependência longa",
+          body: "Filtro mais seletivo. Remove deslocamentos curtos e destaca corredores longos, polos regionais e maior desalinhamento com regiões oficiais.",
+        },
+        central: {
+          title: "Hospitais centrais",
+          body: "Realça hospitais com alta centralidade de intermediação. Eles aparecem como pontes entre municípios, regiões e corredores de atendimento.",
+        },
+        dependency: {
+          title: "Dependências municipais",
+          body: "Exibe exemplos onde o fluxo filtrado de um município se concentra em um único hospital externo. É uma leitura local, não uma média nacional.",
+        },
+      };
 
       function resolvePath(pathValue) {
         if (!pathValue) return "";
@@ -263,6 +429,23 @@
         const number = Number(value);
         if (!Number.isFinite(number)) return "";
         return number.toLocaleString("pt-BR", { maximumFractionDigits: digits });
+      }
+
+      function pct(value, digits = 1) {
+        return `${fmt(Number(value) * 100, digits)}%`;
+      }
+
+      function edgeTypeLabel(value) {
+        return value === "transfer" ? "transferência hospital → hospital" : "residência → hospital";
+      }
+
+      function shortName(value, max = 42) {
+        const text = String(value || "");
+        return text.length > max ? `${text.slice(0, max - 1)}…` : text;
+      }
+
+      function table(headers, rows) {
+        return `<table class="table"><thead><tr>${headers.map((item) => `<th>${item}</th>`).join("")}</tr></thead><tbody>${rows.join("")}</tbody></table>`;
       }
 
       function initMap() {
@@ -287,7 +470,7 @@
       }
 
       function activePresetKey() {
-        if (state.preset === "50km") return "50km";
+        if (["50km", "central", "dependency"].includes(state.preset)) return "50km";
         return "25km";
       }
 
@@ -299,10 +482,11 @@
       }
 
       function popupEdge(edge) {
-        return `<b>${edge.edge_type}</b><br>
+        return `<b>${edgeTypeLabel(edge.edge_type)}</b><br>
           ${edge.source_name} → ${edge.target_name}<br>
           Fluxo: ${fmt(edge.transfer_count)}<br>
-          Distância: ${fmt(edge.distance_km, 1)} km`;
+          Distância: ${fmt(edge.distance_km, 1)} km<br>
+          ${edge.same_health_region ? "Dentro da mesma região oficial" : "<b>Fora da região oficial</b>"}`;
       }
 
       function popupNode(node, kind) {
@@ -311,7 +495,12 @@
           : kind === "stress"
             ? `<br>Passo stress: ${node.step}<br>Aumento caminho: ${fmt(node.path_increase_ratio * 100, 2)}%`
             : "";
-        return `<b>${node.name}</b><br>${node.id}<br>Município: ${node.municipality_code}${extra}`;
+        const meaning = kind === "central"
+          ? "<br><span>Leitura: hospital-polo na estrutura de caminhos.</span>"
+          : kind === "stress"
+            ? "<br><span>Leitura: nó crítico ou exemplo de dependência.</span>"
+            : "";
+        return `<b>${node.name}</b><br>${node.id}<br>Município: ${node.municipality_code}${extra}${meaning}`;
       }
 
       function renderChunk(items, draw, done) {
@@ -370,7 +559,7 @@
             L.polyline(
               [[item.source.lat, item.source.lon], [item.target.lat, item.target.lon]],
               { color: "#b94747", weight: 2.6, opacity: 0.75, dashArray: "6 6", renderer }
-            ).bindPopup(`${item.source.name} → ${item.target.name}<br>Fluxo: ${fmt(item.total_flow)}<br>Dependência: ${fmt(item.top_target_share * 100, 1)}%`).addTo(edgeLayer);
+            ).bindPopup(`<b>Dependência municipal</b><br>${item.source.name} → ${item.target.name}<br>Fluxo filtrado: ${fmt(item.total_flow)}<br>Participação do destino: ${pct(item.top_target_share)}<br>Distância média: ${fmt(item.weighted_mean_distance_km, 1)} km`).addTo(edgeLayer);
           });
         }
       }
@@ -387,33 +576,69 @@
       function updateStatus(edgeCount) {
         const key = activePresetKey();
         const algo = key === "50km" ? state.data.algorithm_50km : state.data.algorithm_25km;
+        const regional = state.data.regional_overall.find((row) => Number(row.distance_min_km) === Number(key.replace("km", "")) && row.edge_type === "residence");
+        const description = presetText[state.preset] || presetText[key];
         document.getElementById("status").innerHTML = [
-          `Preset: <b>${state.preset}</b>`,
+          `Preset: <b>${description.title}</b>`,
           `Arestas desenhadas: <b>${fmt(edgeCount)}</b>`,
           `Nós na análise: <b>${fmt(algo.primary_nodes)}</b>`,
           `Comunidades Louvain: <b>${fmt(algo.communities)}</b>`,
+          regional ? `Residência fora da região: <b>${pct(regional.cross_health_region_share, 2)}</b>` : "",
         ].join("<br>");
+        updatePresetExplain();
+      }
+
+      function updatePresetExplain() {
+        const info = presetText[state.preset] || presetText[activePresetKey()];
+        document.getElementById("presetExplain").innerHTML = `<strong>${info.title}</strong><br>${info.body}`;
       }
 
       function buildDashboard() {
         const summary = state.data.summary;
+        const algo25 = state.data.algorithm_25km;
         const algo50 = state.data.algorithm_50km;
         document.getElementById("metrics").innerHTML = [
-          ["Linhas SIH", summary.records_rows],
-          ["Hospitais públicos", summary.public_hospital_nodes_in_graph],
-          ["Nós 50 km", algo50.primary_nodes],
-          ["Arestas 50 km", algo50.primary_edges],
-        ].map(([label, value]) => `<div class="metric"><b>${fmt(value)}</b>${label}</div>`).join("");
+          ["Linhas SIH", summary.records_rows, "registros reconciliados"],
+          ["Hospitais públicos", summary.public_hospital_nodes_in_graph, "escopo final SUS"],
+          ["Arestas públicas", summary.edge_analysis_rows, "antes dos filtros finais"],
+          ["Nós 25 km", algo25.primary_nodes, `${fmt(algo25.primary_edges)} arestas`],
+          ["Nós 50 km", algo50.primary_nodes, `${fmt(algo50.primary_edges)} arestas`],
+          ["Comunidades 50 km", algo50.communities, "Louvain"],
+        ].map(([label, value, sub]) => `<div class="metric"><b>${fmt(value)}</b>${label}<br><span>${sub}</span></div>`).join("");
 
-        const centralRows = state.data.presets["50km"].central_nodes.slice(0, 8).map((node) =>
-          `<tr><td>${node.rank}</td><td>${node.name}</td><td>${fmt(node.betweenness, 4)}</td></tr>`
+        const centralRows = state.data.presets["50km"].central_nodes.slice(0, 12).map((node) =>
+          `<tr><td>${node.rank}</td><td>${shortName(node.name, 48)}</td><td>${fmt(node.betweenness, 4)}</td><td>${fmt(node.weighted_degree)}</td></tr>`
         ).join("");
-        document.getElementById("centralTable").innerHTML = `<table class="table"><thead><tr><th>#</th><th>Hospital</th><th>Betweenness</th></tr></thead><tbody>${centralRows}</tbody></table>`;
+        document.getElementById("centralTable").innerHTML = table(["#", "Hospital", "Betweenness", "Grau pond."], [centralRows]);
 
         const regionalRows = state.data.regional_overall.map((row) =>
-          `<tr><td>${row.distance_min_km}</td><td>${row.edge_type}</td><td>${fmt(Number(row.cross_health_region_share) * 100, 2)}%</td><td>${fmt(row.weighted_mean_distance_km, 1)} km</td></tr>`
+          `<tr><td>${fmt(row.distance_min_km)} km</td><td>${edgeTypeLabel(row.edge_type)}</td><td>${fmt(row.edges)}</td><td>${fmt(row.total_flow)}</td><td>${pct(row.cross_health_region_share, 2)}</td><td>${fmt(row.weighted_mean_distance_km, 1)} km</td></tr>`
         ).join("");
-        document.getElementById("regionalTable").innerHTML = `<table class="table"><thead><tr><th>km</th><th>tipo</th><th>fora região</th><th>dist. média</th></tr></thead><tbody>${regionalRows}</tbody></table>`;
+        document.getElementById("regionalTable").innerHTML = table(["Corte", "Tipo", "Arestas", "Fluxo", "Fora região", "Dist. média"], [regionalRows]);
+
+        const stressRows = state.data.presets["50km"].stress_nodes.map((node) =>
+          `<tr><td>${node.step}</td><td>${shortName(node.name, 42)}</td><td>${pct(node.largest_component_share, 2)}</td><td>${pct(node.path_increase_ratio, 2)}</td></tr>`
+        ).join("");
+        document.getElementById("stressTable").innerHTML = table(["Passo", "Hospital removido", "Maior comp.", "Aumento caminho"], [stressRows]);
+
+        const mismatchRows = state.data.regional_mismatch_top.slice(0, 8).map((row) =>
+          `<tr><td>${fmt(row.distance_min_km)} km</td><td>${row.source_health_region_id} → ${row.target_health_region_id}</td><td>${fmt(row.flow)}</td><td>${pct(row.share_of_source_region_flow, 1)}</td><td>${fmt(row.weighted_mean_distance_km, 1)} km</td></tr>`
+        ).join("");
+        document.getElementById("mismatchTable").innerHTML = table(["Corte", "Corredor", "Fluxo", "Part. origem", "Dist."], [mismatchRows]);
+
+        const communityRows = state.data.communities_50km_top.slice(0, 8).map((row) =>
+          `<tr><td>${row.community_id}</td><td>${fmt(row.nodes)}</td><td>${fmt(row.facility_nodes)}</td><td>${fmt(row.municipality_nodes)}</td><td>${row.dominant_uf_prefix}</td><td>${pct(row.dominant_uf_share, 1)}</td></tr>`
+        ).join("");
+        document.getElementById("communityTable").innerHTML = table(["Comun.", "Nós", "Hosp.", "Mun.", "UF dom.", "Part."], [communityRows]);
+
+        const dependencyRows = state.data.presets.dependency.examples.slice(0, 8).map((item) =>
+          `<tr><td>${shortName(item.source.name, 32)}</td><td>${shortName(item.target.name, 42)}</td><td>${fmt(item.total_flow)}</td><td>${pct(item.top_target_share, 1)}</td><td>${fmt(item.weighted_mean_distance_km, 1)} km</td></tr>`
+        ).join("");
+        document.getElementById("dependencyTable").innerHTML = table(["Município", "Destino", "Fluxo", "Part.", "Dist."], [dependencyRows]);
+
+        document.getElementById("sourceLinks").innerHTML = Object.entries(state.data.source_tables)
+          .map(([label, path]) => `<span class="tag">${label}: <code>${path}</code></span>`)
+          .join("");
       }
 
       function attachEvents() {
@@ -433,6 +658,7 @@
             button.classList.add("active");
             state.preset = button.dataset.preset;
             document.getElementById("showDependency").checked = state.preset === "dependency";
+            updatePresetExplain();
             render();
           });
         });
@@ -448,6 +674,7 @@
         if (!response.ok) throw new Error(`Falha ao carregar camadas: ${response.status}`);
         state.data = await response.json();
         buildDashboard();
+        updatePresetExplain();
         render();
       }
 

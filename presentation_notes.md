@@ -148,9 +148,9 @@ Transição para P2: "A partir dessas instâncias, a parte central do projeto fo
 
 Tempo: 50s.
 
-Falar: "As transferências não vêm como uma lista limpa origem-destino em todos os casos. Por isso usamos uma heurística conservadora: sinal administrativo de transferência, nova internação em outro hospital em 24 a 48 horas, sexo e idade compatíveis e continuidade por capítulo CID-10."
+Falar: "As transferências não vêm como uma lista limpa origem-destino em todos os casos, e também não temos uma identificação individual perfeita do paciente. Por isso usamos uma chave provável formada por nascimento, sexo, idade e município de residência. Dentro desse grupo, quando há sinal de transferência, buscamos nova internação entre 24 e 48 horas após a saída e exigimos continuidade por capítulo CID-10."
 
-Nota: diga "continuidade provável agregada", não "rastreamento individual".
+Nota: diga "paciente provável" e "continuidade provável agregada", não "rastreamento individual". Se perguntarem sobre escala, explique que a busca é feita dentro de cada grupo de chave provável em pandas, usando datas ordenadas, e não contra todas as internações do Brasil.
 
 ## Presenter 2: Implementação e Algoritmos
 
@@ -277,7 +277,7 @@ Pode favorecer nós que conectam muitos caminhos. Por isso a interpretação foi
 ## Methodology Questions
 
 **Como foram inferidas transferências?**  
-Por sinal administrativo, janela temporal de 24-48h, compatibilidade demográfica e continuidade por capítulo CID-10. Arestas indicam continuidade provável agregada.
+Por chave de paciente provável, sinal administrativo, janela temporal de 24-48h após a saída e continuidade por capítulo CID-10. O destino vem do CNES da internação candidata. Arestas indicam continuidade provável agregada, não identificação individual perfeita.
 
 **Por que o número de coordenadas CNES diretas é baixo?**  
 Porque o catálogo usado não forneceu ponto físico confiável para a maioria dos hospitais no recorte. Para manter cobertura nacional, o projeto usou centróides municipais quando necessário.

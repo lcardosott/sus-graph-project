@@ -83,7 +83,7 @@ O pipeline completo começa com a seleção dos arquivos SIH por ano, mês e UF 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.72\linewidth]{figures/topological_graph_from_partial.png}
+\includegraphics[width=0.72\linewidth]{figures/grafo.jpg}
 \caption{Amostra topológica do grafo gerado na etapa de modelagem. A visualização sem mapa evidencia a formação de agrupamentos densos e a presença de ligações entre blocos.}
 \label{fig:grafo-topologico}
 \end{figure}
@@ -92,23 +92,22 @@ O grafo nacional original possui 11.823 nós e 203.184 arestas. No recorte final
 
 \section{Construção das Instâncias}
 
-O grafo final é dirigido e ponderado: $G=(V,E,w,d)$. O conjunto $V$ contém dois tipos de vértices: municípios e hospitais públicos. Uma aresta de residência $u \rightarrow v$ liga o município de residência do paciente ao hospital de internação; uma aresta de transferência $h_i \rightarrow h_j$ liga dois hospitais quando os registros indicam continuidade provável de atendimento. O peso $w(e)$ representa volume agregado e $d(e)$ representa distância geográfica aproximada.
+A construção do grafo usou duas instâncias complementares a partir dos mesmos dados: a instância dirigida, que conserva a orientação natural dos fluxos registrados no SIH/SUS, e uma instância projetada não dirigida, derivada dessa base. O grafo dirigido é a representação direta dos eventos: municípios de residência apontam para hospitais de internação e hospitais apontam para hospitais de transferência. Essa versão é essencial para modelar a origem, o destino, o tipo de fluxo e a sequência temporal dos atendimentos.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.72\linewidth]{figures/grafo.jpg}
-\caption{Modelagem do grafo assistencial: municípios e hospitais formam nós de naturezas distintas, ligados por fluxos de residência e por transferências hospitalares inferidas.}
-\label{fig:modelagem-grafo}
-\end{figure}
+A instância projetada não dirigida é construída a partir do grafo dirigido, agregando arcos paralelos, somando contagens e mantendo a menor distância entre pares conectados. Esse segundo grafo não busca reconstituir o caminho cronológico exato do paciente, mas sim capturar a conectividade assistencial entre unidades de interesse. Ele é usado para medidas como centralidade de intermediação, comunidades Louvain, teste de supressão dinâmica e análise de redundância de caminhos, porque esses algoritmos exigem uma visão de conjunto baseada em conectividade e caminhos mínimos que não ficam adequadamente definidos num grafo municipalidades $\rightarrow$ hospitais estritamente orientado.
 
-As transferências exigiram maior cuidado porque a base não oferece, de forma limpa e universal, uma lista explícita de origem e destino. A implementação adotou uma heurística conservadora de quatro pilares em \ghfile{data_layer/transfer_matching.py}{transfer\_matching.py}: sinal de transferência por campo ou motivo de saída validado, janela temporal de 24 a 48 horas entre alta e nova internação, continuidade demográfica por sexo e idade, e continuidade clínica por capítulo CID-10. O CID-10 é a Classificação Internacional de Doenças, usada nos registros hospitalares para codificar diagnósticos; neste trabalho, ele foi usado apenas de forma agregada para verificar se a internação seguinte parecia pertencer ao mesmo quadro clínico. Quando havia múltiplos candidatos, a escolha priorizava menor intervalo temporal, CID exato e identificador de destino estável. Esse procedimento não deve ser lido como rastreamento individual perfeito, mas como uma forma reprodutível de inferir relações estruturais recorrentes entre hospitais.
+As partes comuns entre as instâncias são claras: ambas compartilham os mesmos nós ativos, as mesmas arestas baseadas nos dados de residência e transferência, as mesmas informações de volume agregado e as mesmas distâncias geográficas. A diferença está na orientação e no propósito analítico. O grafo dirigido preserva a lógica natural dos registros e serve para montar o escopo, enquanto a projeção não dirigida preserva a estrutura topológica relevante para mapear referências, comunidades funcionais e alternativas de rota.
+
+O conjunto de vértices $V$ contém dois tipos de vértices: municípios de residência e hospitais públicos. No grafo dirigido, uma aresta de residência $u \rightarrow v$ liga o município de residência do paciente ao hospital de internação; uma aresta de transferência $h_i \rightarrow h_j$ liga dois hospitais quando os registros indicam continuidade provável de atendimento. O peso $w(e)$ representa volume agregado e $d(e)$ representa distância geográfica aproximada.
+
+As transferências exigiram maior cuidado porque a base não oferece, de forma limpa e universal, uma lista explícita de origem e destino. A implementação adotou uma heurística conservadora de quatro pilares em \ghfile{data_layer/transfer_matching.py}{transfer\_matching.py}: sinal de transferência por campo ou motivo de saída validado, janela temporal de 24 a 48 horas entre alta e nova internação, continuidade demográfica por sexo e idade, e continuidade clínica por capítulo CID-10. O CID-10 é a Classificação Internacional de Doenças, usada nos registros hospitalares para codificar diagnósticos; neste trabalho, ele foi usado de forma agregada para verificar se a internação seguinte parecia pertencer ao mesmo quadro clínico. Quando havia múltiplos candidatos, a escolha priorizava menor intervalo temporal, CID exato e identificador de destino estável. Esse procedimento não deve ser lido como rastreamento individual perfeito, mas como uma forma reprodutível de inferir relações estruturais recorrentes entre hospitais.
 
 A distância entre os pontos foi calculada pela fórmula de Haversine:
 \begin{equation}
-d = 2r \arcsin \sqrt{
-\sin^2\left(\frac{\Delta \phi}{2}\right) +
-\cos(\phi_1)\cos(\phi_2)\sin^2\left(\frac{\Delta \lambda}{2}\right)
-},
+ d = 2r \arcsin \sqrt{
+ \sin^2\left(\frac{\Delta \phi}{2}\right) +
+ \cos(\phi_1)\cos(\phi_2)\sin^2\left(\frac{\Delta \lambda}{2}\right)
+ },
 \label{eq:haversine}
 \end{equation}
 em que $\phi$ é latitude, $\lambda$ é longitude e $r$ é o raio aproximado da Terra. Quando a coordenada exata do hospital não estava disponível, foi usado o centróide do município. Essa decisão aumenta a cobertura nacional, mas limita interpretações finas dentro de cidades grandes.
@@ -131,7 +130,15 @@ usar maior componente de G_proj para centralidade, comunidades e stress test
 
 A implementação foi dividida em camadas para manter rastreabilidade e facilitar reexecuções parciais. A \texttt{data\_layer} concentra coleta, validação e tabelas analíticas; a \texttt{model\_layer} constrói o grafo anual em GEXF; a \texttt{filter\_engine} implementa filtros reutilizáveis de distância, tipo e recorrência; a \texttt{algorithm\_layer} executa os métodos finais; a \texttt{viz\_layer} produz mapas, figuras e uma visualização interativa leve.
 
-Os algoritmos finais estão em \ghfile{algorithm_layer/public_hospital_analysis.py}{public\_hospital\_analysis.py} e \ghfile{algorithm_layer/regional_flow_analysis.py}{regional\_flow\_analysis.py}. Para centralidade, comunidades, k-caminhos e supressão foi usada uma projeção não direcionada ponderada da maior componente. A direção original é essencial para construir os fluxos, mas a projeção torna a análise de conectividade assistencial mais adequada: em um grafo estritamente dirigido, muitos caminhos município $\rightarrow$ hospital não retornam e as medidas ficariam dominadas pela orientação administrativa das arestas.
+Os algoritmos finais estão em \ghfile{algorithm_layer/public_hospital_analysis.py}{public\_hospital\_analysis.py} e \ghfile{algorithm_layer/regional_flow_analysis.py}{regional\_flow\_analysis.py}. No código principal de análise, o pipeline começa em \texttt{parse\_args()}, que define parâmetros reproduzíveis como limiares de residência, transferência, distância e amostragem para centralidade. A função \texttt{load\_inputs()} lê os artefatos curados de nó e aresta, normaliza contagens e converte distâncias para valores numéricos.
+
+A função \texttt{filter\_edges()} aplica os filtros principais usados no relatório: conserva arestas de residência com pelo menos 5 ocorrências, arestas de transferência com pelo menos 2 ocorrências e arestas com distância acima do limiar escolhido. Em seguida, \texttt{build\_directed\_graph()} constrói o grafo direcionado com atributos como \texttt{edge\_type}, \texttt{transfer\_count} e \texttt{distance\_km}, além de manter os metadados de cada nó. A partir desse grafo registra\-do, \texttt{weighted\_projection()} gera a projeção não dirigida ponderada por volume, somando \texttt{transfer\_count} para arestas repetidas e preservando a menor distância entre pares quando existem múltiplas arestas paralelas.
+
+A maior componente da projeção é selecionada por \texttt{largest\_component()}, e, nessa instância, são executadas as análises de conectividade. \texttt{community\_reports()} usa \texttt{nx.community.louvain\_communities()} com peso \texttt{transfer\_count} para identificar comunidades funcionais. \texttt{top\_facility\_centrality()} calcula a centralidade de intermediação aproximada com amostragem (	exttt{k} padrão 200), filtrando apenas hospitais na saída. \texttt{dynamic\_stress()} executa o teste de supressão dinâmica: amostra até 120 nós, remove iterativamente o hospital de maior centralidade e registra a evolução do tamanho da maior componente e do caminho médio.
+
+A camada de regionalização em \texttt{regional\_flow\_analysis.py} junta os dados de arestas com o catálogo de municípios e regiões de saúde. Ela calcula um campo \texttt{same\_health\_region} e classifica fluxos como intra-região, inter-região ou desconhecidos. Os relatórios de saída agrupam resultados para bandas de 25 km e 50 km, permitem comparar residência e transferência, e destacam municípios com dependência externa total em relação aos fluxos recorrentes.
+
+Essa distinção é a base técnica para explicar por que a direção é mantida na modelagem e por que a projeção não dirigida é usada nas análises de conectividade. Em um grafo estritamente dirigido, muitos caminhos município $\rightarrow$ hospital não retornam e as medidas ficariam dominadas pela orientação administrativa das arestas. A projeção ponderada preserva a informação de volume e de distância, tornando possível analisar a estrutura de referência e a redundância de rotas sem perder a origem do fluxo.
 
 \begin{table}[H]
 \centering
@@ -170,13 +177,6 @@ Regiões de saúde &
 \end{tabular}
 \end{table}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.68\linewidth]{figures/directed_projection.png}
-\caption{Passagem do grafo dirigido de fluxos para a projeção não dirigida ponderada usada pelos algoritmos de conectividade.}
-\label{fig:projecao}
-\end{figure}
-
 A validação combinou testes automatizados e reconciliação de totais. Os testes cobrem seleção SIH, contratos de esquema, enriquecimento de nós, filtros, construção do recorte público e algoritmos. Além disso, os totais do grafo, das tabelas públicas e dos relatórios finais foram comparados por arquivos de resumo JSON. Essa estratégia não elimina limitações dos dados públicos, mas torna as transformações auditáveis.
 
 \section{Algoritmos e Resultados}
@@ -206,7 +206,11 @@ ordenar hospitais por betweenness decrescente
 \label{fig:centralidade}
 \end{figure}
 
-No corte de 50 km, os principais hospitais por centralidade foram Fundação Pio XII Barretos, Hospital Amaral Carvalho Jaú, Hospital São Vicente de Paulo, Hospital Regional Tibério Nunes, Hospital Municipal Esaú Matos, Hospital das Clínicas FAEPA Ribeirão Preto e Hospital de Base de São José do Rio Preto. O resultado é coerente com hospitais especializados, universitários e regionais, que funcionam como referência para múltiplas origens. A centralidade, portanto, reforça a ideia de polos estruturais: alguns hospitais organizam fluxos em escala superior ao município onde estão localizados.
+No corte de 50 km, os principais hospitais por centralidade foram Fundação Pio XII Barretos, Hospital Amaral Carvalho Jaú, Hospital São Vicente de Paulo, Hospital Regional Tibério Nunes, Hospital Municipal Esaú Matos, Hospital das Clínicas FAEPA Ribeirão Preto e Hospital de Base de São José do Rio Preto. Esses hospitais aparecem no topo da métrica porque conectam muitos municípios e outros hospitais por caminhos de menor custo geográfico dentro da projeção.
+
+Um hospital com alta centralidade funciona como um eixo na rede assistencial. Socialmente, isso significa que ele concentra muito mais do que internações: concentra decisões de encaminhamento, transporte de pacientes, acompanhamento de casos complexos e eventual sobrecarga de sistemas de regulação. Existe um problema por trás disso. Alta centralidade pode ser sintoma de desigualdade de oferta local e de dependência de poucos polos. Quando o atendimento de um município ou de uma região depende fortemente de um único hospital central, a falha desse hospital — por falta de leitos, greves, crises sanitárias ou restrição de capacidade — impacta um conjunto extenso de municípios.
+
+As implicações práticas e sociais são múltiplas. Primeiro, o planejamento de capacidade deve reconhecer que esses hospitais não são apenas grandes em volume, mas são críticos para a conectividade da rede. Segundo, políticas de regionalização precisam considerar os fluxos reais e não apenas a localização de leitos oficiais; um hospital de alta centralidade pode exigir apoio extra em transporte, regulação e infraestrutura de acolhimento de familiares. Terceiro, o fato de alguns hospitais assumirem esse papel de ponte reforça a necessidade de fortalecer alternativas locais, distribuindo recursos e especialidades de forma a reduzir a dependência de trajetos longos e policentrar o atendimento público.
 
 \subsection{Comunidades Louvain}
 
@@ -219,18 +223,15 @@ O método Louvain agrupa vértices que têm conexões internas mais fortes do qu
 \label{fig:louvain}
 \end{figure}
 
-As instâncias principais tiveram 49 comunidades no corte de 25 km e 43 comunidades no corte de 50 km. A redução ocorre porque o corte de 50 km remove parte dos deslocamentos regionais curtos e deixa uma rede mais seletiva, concentrada em corredores longos. A comparação com UFs e regiões de saúde foi usada como evidência de alinhamento ou desalinhamento entre a rede funcional e a divisão administrativa.
+As instâncias principais tiveram 49 comunidades no corte de 25 km e 43 comunidades no corte de 50 km. A redução ocorre porque o corte de 50 km remove parte dos deslocamentos regionais curtos e deixa uma rede mais seletiva, concentrada em corredores longos. Essa diferença mostra que a lógica de comunidade muda quando se faz um filtro mais rígido: a rede funcional se torna menos fragmentada e mais dominada por grandes blocos de fluxo de alta distância.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.67\linewidth]{figures/communities_summary_50km.png}
-\caption{Maiores comunidades Louvain no corte de 50 km, separando municípios e hospitais. Comunidades maiores misturam muitos municípios de origem com um conjunto menor de hospitais de referência.}
-\label{fig:comunidades-resumo}
-\end{figure}
+Uma comunidade Louvain no contexto dos hospitais representa um conjunto de municípios e hospitais que compartilham rotas recorrentes e que, portanto, funcionam como uma unidade assistencial de fato. O problema social surge quando essas comunidades não coincidem com as regiões oficiais de saúde. Nesse caso, as decisões de gestão, financiamento e regulação podem estar desalinhadas com os fluxos reais de pacientes e as necessidades efetivas das populações.
+
+Na prática, pertencer a uma mesma comunidade Louvain significa que municípios e hospitais estão integrados por atendimentos frequentes. Isso pode ser positivo, pois sugere coesão funcional, mas também revela vulnerabilidades: uma comunidade muito concentrada em poucos hospitais ou em uma mesma direção pode sofrer com restrição de alternativas se um destino preferencial estiver sobrecarregado. A implicação social é que políticas de reorganização precisam reconhecer esses mosaicos funcionais e apoiar a coordenação entre regiões, especialmente quando as comunidades atravessam estados ou códigos de região de saúde.
 
 \subsection{Supressão Dinâmica}
 
-O teste de supressão remove iterativamente hospitais com maior intermediação e recalcula a maior componente e o caminho médio amostrado. A pergunta não é se a rede ``deixa de existir'', mas se a retirada de polos centrais alonga caminhos ou fragmenta a conectividade.
+O teste de supressão remove iterativamente hospitais com maior intermediação e recalcula a maior componente e o caminho médio amostrado. A pergunta não é se a rede "deixa de existir", mas se a retirada de polos centrais alonga caminhos ou fragmenta a conectividade.
 
 \begin{figure}[H]
 \centering
@@ -291,9 +292,17 @@ No corte de 50 km, entre os pares analisados, houve casos com três caminhos enc
 
 O projeto incluiu uma aproximação de fluxo máximo/corte mínimo, mas ela foi rebaixada para resultado exploratório. O teorema max-flow/min-cut é adequado para estudar gargalos quando há capacidades confiáveis nas arestas e nos destinos. Neste trabalho, a capacidade disponível foi aproximada pelo volume anual observado, que não equivale a leitos operacionais, equipe, ocupação simultânea, especialidade ou disponibilidade temporal. Assim, a implementação fica no repositório como base para continuidade, mas as conclusões finais não dependem dela.
 
+Mesmo assim, a análise exploratória traz uma descoberta social relevante: a rede não é apenas conectada, ela é funcionalmente desigual. Existem corredores assistenciais e nós que carregam mais fluxo quando medimos capacidade implícita. Em termos sociais, isso significa que alguns hospitais e rotas de transferência são estruturas de referência para várias municipalidades e que sua limitação tem impacto direto em pacientes, famílias e sistemas de regulação.
+
+A implicação prática é clara: políticas de acesso devem olhar além da quantidade total de leitos e considerar a forma como os fluxos reais circulam. A análise sugere que o SUS público brasileiro em 2021 apresenta tanto conectividade global quanto pontos de fragilidade local, e que a simples existência de uma rota de transferência não garante que essa rota seja uma alternativa assistencial razoável.
+
 \section{Regiões Oficiais e Dependência Municipal}
 
-A comparação regional usou o campo \texttt{REGSAUDE} dos arquivos CNES/ST de janeiro de 2021. A referência cobriu 27 arquivos estaduais, 334.702 linhas CNES e 5.570 municípios, mas também registrou 1.250 municípios com conflito de código regional entre estabelecimentos e 239 sem região identificada. Por isso, a regionalização foi tratada como aproximação oficial baseada no CNES, não como verdade administrativa perfeita.
+O objetivo desta análise de regionalização foi confrontar o acesso efetivo observado nos dados com o desenho oficial de regiões de saúde do CNES. Queríamos verificar até que ponto os fluxos recorrentes de residência $\rightarrow$ hospital e de transferência hospitalar respeitam os limites das regiões oficiais, e identificar onde a prática efetiva rompe a estrutura administrativa.
+
+Existem problemas por trás dessa comparação. Um fluxo recorrente que cruza região oficial de saúde pode indicar que a oferta dentro da região é insuficiente, que há falta de especialidade local ou que a regulação regional não consegue atender a demanda. Também pode revelar custos sociais adicionais para pacientes e famílias: deslocamentos mais longos, maior tempo de espera, necessidade de hospedagem e perda de tempo produtivo. Quando esses fluxos se concentram em poucos destinos externos, a vulnerabilidade se intensifica.
+
+As implicações práticas e sociais são importantes. Se a rede real não coincide com as regiões oficiais, as decisões de alocação de recursos e a governança regional precisam ser adaptadas. Além de apontar possíveis gaps de capacidade, essa análise sugere a necessidade de maior coordenação interestadual e inter-regional, políticas de transporte sanitário e revisão de fluxos de referência que considerem as rotas efetivas dos pacientes.
 
 \begin{table}[H]
 \centering
@@ -312,9 +321,13 @@ Distância & Tipo & Arestas & Fluxo total & Fora da região & Parcela fora & Dis
 \end{tabular}
 \end{table}
 
-A Tabela \ref{tab:regioes} concentra um dos achados centrais. Aqui, ``fora da região'' não significa necessariamente sair do estado. A comparação usa a região oficial de saúde do CNES, identificada pelo campo \texttt{REGSAUDE}; um mesmo estado possui várias regiões de saúde, por isso muitos cruzamentos aparecem como PE-0004 $\rightarrow$ PE-0001, SP-0201 $\rightarrow$ SP-0101 ou BA-0003 $\rightarrow$ BA-0001. Esses são fluxos entre regiões administrativas diferentes dentro da mesma UF. Cruzamentos de estado também existem e foram calculados separadamente como \textit{cross UF}, mas não são o foco desta tabela.
+A Tabela \ref{tab:regioes} concentra um dos achados centrais. Aqui, "fora da região" não significa necessariamente sair do estado. A comparação usa a região oficial de saúde do CNES, identificada pelo campo \texttt{REGSAUDE}; um mesmo estado possui várias regiões de saúde, por isso muitos cruzamentos aparecem como PE-0004 $\rightarrow$ PE-0001, SP-0201 $\rightarrow$ SP-0101 ou BA-0003 $\rightarrow$ BA-0001. Esses são fluxos entre regiões administrativas diferentes dentro da mesma UF. Cruzamentos de estado também existem e foram calculados separadamente como \textit{cross UF}, mas não são o foco desta tabela.
 
 Quando os fluxos são recorrentes, parte expressiva do atendimento ultrapassa a região oficial de saúde. Isso não significa que todo deslocamento inter-regional seja problemático: alta complexidade frequentemente exige referência externa. O sinal de vulnerabilidade aparece quando o deslocamento é repetido, longo e concentrado em poucos destinos.
+
+O perfil geográfico desses casos reforça um ponto relevante: as regiões mais dependentes tendem a ser municípios do interior e áreas periféricas, não necessariamente polos litorâneos. Entre os 527 municípios com 100\% do fluxo recorrente direcionado a um único destino externo, há muitos exemplos do interior de Minas Gerais, São Paulo, Mato Grosso, Pará e Rio Grande do Sul, bem como municípios amazônicos e nordestinos que percorrem distâncias superiores a 1.000 km para acessar hospitais especializados.
+
+Esses padrões aparecem também nos principais corredores de mismatch. Os fluxos de maior volume incluem deslocamentos interior\textnormal{--}capital e interior\textnormal{--}polo regional, como Pernambuco para Recife, Goiás para Brasília, Ceará para Fortaleza, Bahia para Salvador, Pará para Belém, Rio Grande do Sul para Porto Alegre e região de Ribeirão Preto para a capital paulista. Esses exemplos são consistentes com uma dependência de oferta em regiões menos servidas e com uma desigualdade de acesso que atravessa fronteiras administrativas.
 
 \begin{figure}[H]
 \centering
@@ -379,15 +392,27 @@ Outra limitação é espacial. A distância Haversine aproxima deslocamento em l
 
 Por fim, a análise regional depende do \texttt{REGSAUDE} disponível no CNES/ST. Como foram encontrados conflitos e ausências, a comparação com regiões oficiais é uma aproximação. Ainda assim, o volume de fluxos fora da região é suficientemente alto para indicar uma tensão real entre o desenho administrativo e os caminhos observados nos dados.
 
+\section{Analise dos resultados}
+
+Este projeto mostrou que a análise de fluxos hospitalares do SUS em 2021 ganha profundidade quando combinada com grafos e filtros pensados para a prática assistencial. O grafo dirigido permitiu modelar residências, internações e transferências de forma fiel ao SIH/SUS, enquanto a projeção não dirigida manteve a estrutura de referência necessária para medir conectividade, centralidade e redundância.
+
+Os resultados obtidos apontam para um conjunto de problemáticas relevantes. A centralidade de intermediação revelou hospitais que funcionam como polos estruturais de uma rede nacional: eles são mais do que grandes fornecedores de vagas, são pontos de passagem que conectam municípios e regiões. Essa posição aumenta a vulnerabilidade da rede, porque uma falha nesses nós afeta fluxos que atravessam estados e macrorregiões. Em paralelo, as comunidades Louvain ilustraram que a rede funcional nem sempre coincide com as regiões oficiais de saúde, mostrando blocos de fluxo que podem atravessar divisões administrativas e demandar maior coordenação entre regiões.
+
+O achado sobre regionalização confirma outra tensão: cerca de 44\% dos fluxos de residência recorrentes e 61\% dos fluxos de transferência recorrentes no corte de 50 km ocorrem fora da região oficial de saúde. Esses números não apenas evidenciam um desalinhamento entre desenho administrativo e prática assistencial, mas também sugerem custos sociais e de gestão adicionais para pacientes, famílias e reguladores. Há municípios que dependem de 100\% de um único destino externo em fluxos recorrentes, o que traduz fragilidade local mesmo em uma rede nacional estatisticamente robusta.
+
+Em outras palavras, a rede pública hospitalar brasileira de 2021 é conectada no agregado, mas apresenta padrões de dependência e desigualdade regionais. A robustez do maior componente coexistiu com dependências municipais pontuais e com blocos funcionais que não cabem perfeitamente no mapa oficial. As regiões mais dependentes tendem a ser municípios do interior e áreas periféricas, incluindo localidades do Norte, Nordeste e Centro-Oeste que viajam longas distâncias para hospitais de referência. Essa dicotomia é central para entender o valor do trabalho: ele não mede apenas conectividade, mas também expõe onde essa conectividade pode ser frágil, concentrada ou desalinhada.
+
 \section{Conclusão}
 
-O projeto transformou dados públicos de internação em uma rede nacional documentada, filtrável, analisável e visualizável. A implementação entregou não apenas o grafo, mas também camadas de validação, tabelas analíticas, algoritmos e uma interface final para explorar os resultados.
+A análise mostra que o SUS público de 2021 é simultaneamente conectado e desigual: a malha hospitalar nacional sustenta uma grande componente interligada, mas fluxos recorrentes e dependências únicas expõem fragilidades regionais. Hospitais de alta intermediação e comunidades funcionais desalinhadas com regiões oficiais de saúde apontam para uma governança que precisa considerar os fluxos reais, não apenas a infraestrutura declarada.
 
-A conclusão substantiva é que a rede pública hospitalar brasileira de 2021 é conectada no agregado, mas não homogênea. Hospitais especializados e regionais aparecem como polos estruturais; fluxos recorrentes cruzam regiões oficiais de saúde; e alguns municípios dependem fortemente de poucos destinos externos. Portanto, a contribuição do trabalho não é apenas apontar hospitais grandes, mas mostrar como a estrutura dos fluxos revela dependências locais que métricas nacionais podem esconder.
+Os cortes geográficos de 25 km e 50 km permitiram enxergar duas faces do fenômeno. No nível mais local, há fricções e dependências de poucos destinos; no nível mais amplo, há corredores que atravessam regiões e estados. Esses dois veios juntos sugerem que a política pública deve atuar tanto na descentralização de alternativas quanto na articulação de estruturas de referência mais robustas.
 
-Como continuidade, o projeto ganharia precisão com leitos por competência, ocupação temporal, tempo real de deslocamento, separação por especialidade e validação regional com dados locais. Um estudo focalizado em um estado de referência também permitiria medir impactos percentuais com mais sensibilidade e discutir políticas de regionalização com bases administrativas mais limpas.
+Por fim, o trabalho reafirma que emoção social e algoritmo não são opostos: uma abordagem de grafos aplicada a dados públicos pode transformar observações de fluxo em informações acionáveis. O principal ganho é esse: tornar visível onde o SUS funciona como rede conectada e onde ele ainda precisa de ajustes para reduzir dependência, desigualdade e vulnerabilidade.
 
+\section{Referências}
+
+\nocite{*}
 \bibliographystyle{plain}
 \bibliography{references}
-
 \end{document}
