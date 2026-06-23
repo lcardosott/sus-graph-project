@@ -5,6 +5,8 @@ __pycache__/
 *.pyc
 
 # Generated data artifacts
+release_data/
+*.zip
 data_layer/raw/
 data_layer/curated/
 data_layer/reports/**
