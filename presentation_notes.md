@@ -4,6 +4,8 @@
 
 O projeto parte de uma tensão simples: o SUS é planejado por regiões e referências, mas o atendimento real aparece nos dados como deslocamentos entre municípios e hospitais. A apresentação deve mostrar que transformar esses deslocamentos em grafo permite enxergar polos estruturais, fluxos inter-regionais, redundância limitada e dependências municipais que não aparecem quando se olha apenas a conectividade nacional.
 
+Link dos dados publicados: https://doi.org/10.5281/zenodo.20805195
+
 ## Target Audience
 
 Público acadêmico e técnico de MC859, com familiaridade geral em grafos, mas sem conhecimento interno do projeto, das bases do DATASUS ou das decisões de implementação.

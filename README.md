@@ -6,11 +6,10 @@ Entrega final da disciplina MC859: análise de fluxos e resiliência da rede hos
 
 - **Site / visualização interativa:** https://lcardosott.github.io/sus-graph-project/
 - **Mapa interativo direto:** https://lcardosott.github.io/sus-graph-project/viz_layer/graph_map_ui.html
+- **Dados publicados no Zenodo:** https://doi.org/10.5281/zenodo.20805195
 - **Grafo completo antigo:** https://lcardosott.github.io/sus-graph-project/viz_layer/reports/graph_sih_br_2021_all.html
-- **Apresentação HTML:** https://lcardosott.github.io/sus-graph-project/presentation.html
 - **Relatório final em PDF:** [report/final_report.pdf](report/final_report.pdf)
 - **Fonte LaTeX do relatório:** [report/final_report.tex](report/final_report.tex)
-- **Roteiro da apresentação:** [presentation_notes.md](presentation_notes.md)
 - **Resumo interpretativo dos resultados:** [algorithm_layer/reports/final_analysis_interpretation.md](algorithm_layer/reports/final_analysis_interpretation.md)
 - **Documentos de apoio:** [Proposta_MC859.pdf](Proposta_MC859.pdf) e [entrega_parcial.pdf](entrega_parcial.pdf)
 
@@ -38,16 +37,12 @@ Artefatos principais:
 - [algorithm_layer](algorithm_layer): centralidade, Louvain, stress test, k-caminhos e análises regionais.
 - [viz_layer](viz_layer): mapa interativo, camadas leves e figuras.
 - [report](report): relatório final, figuras e referências.
-- [presentation.html](presentation.html): apresentação HTML estática para GitHub Pages.
-- [presentation_notes.md](presentation_notes.md): estratégia, mapa de slides, roteiro e Q&A.
 
 ## Visualização final
 
 A visualização principal é [viz_layer/graph_map_ui.html](viz_layer/graph_map_ui.html). Ela usa o arquivo leve [viz_layer/reports/final_map_layers.json](viz_layer/reports/final_map_layers.json), gerado a partir das análises finais de hospitais públicos.
 
 Também foi mantida a versão exploratória antiga com todos os nós em [viz_layer/reports/graph_sih_br_2021_all.html](viz_layer/reports/graph_sih_br_2021_all.html). Ela é útil como referência visual do grafo bruto, mas pode ser pesada em navegadores comuns.
-
-A apresentação final está disponível em [presentation.html](presentation.html). O deck é estático, funciona no GitHub Pages e usa navegação por teclado: setas direita/esquerda mudam os tópicos principais, e setas baixo/cima acessam aprofundamentos.
 
 Presets disponíveis no mapa:
 
@@ -72,6 +67,12 @@ Resumo do recorte final:
 O achado central é que a rede pública hospitalar é conectada no agregado nacional, mas possui dependências locais: fluxos recorrentes atravessam regiões oficiais de saúde, hospitais especializados aparecem como polos estruturais e alguns municípios dependem de poucos destinos externos.
 
 ## Reproduzir a análise final
+
+Os dados derivados usados no relatório e no dashboard estão publicados no Zenodo:
+
+```text
+https://doi.org/10.5281/zenodo.20805195
+```
 
 Instale dependências:
 
@@ -137,4 +138,4 @@ Com essa configuração, a página inicial será [index.html](index.html), com l
 
 ## Observações sobre dados
 
-Dados brutos e intermediários grandes não precisam ser enviados ao GitHub. A entrega versiona o código, os artefatos finais leves, as figuras, o relatório e os arquivos necessários para a visualização. Arquivos Parquet curados, DBFs, caches, tabelas analíticas grandes e grafos completos pesados devem ficar fora do versionamento; eles podem ser recriados localmente pelos scripts.
+Os dados derivados da entrega final foram depositados no Zenodo com DOI: https://doi.org/10.5281/zenodo.20805195. O GitHub versiona o código, os artefatos finais leves, as figuras, o relatório e os arquivos necessários para a visualização. Dados brutos e intermediários grandes, como DBFs/DBCs, Parquets curados, caches e grafos exploratórios pesados, ficam fora do versionamento; eles podem ser recriados localmente pelos scripts ou obtidos a partir das fontes públicas originais.
