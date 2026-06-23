@@ -21,6 +21,7 @@
 \lstset{basicstyle=\ttfamily\scriptsize,frame=single,breaklines=true,columns=fullflexible}
 
 \newcommand{\repo}{https://github.com/lcardosott/sus-graph-project}
+\newcommand{\datarepo}{https://doi.org/10.5281/zenodo.20805195}
 \newcommand{\repobranch}{gh-pages}
 \newcommand{\ghfile}[2]{\href{\repo/blob/\repobranch/#1}{\texttt{#2}}}
 
@@ -32,6 +33,7 @@
 \maketitle
 
 \textbf{Repositório da implementação:} \url{https://github.com/lcardosott/sus-graph-project}\\
+\textbf{Repositório dos dados:} \url{\datarepo}\\
 \textbf{Visualização interativa:} \href{https://lcardosott.github.io/sus-graph-project/viz_layer/graph_map_ui.html}{lcardosott.github.io/sus-graph-project/viz\_layer/graph\_map\_ui.html}\\
 \textbf{Artefatos principais:}\\
 Relatório: \ghfile{report/final_report.tex}{\texttt{report/final\_report.tex}}\\
@@ -52,7 +54,7 @@ O escopo inicial havia considerado um estudo estadual, mas a implementação fin
 
 \section{Dados e Pipeline}
 
-Foram usadas três famílias de dados públicos. O SIH/SUS fornece as Autorizações de Internação Hospitalar; o CNES identifica estabelecimentos, natureza pública/SUS e região de saúde; o IBGE fornece códigos territoriais e apoio geográfico \cite{datasus_sih,cnes,ibge_localidades}. A coleta e a preparação foram organizadas de forma modular: os scripts aceitam combinações de ano, meses e UFs, permitindo reproduzir a análise nacional ou gerar recortes menores para validação.
+Foram usadas três famílias de dados públicos. O SIH/SUS fornece as Autorizações de Internação Hospitalar; o CNES identifica estabelecimentos, natureza pública/SUS e região de saúde; o IBGE fornece códigos territoriais e apoio geográfico \cite{datasus_sih,cnes,ibge_localidades}. As tabelas derivadas usadas no relatório, nos algoritmos e no dashboard foram publicadas em repositório de dados com DOI \cite{sus_graph_dataset}. A coleta e a preparação foram organizadas de forma modular: os scripts aceitam combinações de ano, meses e UFs, permitindo reproduzir a análise nacional ou gerar recortes menores para validação.
 
 \begin{table}[H]
 \centering
@@ -71,7 +73,7 @@ Artefatos analíticos & Entrada dos algoritmos finais & \ghfile{data_layer/repor
 \end{tabular}
 \end{table}
 
-O pipeline completo começa com a seleção dos arquivos SIH por ano, mês e UF em \ghfile{data_layer/sih_selector.py}{sih\_selector.py}. A execução anual em \ghfile{data_layer/run_sih_year_pipeline.py}{run\_sih\_year\_pipeline.py} projeta colunas relevantes, valida contratos de esquema, cria arestas de residência, infere transferências e gera artefatos intermediários. A etapa final, \ghfile{data_layer/build_public_hospital_analysis.py}{build\_public\_hospital\_analysis.py}, reutiliza os Parquets curados de 2021 e cria as tabelas públicas analisadas pelos algoritmos. Assim, a reprodução da entrega final não exige baixar novamente os dados brutos quando os artefatos curados já existem.
+O pipeline completo começa com a seleção dos arquivos SIH por ano, mês e UF em \ghfile{data_layer/sih_selector.py}{sih\_selector.py}. A execução anual em \ghfile{data_layer/run_sih_year_pipeline.py}{run\_sih\_year\_pipeline.py} projeta colunas relevantes, valida contratos de esquema, cria arestas de residência, infere transferências e gera artefatos intermediários. A etapa final, \ghfile{data_layer/build_public_hospital_analysis.py}{build\_public\_hospital\_analysis.py}, reutiliza os Parquets curados de 2021 e cria as tabelas públicas analisadas pelos algoritmos. Para auditoria externa, o pacote publicado em \url{\datarepo} contém as tabelas analíticas agregadas, resultados algorítmicos, catálogos de referência, manifesto e documentação dos dados. Assim, a reprodução da entrega final não exige baixar novamente os dados brutos quando os artefatos curados já existem.
 
 \begin{figure}[H]
 \centering

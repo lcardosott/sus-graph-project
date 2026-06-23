@@ -6,6 +6,7 @@ Entrega final da disciplina MC859: análise de fluxos e resiliência da rede hos
 
 - **Site / visualização interativa:** https://lcardosott.github.io/sus-graph-project/
 - **Mapa interativo direto:** https://lcardosott.github.io/sus-graph-project/viz_layer/graph_map_ui.html
+- **Dados publicados no Zenodo:** https://doi.org/10.5281/zenodo.20805195
 - **Grafo completo antigo:** https://lcardosott.github.io/sus-graph-project/viz_layer/reports/graph_sih_br_2021_all.html
 - **Relatório final em PDF:** [report/final_report.pdf](report/final_report.pdf)
 - **Fonte LaTeX do relatório:** [report/final_report.tex](report/final_report.tex)
@@ -66,6 +67,12 @@ Resumo do recorte final:
 O achado central é que a rede pública hospitalar é conectada no agregado nacional, mas possui dependências locais: fluxos recorrentes atravessam regiões oficiais de saúde, hospitais especializados aparecem como polos estruturais e alguns municípios dependem de poucos destinos externos.
 
 ## Reproduzir a análise final
+
+Os dados derivados usados no relatório e no dashboard estão publicados no Zenodo:
+
+```text
+https://doi.org/10.5281/zenodo.20805195
+```
 
 Instale dependências:
 
@@ -131,4 +138,4 @@ Com essa configuração, a página inicial será [index.html](index.html), com l
 
 ## Observações sobre dados
 
-Dados brutos e intermediários grandes não precisam ser enviados ao GitHub. A entrega versiona o código, os artefatos finais leves, as figuras, o relatório e os arquivos necessários para a visualização. Arquivos Parquet curados, DBFs, caches, tabelas analíticas grandes e grafos completos pesados devem ficar fora do versionamento; eles podem ser recriados localmente pelos scripts.
+Os dados derivados da entrega final foram depositados no Zenodo com DOI: https://doi.org/10.5281/zenodo.20805195. O GitHub versiona o código, os artefatos finais leves, as figuras, o relatório e os arquivos necessários para a visualização. Dados brutos e intermediários grandes, como DBFs/DBCs, Parquets curados, caches e grafos exploratórios pesados, ficam fora do versionamento; eles podem ser recriados localmente pelos scripts ou obtidos a partir das fontes públicas originais.
