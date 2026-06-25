@@ -1,325 +1,283 @@
-# 1. Presentation Strategy
+# Roteiro Da Apresentação Final
 
-## Core Narrative
+Arquivo dos slides: `presentation.html`
 
-O projeto parte de uma tensão simples: o SUS é planejado por regiões e referências, mas o atendimento real aparece nos dados como deslocamentos entre municípios e hospitais. A apresentação deve mostrar que transformar esses deslocamentos em grafo permite enxergar polos estruturais, fluxos inter-regionais, redundância limitada e dependências municipais que não aparecem quando se olha apenas a conectividade nacional.
+Formato: vídeo gravado em português, até 10 minutos, com participação equilibrada da dupla.
 
-Link dos dados publicados: https://doi.org/10.5281/zenodo.20805195
+## Estratégia
 
-## Target Audience
+A ordem recomendada é:
 
-Público acadêmico e técnico de MC859, com familiaridade geral em grafos, mas sem conhecimento interno do projeto, das bases do DATASUS ou das decisões de implementação.
+1. **Interface e tese**: começar mostrando o produto final, porque prende a atenção e deixa claro o que foi entregue.
+2. **Como foi desenvolvido**: explicar dados, pipeline, transferências e algoritmos.
+3. **Resultados por algoritmo**: explicar o que cada método faz e qual achado ele produziu.
+4. **Objetivos, limitações e fechamento**: responder diretamente às perguntas obrigatórias.
 
-## Suggested Duration
+Eu não colocaria limitações antes dos resultados. Para o avaliador, primeiro precisamos estabelecer o que o projeto conseguiu mostrar. Depois, no final, mostramos maturidade metodológica explicando o que ainda limita a interpretação e como mitigaríamos.
 
-12 a 15 minutos no fluxo principal. Os slides verticais servem como aprofundamento técnico e material de Q&A; nem todos precisam ser apresentados se o tempo for curto.
+## Divisão Sugerida Entre A Dupla
 
-## Main Message
+**Pessoa 1: slides 1 a 6, de 0:00 a 4:35**
 
-A rede pública hospitalar brasileira de 2021 aparece conectada no agregado, mas essa conectividade convive com dependências locais relevantes. O valor do projeto está em construir uma rede auditável, aplicar algoritmos de grafos e expor essas dependências com resultados e visualizações.
+- abertura;
+- demonstração curta da UI;
+- pergunta central;
+- dados e pipeline;
+- transferência hospital-hospital.
 
-## What Should Be Emphasized
+**Pessoa 2: slides 7 a 15, de 4:35 a 10:00**
 
-- A pergunta de pesquisa: conectividade agregada não garante alternativas locais.
-- A escala da base: 11,6 milhões de linhas SIH, 5.875 hospitais públicos/SUS e 188 mil arestas no escopo público.
-- A metodologia: construção de instâncias, filtros de recorrência/distância, projeção ponderada e algoritmos clássicos de grafos.
-- Os resultados principais: polos centrais, cruzamento de regiões oficiais, robustez global e redundância local limitada.
-- As limitações: acesso realizado não é demanda total, distância geodésica não é tempo real e transferências são inferidas.
+- algoritmos;
+- resultados;
+- objetivos cumpridos;
+- limitações;
+- conclusão.
 
-## What Should Be Avoided
+Se quiserem equilibrar ainda mais, a Pessoa 1 pode fazer até o slide 7 e a Pessoa 2 começa no slide de Betweenness.
 
-- Explicar todos os scripts ou todos os arquivos do repositório no fluxo principal.
-- Vender o grafo como ferramenta operacional de encaminhamento hospitalar.
-- Dizer que cruzar região oficial significa cruzar estado.
-- Esconder que muitas coordenadas hospitalares vêm de centróides municipais.
-- Dedicar tempo demais a detalhes de implementação que pertencem ao backup.
+## Roadmap Com Tempo
 
-# 2. Slide Map
+| Slide | Tempo | Tema | Quem | Objetivo |
+|---:|---:|---|---|---|
+| 1 | 0:00-0:35 | Abertura | P1 | Identificar projeto e tese geral. |
+| 2 | 0:35-1:20 | Interface | P1 | Mostrar rapidamente o que foi entregue. |
+| 3 | 1:20-2:00 | Tese e escala | P1 | Fixar mensagem central e números. |
+| 4 | 2:00-2:55 | Dados | P1 | Explicar SIH, CNES, IBGE e escopo. |
+| 5 | 2:55-3:45 | Pipeline | P1 | Mostrar como registros viram instâncias. |
+| 6 | 3:45-4:35 | Transferências | P1 | Explicar inferência hospital-hospital. |
+| 7 | 4:35-5:20 | Visão dos algoritmos | P2 | Conectar métodos a perguntas. |
+| 8 | 5:20-5:55 | Betweenness | P2 | Explicar polos estruturais. |
+| 9 | 5:55-6:30 | Louvain | P2 | Explicar comunidades funcionais. |
+| 10 | 6:30-7:05 | Supressão dinâmica | P2 | Explicar robustez global. |
+| 11 | 7:05-7:40 | K-caminhos | P2 | Explicar redundância local. |
+| 12 | 7:40-8:15 | Regiões oficiais | P2 | Mostrar desalinhamento regional. |
+| 13 | 8:15-9:00 | Objetivos | P2 | Responder pergunta obrigatória 1. |
+| 14 | 9:00-9:50 | Limitações | P2 | Responder pergunta obrigatória 2. |
+| 15 | 9:50-10:00 | Fechamento | P2 | Encerrar com contribuição principal. |
 
-| Horizontal Topic | Vertical Depth | Slide Title | Purpose | Presenter | Time |
-|---:|---:|---|---|---|---:|
-| 1 | 0 | Análise de Fluxos e Resiliência do SUS via Teoria dos Grafos | Identificar projeto, autores e tema. | P1 | 0:40 |
-| 1 | 1 | A rede é conectada no agregado... | Abrir com a tese central e escala. | P1 | 0:50 |
-| 2 | 0 | Regionalizar atendimento é administrativo; acessar atendimento é fluxo observado | Motivar problema. | P1 | 1:00 |
-| 2 | 1 | O problema foi traduzido para quatro leituras operacionais | Mostrar como grafos tornam a pergunta mensurável. | P1 | 0:45 |
-| 3 | 0 | Dados públicos de internação, estabelecimentos e território | Apresentar fontes. | P1 | 0:55 |
-| 3 | 1 | Brasil 2021, hospitais públicos/SUS | Dar escala e limites do recorte. | P1 | 0:45 |
-| 4 | 0 | Pipeline para instâncias filtradas de grafos | Explicar metodologia sem sobrecarregar. | P1 | 1:00 |
-| 4 | 1 | Transferências inferidas de forma conservadora | Aprofundar inferência hospital-hospital. | P1/P2 | 0:50 |
-| 4 | 2 | Projeção para algoritmos | Justificar grafo não dirigido ponderado. | P2 | 0:50 |
-| 5 | 0 | Arquitetura em camadas | Mostrar organização técnica. | P2 | 0:55 |
-| 5 | 1 | Resultados auditáveis | Preparar defesa de reprodutibilidade. | P2 | 0:35 |
-| 6 | 0 | Cada algoritmo responde a uma pergunta | Conectar algoritmos a perguntas. | P2 | 1:20 |
-| 6 | 1 | Stress test | Backup técnico para supressão dinâmica. | P2 | 0:40 |
-| 7 | 0 | Três evidências sustentam a conclusão | Abrir resultados. | P3 | 0:45 |
-| 7 | 1 | Centralidade destaca hospitais que organizam corredores | Discutir polos estruturais. | P3 | 1:00 |
-| 7 | 2 | Fora da região não significa necessariamente outro estado | Explicar REGSAUDE e achado regional. | P3 | 1:05 |
-| 7 | 3 | Segunda rota não significa boa alternativa | Explicar k-caminhos e redundância. | P3 | 1:00 |
-| 8 | 0 | Interface final guiada | Mostrar visualização como comunicação. | P3 | 0:55 |
-| 8 | 1 | Camadas da demonstração | Backup para demo. | P3 | 0:35 |
-| 9 | 0 | Limitações | Mostrar maturidade metodológica. | P3 | 1:00 |
-| 9 | 1 | Continuidade | Trabalhos futuros realistas. | P3 | 0:45 |
-| 10 | 0 | Rede nacional documentada, analisável e visualizável | Concluir contribuição. | P3 | 0:45 |
-| 10 | 1 | Mensagem final | Encerrar com frase forte. | P3 | 0:25 |
+## Roteiro De Fala
 
-# 3. Complete HTML Slide Deck
+### Slide 1. Abertura
 
-O deck completo foi criado em `presentation.html`. Ele é um arquivo standalone com HTML, CSS e JavaScript internos, pronto para abrir no navegador.
+Tempo: 35s.
 
-Navegação:
+Fala sugerida:
 
-- `ArrowRight`: próximo tópico horizontal.
-- `ArrowLeft`: tópico anterior.
-- `ArrowDown`: aprofundamento dentro do tópico atual.
-- `ArrowUp`: retorno ao slide superior do tópico.
+"Olá, somos Lucas Cardoso e Ricardo Andrade Oliveira Bello. Nosso projeto é uma análise de fluxos e resiliência da rede hospitalar pública do SUS usando teoria dos grafos. A ideia foi transformar registros públicos de internação em uma rede: municípios e hospitais são nós, e os deslocamentos observados ou inferidos viram arestas."
 
-Imagens referenciadas pelo deck:
+Ponto-chave: não explicar todos os algoritmos ainda.
 
-- `report/figures/directed_projection.png`
-- `report/figures/stress_test_algorithm.png`
-- `report/figures/map_central_hospitals.png`
-- `viz_layer/reports/top_central_facilities_public_hospitals.png`
-- `report/figures/regional_cross_share.png`
-- `report/figures/k_path_redundancy.png`
-- `report/figures/visual_raw_vs_guided.png`
-- `report/figures/map_dependency_examples.png`
+### Slide 2. Interface E Entrega
 
-# 4. Presenter Script
+Tempo: 45s.
 
-Versão balanceada para 3 apresentadores. Se forem apenas 2 pessoas, junte P1 com metade de P2, e deixe resultados, limitações e conclusão para P2. Se forem 4 pessoas, separe visualização e limitações em um quarto bloco.
+Fala sugerida:
 
-## Presenter 1: Abertura, Motivação, Dados e Metodologia
+"Antes de entrar na metodologia, vale mostrar o produto final. A visualização foi pensada como uma leitura guiada, não como um desenho bruto de todas as 188 mil arestas. O mapa tem presets para 25 km, 50 km, hospitais centrais, stress test e dependências municipais. Isso nos permite apresentar o resultado de forma mais leve e legível."
 
-### Slide 1.0: Title
+Se forem demonstrar a UI ao vivo, fazer no máximo 30 segundos:
+
+- abrir a home ou `graph_map_ui.html`;
+- mostrar preset `50 km`;
+- ativar hospitais centrais;
+- mostrar a aba de metodologia ou dashboard;
+- voltar ao slide.
+
+Frase de transição:
+
+"Com essa interface em mente, agora vamos explicar o que essa rede representa."
+
+### Slide 3. Tese E Escala
 
 Tempo: 40s.
 
-Abrir dizendo: "Boa tarde. Nosso projeto analisa fluxos hospitalares do SUS usando teoria dos grafos. A ideia central é transformar registros públicos de internação em uma rede, onde municípios e hospitais são nós, e os deslocamentos observados viram arestas."
+Fala sugerida:
 
-Nota: não explique ainda todos os algoritmos. Só situe o tema.
+"A tese central é que a rede pública hospitalar parece conectada quando olhamos o agregado nacional, mas essa conectividade pode esconder dependências locais. Trabalhamos com 11,6 milhões de linhas SIH reconciliadas, 5.875 hospitais públicos/SUS e cerca de 188 mil arestas no grafo final."
 
-### Slide 1.1: Resumo em uma frase
+Ponto-chave: enfatizar a diferença entre conectividade global e vulnerabilidade local.
 
-Tempo: 50s.
-
-Falar: "A mensagem principal é que a rede pública hospitalar parece conectada quando observada nacionalmente, mas isso não significa que todos os municípios tenham alternativas locais boas. Trabalhamos com 11,6 milhões de linhas SIH, 5.875 hospitais públicos/SUS e 188 mil arestas no escopo final."
-
-Ênfase: pausar após "conectada no agregado".
-
-### Slide 2.0: Motivação
-
-Tempo: 1min.
-
-Falar: "O SUS tem regionalização e referências administrativas, mas o atendimento real acontece por fluxos. Um paciente mora em um município, é internado em um hospital, e às vezes continua o atendimento em outro. A pergunta é: esses fluxos respeitam a rede regional ou revelam dependências externas?"
-
-Transição: "Para responder isso, precisamos transformar a pergunta em medidas."
-
-### Slide 2.1: Leituras Operacionais
-
-Tempo: 45s.
-
-Falar: "Usamos grafos para medir quatro coisas: conectividade global, polos estruturais, redundância local e desalinhamento com regiões oficiais. Isso evita uma análise puramente descritiva e permite comparar cenários."
-
-Backup: se perguntarem, explique que maior componente mede conectividade global, betweenness mede ponte, e k-caminhos mede alternativas.
-
-### Slide 3.0: Dados
+### Slide 4. Dados
 
 Tempo: 55s.
 
-Falar: "As três bases principais foram SIH/SUS, CNES e IBGE. O SIH traz internações e município de residência; o CNES identifica hospitais, vínculo SUS e região oficial de saúde; o IBGE apoia localização territorial."
+Fala sugerida:
 
-Nota: defina CNES e SIH lentamente, porque nem todo avaliador lembra.
+"As três bases principais foram SIH/SUS, CNES e IBGE. O SIH/SUS fornece as internações: município de residência, hospital, diagnóstico, procedimento, permanência, valor, óbito e sinais de transferência. O CNES identifica os estabelecimentos, permite filtrar hospitais públicos/SUS e traz regiões oficiais de saúde. O IBGE entra com códigos territoriais e apoio geográfico. O pacote derivado usado no projeto foi publicado no Zenodo com DOI, para permitir auditoria externa."
 
-### Slide 3.1: Escala
+Ponto-chave: citar o DOI apenas uma vez, sem gastar muito tempo.
+
+### Slide 5. Pipeline
+
+Tempo: 50s.
+
+Fala sugerida:
+
+"O pipeline seleciona os arquivos SIH por ano, mês e UF, enriquece com CNES e IBGE, gera nós e arestas e depois cria instâncias filtradas. Usamos dois filtros principais: recorrência e distância. Fluxos município para hospital entram com pelo menos 5 ocorrências; transferências hospital para hospital entram com pelo menos 2. Depois analisamos cortes de 25 km e 50 km para destacar deslocamentos não triviais."
+
+Ponto-chave: explicar que o filtro evita casos isolados, como uma viagem excepcional.
+
+### Slide 6. Transferências
+
+Tempo: 50s.
+
+Fala sugerida:
+
+"A parte mais delicada foi inferir transferências hospitalares. A base não tem, de forma universal, uma aresta limpa origem-destino, nem identificador individual perfeito. Então usamos uma chave de paciente provável: nascimento, sexo, idade e município de residência. Em pandas, agrupamos as internações por essa chave, ordenamos por data e, quando há sinal de transferência, buscamos apenas dentro do mesmo grupo uma nova internação entre 24 e 48 horas após a saída. O destino é o CNES da próxima internação candidata, com continuidade clínica por capítulo CID-10."
+
+Ponto-chave: dizer explicitamente:
+
+"Isso não é rastreamento individual perfeito; é continuidade provável agregada."
+
+### Slide 7. Algoritmos
 
 Tempo: 45s.
 
-Falar: "O recorte final é Brasil 2021, hospitais públicos/SUS. Um ponto importante é que só 569 hospitais tinham coordenada CNES direta; para os demais usamos centróide municipal. Isso mantém cobertura nacional, mas limita análise intraurbana."
+Fala sugerida:
 
-Ênfase: mostrar maturidade metodológica, não pedir desculpa.
+"A partir das instâncias filtradas, cada algoritmo responde a uma pergunta diferente. Betweenness procura hospitais-ponte. Louvain procura comunidades funcionais. A supressão dinâmica testa robustez ao remover polos centrais. K-caminhos mede se a segunda rota é próxima ou apenas uma alternativa formal no grafo."
 
-### Slide 4.0: Pipeline
+Complemento técnico:
 
-Tempo: 1min.
+"Os fluxos são dirigidos na construção, mas as análises estruturais usam uma projeção não dirigida ponderada, porque queremos medir conectividade assistencial aproximada, não simular uma rota clínica literal."
 
-Falar: "O pipeline seleciona arquivos SIH por ano, mês e UF, enriquece com CNES e IBGE, constrói fluxos e gera instâncias filtradas. Depois aplicamos filtros de recorrência e distância mínima. Os cortes de 25 km e 50 km não são percentuais; são limiares geográficos."
-
-Transição para P2: "A partir dessas instâncias, a parte central do projeto foi escolher como modelar e analisar a rede."
-
-### Slide 4.1: Transferências
-
-Tempo: 50s.
-
-Falar: "As transferências não vêm como uma lista limpa origem-destino em todos os casos, e também não temos uma identificação individual perfeita do paciente. Por isso usamos uma chave provável formada por nascimento, sexo, idade e município de residência. Dentro desse grupo, quando há sinal de transferência, buscamos nova internação entre 24 e 48 horas após a saída e exigimos continuidade por capítulo CID-10."
-
-Nota: diga "paciente provável" e "continuidade provável agregada", não "rastreamento individual". Se perguntarem sobre escala, explique que a busca é feita dentro de cada grupo de chave provável em pandas, usando datas ordenadas, e não contra todas as internações do Brasil.
-
-## Presenter 2: Implementação e Algoritmos
-
-### Slide 4.2: Projeção
-
-Tempo: 50s.
-
-Falar: "O grafo original é dirigido porque os fluxos têm origem e destino. Mas para centralidade, comunidades, stress test e k-caminhos usamos uma projeção não dirigida ponderada. Isso evita que as métricas sejam dominadas pela direção administrativa município-hospital e foca na conectividade estrutural."
-
-Apontar para a figura: "Volume é agregado; distância fica como custo."
-
-### Slide 5.0: Arquitetura
-
-Tempo: 55s.
-
-Falar: "A implementação foi organizada em camadas. A data_layer prepara dados e tabelas; a algorithm_layer executa os métodos; a viz_layer transforma resultados em mapas e camadas interativas. Essa separação facilitou validação, reexecução e rastreabilidade."
-
-### Slide 5.1: Código e Reprodutibilidade
+### Slide 8. Algoritmo 1: Betweenness
 
 Tempo: 35s.
 
-Falar: "A saída não é só o PDF. Cada algoritmo gera CSVs, JSONs e figuras. Isso permite auditar centralidade, comunidades, stress test, k-caminhos e análise regional diretamente no repositório."
+Fala sugerida:
 
-### Slide 6.0: Algoritmos
+"A centralidade de intermediação pergunta quais hospitais aparecem em muitos caminhos mínimos. No nosso caso, isso aponta hospitais que conectam municípios e regiões. O resultado importante é que a métrica não mede apenas volume: ela destacou hospitais especializados, universitários e regionais como polos estruturais."
 
-Tempo: 1min20s.
+Ponto-chave: explicar a diferença entre hospital volumoso e hospital-ponte.
 
-Falar: "Cada algoritmo responde a uma pergunta. Betweenness identifica hospitais que funcionam como pontes. Louvain encontra blocos funcionais. A supressão dinâmica testa robustez ao remover hospitais centrais. K-caminhos avalia se existe alternativa topológica próxima."
-
-Nota: não entre em fórmulas aqui. O objetivo é conectar método e pergunta.
-
-Transição para P3: "Com esses métodos, chegamos a três evidências principais."
-
-### Slide 6.1: Stress Test
-
-Tempo: 40s, usar se houver tempo ou pergunta.
-
-Falar: "O stress test recalcula centralidade a cada passo, remove o hospital mais central e mede maior componente e caminho médio amostrado. A conclusão foi que a rede nacional é globalmente robusta, mas isso não elimina fragilidades municipais."
-
-## Presenter 3: Resultados, Visualização, Limitações e Conclusão
-
-### Slide 7.0: Resultados
-
-Tempo: 45s.
-
-Falar: "Os resultados podem ser organizados em três evidências: hospitais de referência aparecem como polos, muitos fluxos cruzam regiões oficiais e algumas localidades dependem de poucos destinos externos."
-
-### Slide 7.1: Polos Estruturais
-
-Tempo: 1min.
-
-Falar: "A centralidade não mede apenas volume. Ela mede o quanto um hospital aparece em caminhos entre outros nós. Por isso hospitais especializados e regionais aparecem como estruturadores da rede, não apenas como estabelecimentos grandes."
-
-Nota: aponte para mapa e ranking, mas não leia todos os nomes.
-
-### Slide 7.2: Regiões Oficiais
-
-Tempo: 1min05s.
-
-Falar: "Um resultado importante é que 'fora da região' não significa necessariamente outro estado. O campo REGSAUDE distingue regiões dentro da mesma UF. No corte de 50 km, 43,80% do fluxo residência-hospital filtrado cruza região oficial, enquanto cruzamentos de UF são uma parcela bem menor."
-
-Ênfase: este slide responde uma confusão provável dos avaliadores.
-
-### Slide 7.3: Redundância
-
-Tempo: 1min.
-
-Falar: "K-caminhos mostra que uma alternativa pode existir no grafo e ainda ser ruim como substituição. Entre os pares avaliados com segunda alternativa, a razão média entre o segundo e o primeiro caminho foi 3,05; em 27 de 29 casos, a razão passou de 2."
-
-### Slide 8.0: Visualização
-
-Tempo: 55s.
-
-Falar: "A visualização final não tenta mostrar todas as arestas ao mesmo tempo. A experiência bruta ficava pesada e ilegível. A versão final usa camadas e presets para mostrar a mensagem analítica: hospitais centrais, stress test, dependências e corredores."
-
-### Slide 8.1: Camadas da Demonstração
+### Slide 9. Algoritmo 2: Louvain
 
 Tempo: 35s.
 
-Falar: "Se houver tempo de demonstração, vale abrir o mapa interativo e mostrar rapidamente presets de 50 km, hospitais centrais e dependência municipal. Não navegar demais; usar a demo para reforçar os resultados."
+Fala sugerida:
 
-### Slide 9.0: Limitações
+"O Louvain procura comunidades com muitas conexões internas e poucas conexões externas. Ele não usa a região oficial como entrada; a comunidade surge dos próprios fluxos. No corte de 50 km, encontramos 43 comunidades, o que dá uma leitura funcional da rede e permite comparar esses blocos com as regiões de saúde."
 
-Tempo: 1min.
+Ponto-chave: comunidade Louvain não é região oficial; é agrupamento funcional observado.
 
-Falar: "A leitura precisa ser cuidadosa. O SIH mostra internações que aconteceram, não demanda reprimida. Volume anual não é capacidade em uma semana específica. A distância Haversine não é tempo de viagem. E as transferências são inferidas de forma agregada."
+### Slide 10. Algoritmo 3: Supressão Dinâmica
 
-Nota: este slide deve soar como rigor, não fraqueza.
+Tempo: 35s.
 
-### Slide 9.1: Continuidade
+Fala sugerida:
+
+"A supressão dinâmica remove o hospital mais central, recalcula a centralidade e mede a maior componente depois de cada remoção. O resultado foi que, mesmo após cinco remoções no corte de 50 km, a maior componente manteve 99,47% dos nós. Isso sugere robustez global, mas não garante boa alternativa local."
+
+Ponto-chave: robustez global não elimina vulnerabilidade municipal.
+
+### Slide 11. Algoritmo 4: K-Caminhos
+
+Tempo: 35s.
+
+Fala sugerida:
+
+"K-caminhos pergunta se existe uma segunda rota e se ela é realmente próxima. Entre os pares com alternativa, a razão média entre o segundo e o primeiro caminho foi 3,05; em 27 de 29 casos, a segunda rota ficou acima de duas vezes a primeira. Então a rede pode estar conectada, mas a redundância pode ser fraca."
+
+Ponto-chave: alternativa topológica não é automaticamente alternativa assistencial boa.
+
+### Slide 12. Comparação Regional
+
+Tempo: 35s.
+
+Fala sugerida:
+
+"Depois dos algoritmos, comparamos os fluxos com as regiões oficiais de saúde. No corte de 50 km, 43,80% do fluxo residência-hospital filtrado cruza região oficial. Isso não significa necessariamente cruzar estado, porque REGSAUDE divide regiões dentro da mesma UF. O achado é que o fluxo observado nem sempre acompanha o desenho administrativo."
+
+Ponto-chave: evitar confusão entre região de saúde e UF.
+
+### Slide 13. Objetivos Da Proposta
 
 Tempo: 45s.
 
-Falar: "Uma continuidade natural seria reduzir o escopo para um estado ou macrorregião, integrar dados locais de leitos, ocupação e especialidade, e trocar distância geodésica por tempo real de deslocamento."
+Pergunta obrigatória:
 
-### Slide 10.0: Conclusão
+"Em que medida os objetivos especificados na Proposta de Projeto foram cumpridos ou alcançados e por quê?"
 
-Tempo: 45s.
+Fala sugerida:
 
-Falar: "O projeto entregou uma rede nacional documentada, analisável e visualizável. A contribuição principal é mostrar que conectividade nacional pode esconder dependências locais, e que grafos ajudam a tornar essas dependências explícitas."
+"Os objetivos foram cumpridos em essência. A proposta previa capturar dados públicos de saúde, construir instâncias de grafo e aplicar algoritmos para analisar estrutura e vulnerabilidade. Isso foi entregue: temos coleta e tratamento, grafo nacional, filtros, centralidade, comunidades, stress test, k-caminhos, análise regional, relatório, dataset com DOI e visualização. A principal mudança foi de escala: o escopo final ficou Brasil 2021 e hospitais públicos/SUS, o que aumentou o tamanho da análise e tornou a comparação regional mais rica."
 
-### Slide 10.1: Mensagem Final
+Ponto-chave: tratar mudança de escopo como decisão técnica, não desvio.
 
-Tempo: 25s.
+### Slide 14. Limitações E Mitigação
 
-Fechar dizendo: "Grafos não substituem planejamento em saúde, mas ajudam a enxergar onde a rede observada depende demais de poucos caminhos. Obrigado."
+Tempo: 50s.
 
-# 5. Backup Q&A Notes
+Pergunta obrigatória:
 
-## Technical Questions
+"Quais são as limitações do projeto? Como modificaria fases do projeto para mitigar?"
 
-**Por que usar projeção não dirigida se os fluxos são dirigidos?**  
-Porque a direção é essencial para construir o fluxo, mas algumas métricas de conectividade ficariam dominadas por arestas município-hospital sem retorno. A projeção permite estudar conectividade estrutural aproximada, não rotas clínicas literais.
+Fala sugerida:
 
-**Por que 25 km e 50 km?**  
-São limiares geográficos para destacar deslocamentos não triviais. O corte de 25 km captura fricções regionais; 50 km é mais seletivo e destaca dependências mais longas.
+"As limitações principais são quatro. Primeiro, o SIH mostra acesso realizado, não demanda reprimida. Segundo, volume anual não mede capacidade simultânea, leitos disponíveis ou especialidade. Terceiro, distância Haversine não é tempo real de viagem. Quarto, transferências são inferidas por continuidade provável, não por identificador perfeito. Para mitigar, eu modificaria a captura de dados integrando leitos por competência, ocupação, especialidades e, se disponível, registros de regulação. Na definição das instâncias, usaria tempo de deslocamento por malha viária. E nos algoritmos, faria uma análise mais focalizada por estado ou macrorregião para validar resultados com dados locais."
 
-**K-caminhos representa uma rota real de ambulância?**  
-Não. Representa redundância topológica na projeção. É uma aproximação para comparar se há alternativa estrutural próxima.
+Ponto-chave: responder dados, instâncias e algoritmos, como pedido.
 
-**Betweenness não favorece hospitais em regiões mais densas?**  
-Pode favorecer nós que conectam muitos caminhos. Por isso a interpretação foi qualitativa e estrutural, combinada com mapas, dependência municipal e análise regional.
+### Slide 15. Fechamento
 
-## Methodology Questions
+Tempo: 10s.
 
-**Como foram inferidas transferências?**  
-Por chave de paciente provável, sinal administrativo, janela temporal de 24-48h após a saída e continuidade por capítulo CID-10. O destino vem do CNES da internação candidata. Arestas indicam continuidade provável agregada, não identificação individual perfeita.
+Fala sugerida:
 
-**Por que o número de coordenadas CNES diretas é baixo?**  
-Porque o catálogo usado não forneceu ponto físico confiável para a maioria dos hospitais no recorte. Para manter cobertura nacional, o projeto usou centróides municipais quando necessário.
+"Em resumo, grafos não substituem planejamento em saúde, mas ajudam a tornar visível onde a rede observada depende demais de poucos caminhos. Essa foi a principal contribuição do projeto: transformar dados públicos em uma rede documentada, analisável e visualizável."
 
-**O ano de 2021 é representativo?**  
-Deve ser lido com cautela por causa da COVID-19. Os resultados descrevem acesso realizado naquele ano, não uma estrutura permanente.
+Final:
 
-## Result Questions
+"Obrigado."
 
-**A rede é robusta ou vulnerável?**  
-As duas coisas em escalas diferentes. Globalmente, a maior componente permanece alta no stress test; localmente, alguns municípios dependem fortemente de poucos destinos.
+## Checklist Para Gravar
 
-**Fluxo fora da região significa fora do estado?**  
-Não. REGSAUDE é região oficial de saúde e vários cruzamentos acontecem dentro da mesma UF.
+- Abrir `presentation.html` em tela cheia.
+- Ensaiar sem demo ao vivo: deve ficar entre 8min30s e 9min30s.
+- Se fizer demo da UI, limitar a 30 segundos.
+- Não ler todos os bullets; usar os slides como mapa.
+- Garantir que a fala sobre objetivos e limitações fique explícita, porque é critério obrigatório.
+- Em dupla, manter divisão equilibrada: cerca de 5 minutos para cada pessoa.
+- Exportar em `.mp4`, arquivo único, até 250 MB.
 
-**O que significa participação de 100% em dependência municipal?**  
-Significa 100% dentro do fluxo filtrado recorrente e distante daquele município, não 100% de todas as internações do município.
+## Revisão Crítica De Design
 
-## Limitation Questions
+O deck foi ajustado para parecer uma apresentação pública, não um roteiro interno. Foram removidas instruções visíveis como "durante o vídeo", "ato 1/2/3", "vídeo até 10 minutos" e chamadas de resposta obrigatória. Essas informações ficam apenas neste roteiro.
 
-**O projeto mede falta de vaga?**  
-Não. Mede acesso realizado. Não observa demanda reprimida, tempo de espera ou capacidade simultânea.
+Decisões de espaçamento e layout:
 
-**Por que não usar leitos como capacidade?**  
-Seria ideal, mas exigiria integração temporal e por especialidade. O projeto não fabricou capacidade a partir de volume anual.
+- O rodapé agora usa três colunas fixas: legenda, barra de progresso com largura constante e contador. Assim a barra não muda de tamanho conforme o texto do slide.
+- Os slides usam cartões e grids simples para evitar centralização excessiva e reduzir risco de texto se sobrepor a imagens.
+- As imagens foram limitadas a poucos slides, com `object-fit: contain`, borda leve e legenda curta. Isso evita cortes estranhos e mantém a tela respirável.
+- A apresentação usa fundo claro, contraste alto e poucos acentos de cor. Isso deve gravar melhor em vídeo e comprimir melhor em MP4.
+- Os textos foram mantidos curtos nos slides; explicações longas ficam na fala.
 
-**A visualização mostra todas as arestas?**  
-Não no modo final. Ela usa camadas reduzidas para legibilidade e desempenho.
+Pontos para observar no ensaio:
 
-# 6. Final Review Checklist
+- Se algum slide parecer cheio, priorizar cortar fala, não aumentar texto.
+- O slide de transferência é o mais técnico; falar devagar e não tentar explicar todos os detalhes além da chave provável, janela 24-48h e CNES de destino.
+- O slide de limitações tem bastante conteúdo; se passar de tempo, focar em três mitigadores: leitos/ocupação, tempo real de deslocamento e validação regional local.
+- Se a gravação for em 720p, usar zoom do navegador em 90% ou 100%; evitar 110% porque pode apertar os slides com tabela.
 
-- Verificar se `presentation.html` abre corretamente no navegador.
-- Testar navegação com setas direita, esquerda, baixo e cima.
-- Confirmar que todos os caminhos de imagem carregam a partir da raiz do repositório.
-- Ensaiar uma versão de 12 minutos sem slides verticais opcionais.
-- Ensaiar uma versão de 15 minutos incluindo os principais backups.
-- Confirmar que a divisão de fala corresponde ao número real de apresentadores.
-- Não ler os bullets; usar os slides como guia visual.
-- Evitar dizer que REGSAUDE é estado.
-- Reforçar que k-caminhos não é rota clínica operacional.
-- Reforçar que o SIH mostra acesso realizado, não demanda reprimida.
-- Testar o mapa interativo antes da apresentação, caso ele seja mostrado ao vivo.
-- Manter o relatório e o deck consistentes em números: 11,6 milhões de linhas, 5.875 hospitais, 188.035 arestas, 43,80% no cruzamento residência-hospital a 50 km, razão média 3,05 nos k-caminhos.
+## Perguntas Técnicas Possíveis
+
+**Por que usar projeção não dirigida?**
+
+Porque a direção é fundamental para construir fluxos, mas algumas métricas de conectividade ficariam dominadas pela orientação município-hospital. A projeção ponderada permite estudar conectividade estrutural aproximada.
+
+**A transferência identifica o paciente real?**
+
+Não perfeitamente. Ela usa uma chave de paciente provável e janela temporal de 24-48h. O resultado é uma continuidade provável agregada.
+
+**Fora da região significa fora do estado?**
+
+Não. Região oficial de saúde é mais granular que UF. Muitos cruzamentos são dentro do mesmo estado.
+
+**A rede é robusta ou vulnerável?**
+
+As duas coisas em escalas diferentes. Globalmente, a maior componente é robusta; localmente, alguns municípios dependem de poucos destinos.
+
+**Por que não usar Google Drive para os dados?**
+
+Porque o dataset foi publicado no Zenodo com DOI, acesso aberto e manifesto, o que é mais adequado para avaliação acadêmica.
